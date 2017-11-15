@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using EmercomDisp.BLL.MessageProvider;
+using EmercomDisp.Web.Models;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IMessageProvider messageProvider;
         // GET: Home
+        public HomeController(IMessageProvider provider)
+        {
+            messageProvider = provider;
+        }
         public ActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel { Message = messageProvider.GetMessage() };
+            return View(model);
         }
     }
 }
