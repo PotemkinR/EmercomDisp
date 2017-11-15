@@ -17,6 +17,7 @@
 
 
 namespace EmercomDisp.Web.DependencyResolution {
+    using EmercomDisp.BLL.ErrorProviders;
     using EmercomDisp.BLL.MessageProvider;
     using StructureMap;
 	
@@ -26,6 +27,7 @@ namespace EmercomDisp.Web.DependencyResolution {
             {
                 c.AddRegistry<DefaultRegistry>();
                 c.For<IMessageProvider>().Use<SimpleMessageProvider>();
+                c.For<IErrorProvider>().Use<SimplestErrorProvider>();
             });
         }
     }

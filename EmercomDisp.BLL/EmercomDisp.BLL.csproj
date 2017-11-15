@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorProviders\IErrorProvider.cs" />
+    <Compile Include="ErrorProviders\SimplestErrorProvider.cs" />
     <Compile Include="MessageProvider\IMessageProvider.cs" />
     <Compile Include="MessageProvider\SimpleMessageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
