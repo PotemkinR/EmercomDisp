@@ -16,18 +16,19 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace EmercomDisp.Web.DependencyResolution {
-    using EmercomDisp.BLL.ErrorProviders;
-    using EmercomDisp.BLL.MessageProvider;
+namespace EmercomDisp.Web.DependencyResolution
+{
+    using EmercomDisp.Data.Repositories;
+    using EmercomDisp.BLL.Providers;
     using StructureMap;
-	
+
     public static class IoC {
         public static IContainer Initialize() {
             return new Container(c =>
             {
                 c.AddRegistry<DefaultRegistry>();
-                c.For<IMessageProvider>().Use<SimpleMessageProvider>();
-                c.For<IErrorProvider>().Use<SimplestErrorProvider>();
+                c.For<ICallProvider>().Use<CallProvider>();
+                c.For<IRepository>().Use<FakeCallRepositoty>();
             });
         }
     }

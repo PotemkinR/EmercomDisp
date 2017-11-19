@@ -1,9 +1,9 @@
 ﻿using EmercomDisp.Model.Models;
 using System.Collections.Generic;
 
-namespace EmercomDisp.Data.Repositories
+namespace EmercomDisp.BLL.Providers
 {
-    public interface IRepository
+    public interface ICallProvider
     {
         IEnumerable<Call> GetCalls();
     }

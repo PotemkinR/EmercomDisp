@@ -1,7 +1,9 @@
-﻿namespace EmercomDisp.Web.Models
+﻿using EmercomDisp.Model.Models;
+
+namespace EmercomDisp.Web.Models
 {
     public class HomeViewModel
     {
-        public string Message { get; set; }
+        public Call Call { get; set; }
     }
 }

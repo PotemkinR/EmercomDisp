@@ -1,8 +1,7 @@
-﻿using EmercomDisp.BLL.ErrorProviders;
-using EmercomDisp.BLL.MessageProvider;
+﻿using EmercomDisp.BLL.Providers;
 using EmercomDisp.Web.Models;
 using log4net;
-using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
@@ -10,25 +9,18 @@ namespace EmercomDisp.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILog _log = LogManager.GetLogger("LOGGER");
-        private readonly IMessageProvider _messageProvider;
-        private readonly IErrorProvider _errorProvider;
+        private readonly ICallProvider _callProvider;
         // GET: Home
-        public HomeController(IMessageProvider messageProvider, IErrorProvider errorProvider)
+        public HomeController(ICallProvider callProvider)
         {
-            _messageProvider = messageProvider;
-            _errorProvider = errorProvider;
+            _callProvider = callProvider;
         }
         public ActionResult Index()
         {
-            try
+            HomeViewModel model = new HomeViewModel
             {
-                _errorProvider.ThrowError();
-            }
-            catch(Exception e)
-            {
-                _log.Error(e.Message);
-            }
-            HomeViewModel model = new HomeViewModel { Message = _messageProvider.GetMessage() };
+                Call = _callProvider.GetCalls().First()
+            };
             return View(model);
         }
     }
