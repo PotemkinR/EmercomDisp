@@ -10,18 +10,15 @@ namespace EmercomDisp.Web.Controllers
     {
         private readonly ILog _log = LogManager.GetLogger("LOGGER");
         private readonly ICallProvider _callProvider;
-        // GET: Home
+
         public HomeController(ICallProvider callProvider)
         {
             _callProvider = callProvider;
         }
+
         public ActionResult Index()
         {
-            HomeViewModel model = new HomeViewModel
-            {
-                Call = _callProvider.GetCalls().First()
-            };
-            return View(model);
+            return View();
         }
     }
 }

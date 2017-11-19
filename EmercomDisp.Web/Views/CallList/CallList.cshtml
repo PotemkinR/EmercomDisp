@@ -1,0 +1,18 @@
+﻿@model EmercomDisp.Web.Models.CallViewModels.CallListViewModel
+
+<h2>CallList</h2>
+
+<div class="container">
+    <div class="col-md-2">
+        <h3>Categories</h3>
+        @{Html.RenderAction("Category", "Category");}
+    </div>
+    <div class="col-md-10">
+        <h3>Calls</h3>
+        @foreach (var call in Model.CallList)
+        {
+            Html.RenderAction("CallListItem", new { callId = call.Id });
+        }
+    </div>
+</div>
+

@@ -43,7 +43,7 @@
     <Compile Include="Models\Brigade.cs" />
     <Compile Include="Models\BrigadeMebmer.cs" />
     <Compile Include="Models\Call.cs" />
-    <Compile Include="Models\CategoryEnum.cs" />
+    <Compile Include="Models\UrgencyEnum.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Incident.cs" />
     <Compile Include="Models\Victim.cs" />
