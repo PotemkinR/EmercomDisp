@@ -18,8 +18,7 @@
 
 namespace EmercomDisp.Web.DependencyResolution
 {
-    using EmercomDisp.Data.Repositories;
-    using EmercomDisp.BLL.Providers;
+    using EmercomDisp.Composition;
     using StructureMap;
 
     public static class IoC {
@@ -27,8 +26,7 @@ namespace EmercomDisp.Web.DependencyResolution
             return new Container(c =>
             {
                 c.AddRegistry<DefaultRegistry>();
-                c.For<ICallProvider>().Use<CallProvider>();
-                c.For<IRepository>().Use<FakeCallRepositoty>();
+                c.AddRegistry<CompositionRegistry>();
             });
         }
     }

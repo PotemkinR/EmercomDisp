@@ -1,11 +1,19 @@
-﻿using EmercomDisp.Model.Models;
-using System;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+using EmercomDisp.Model.Models;
 
-namespace EmercomDisp.Data.Repositories
+namespace EmercomDisp.Service.Contracts.Contracts
 {
-    public class FakeCallRepositoty : IRepository
+    public class FakeCallService : ICallService
     {
+        private static List<string> _categories = new List<string>()
+        {
+            "Low",
+            "Medium",
+            "High"
+        };
+
         private List<Call> _callList = new List<Call>()
         {
             new Call
@@ -58,7 +66,7 @@ namespace EmercomDisp.Data.Repositories
                         }
                     }
                 },
-                Category = UrgencyEnum.Low
+                Category = _categories[0]
             },
             new Call
             {
@@ -110,13 +118,32 @@ namespace EmercomDisp.Data.Repositories
                         }
                     }
                 },
-                Category = UrgencyEnum.High
+                Category = _categories[1]
             }
         };
 
         public IEnumerable<Call> GetCalls()
         {
             return _callList;
+        }
+        public Call GetCallById(int id)
+        {
+            Call call = _callList.Where(c => c.Id == id).FirstOrDefault();
+            return call;
+        }
+
+        public IEnumerable<Call> GetCallsByUrgency(string urgency)
+        {
+            List<Call> callList = _callList
+                .Where(c => c.Category.ToLower() == urgency.ToLower())
+                .ToList();
+
+            return callList;
+        }
+
+        public IEnumerable<string> GetCategories()
+        {
+            return _categories;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EmercomDisp.Model.Models
+namespace EmercomDisp.Service.Dto.Models
 {
-    public class Call
+    public class CallDto
     {
         public int Id { get; set; }
 
@@ -21,11 +21,11 @@ namespace EmercomDisp.Model.Models
 
         public DateTime ReturnTime { get; set; }
 
-        public IEnumerable<Victim> Victims { get; set; }
+        public IEnumerable<VictimDto> Victims { get; set; }
 
-        public Brigade Brigade { get; set; }
+        public BrigadeDto Brigade { get; set; }
 
-        public Incident Incident { get; set; }
+        public IncidentDto Incident { get; set; }
 
         public string Category { get; set; }
     }

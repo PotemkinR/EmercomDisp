@@ -11,8 +11,19 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.BLL", "EmercomDisp.BLL\EmercomDisp.BLL.csproj", "{BA8550C8-6AC3-4F86-980C-D59188D5AAC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Data", "EmercomDisp.Data\EmercomDisp.Data.csproj", "{928ACBFF-92D4-41C7-BC6C-8CDFCFBBE0AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F7CACB-5BD0-401F-9757-328D3608C788} = {86F7CACB-5BD0-401F-9757-328D3608C788}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Model", "EmercomDisp.Model\EmercomDisp.Model.csproj", "{E56F9987-C3BD-4B7F-9298-0BA4748261E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmercomDisp.Services", "EmercomDisp.Services", "{532CC96B-8033-49A1-8C42-D9EDF81B2319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Service", "EmercomDisp.Service\EmercomDisp.Service.csproj", "{86F7CACB-5BD0-401F-9757-328D3608C788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Service.Contracts", "EmercomDisp.Service.Contracts\EmercomDisp.Service.Contracts.csproj", "{15F21AAD-5523-49C6-960C-334B8C24ECFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Composition", "Composition\EmercomDisp.Composition.csproj", "{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,9 +47,25 @@ Global
 		{E56F9987-C3BD-4B7F-9298-0BA4748261E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E56F9987-C3BD-4B7F-9298-0BA4748261E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E56F9987-C3BD-4B7F-9298-0BA4748261E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F7CACB-5BD0-401F-9757-328D3608C788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F7CACB-5BD0-401F-9757-328D3608C788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F7CACB-5BD0-401F-9757-328D3608C788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F7CACB-5BD0-401F-9757-328D3608C788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86F7CACB-5BD0-401F-9757-328D3608C788} = {532CC96B-8033-49A1-8C42-D9EDF81B2319}
+		{15F21AAD-5523-49C6-960C-334B8C24ECFB} = {532CC96B-8033-49A1-8C42-D9EDF81B2319}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C2416D7-AE62-44F6-9949-55F52DD4405B}

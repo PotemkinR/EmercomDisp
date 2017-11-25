@@ -1,7 +1,6 @@
 ﻿using EmercomDisp.BLL.Providers;
 using EmercomDisp.Model.Models;
 using EmercomDisp.Web.Models.CallViewModels;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
@@ -15,26 +14,19 @@ namespace EmercomDisp.Web.Controllers
             _callProvider = callProvider;
         }
         
-        public ActionResult CallList(UrgencyEnum? urgency)
+        public ActionResult CallList()
         {
-            CallListViewModel model = new CallListViewModel();
-            if (urgency != null)
+            CallListViewModel model = new CallListViewModel
             {
-                model.CallList = _callProvider.GetCalls()
-                .Where(c => c.Category == urgency);
-            }
-            else
-            {
-                model.CallList = _callProvider.GetCalls();
-            }
-            
+                CallList = _callProvider.GetCalls()
+            };
+
             return View(model);
         }
 
         public PartialViewResult CallListItem(int callId)
         {
-            Call _call = new Call();
-            _call = _callProvider.GetCalls().Where(c => c.Id == callId).Single();
+            Call _call = _callProvider.GetCallById(callId);
 
             CallItemViewModel model = new CallItemViewModel
             {
