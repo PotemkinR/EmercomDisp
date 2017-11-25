@@ -58,10 +58,6 @@
       <Project>{928acbff-92d4-41c7-bc6c-8cdfcfbbe0aa}</Project>
       <Name>EmercomDisp.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EmercomDisp.Service.Contracts\EmercomDisp.Service.Contracts.csproj">
-      <Project>{15f21aad-5523-49c6-960c-334b8c24ecfb}</Project>
-      <Name>EmercomDisp.Service.Contracts</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
