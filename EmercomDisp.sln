@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Service", "Emer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Service.Contracts", "EmercomDisp.Service.Contracts\EmercomDisp.Service.Contracts.csproj", "{15F21AAD-5523-49C6-960C-334B8C24ECFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Composition", "Composition\EmercomDisp.Composition.csproj", "{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmercomDisp.Composition", "EmercomDisp.Composition\EmercomDisp.Composition.csproj", "{7B3B12CD-DD00-4365-ACD0-CE53FA223288}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +55,10 @@ Global
 		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15F21AAD-5523-49C6-960C-334B8C24ECFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C801E1C3-99D0-461D-BE0B-B1A0EF02DA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B3B12CD-DD00-4365-ACD0-CE53FA223288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B3B12CD-DD00-4365-ACD0-CE53FA223288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B3B12CD-DD00-4365-ACD0-CE53FA223288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B3B12CD-DD00-4365-ACD0-CE53FA223288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

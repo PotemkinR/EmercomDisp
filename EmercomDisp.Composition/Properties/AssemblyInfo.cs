@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Composition")]
+[assembly: AssemblyTitle("EmercomDisp.Composition")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Composition")]
+[assembly: AssemblyProduct("EmercomDisp.Composition")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c801e1c3-99d0-461d-be0b-b1a0ef02da14")]
+[assembly: Guid("7b3b12cd-dd00-4365-acd0-ce53fa223288")]
 
 // Version information for an assembly consists of the following four values:
 //

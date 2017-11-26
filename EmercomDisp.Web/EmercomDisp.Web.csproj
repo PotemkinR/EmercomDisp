@@ -161,13 +161,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Composition\EmercomDisp.Composition.csproj">
-      <Project>{c801e1c3-99d0-461d-be0b-b1a0ef02da14}</Project>
-      <Name>EmercomDisp.Composition</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EmercomDisp.BLL\EmercomDisp.BLL.csproj">
       <Project>{ba8550c8-6ac3-4f86-980c-d59188d5aac5}</Project>
       <Name>EmercomDisp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmercomDisp.Composition\EmercomDisp.Composition.csproj">
+      <Project>{7b3b12cd-dd00-4365-acd0-ce53fa223288}</Project>
+      <Name>EmercomDisp.Composition</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmercomDisp.Model\EmercomDisp.Model.csproj">
       <Project>{e56f9987-c3bd-4b7f-9298-0ba4748261e1}</Project>
