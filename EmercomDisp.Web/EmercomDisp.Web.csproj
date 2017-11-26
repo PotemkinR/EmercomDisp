@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\CallController.cs" />
     <Compile Include="Controllers\CallListController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CallViewModels\CallDetailsViewModel.cs" />
     <Compile Include="Models\CallViewModels\CallItemViewModel.cs" />
     <Compile Include="Models\CallViewModels\CallListViewModel.cs" />
     <Compile Include="Models\CategoryViewModels\CategoryViewModel.cs" />
@@ -150,6 +152,7 @@
     <Content Include="Views\CallList\CallList.cshtml" />
     <Content Include="Views\CallList\CallListItem.cshtml" />
     <Content Include="Views\Category\Category.cshtml" />
+    <Content Include="Views\Call\CallDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

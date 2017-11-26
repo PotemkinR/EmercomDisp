@@ -19,7 +19,7 @@ namespace EmercomDisp.Service.CallServices
             _connection.ConnectionString = _connectionString;
             var call = new Call();
 
-            using (var cmd = new SqlCommand("GetCallsByUrgency", _connection))
+            using (var cmd = new SqlCommand("GetCallById", _connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id);
@@ -38,7 +38,7 @@ namespace EmercomDisp.Service.CallServices
                         call.ArriveTime = (DateTime)reader[5];
                         call.FinishTime = (DateTime)reader[6];
                         call.ReturnTime = (DateTime)reader[7];
-                        call.Category = reader[8].ToString();
+                        call.Category = reader[12].ToString();
                         call.BrigadeId = (int)reader[9];
                         call.IncidentId = (int)reader[10];
                     }
