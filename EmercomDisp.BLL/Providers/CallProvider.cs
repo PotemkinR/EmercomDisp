@@ -19,9 +19,9 @@ namespace EmercomDisp.BLL.Providers
             return _client.GetCalls().ToList();
         }
 
-        public IEnumerable<Call> GetCallsByUrgency(string urgency)
+        public IEnumerable<Call> GetCallsByCategory(string category)
         {
-            return _client.GetCallsByUrgency(urgency);
+            return _client.GetCallsByCategory(category);
         }
 
         public Call GetCallById(int id)

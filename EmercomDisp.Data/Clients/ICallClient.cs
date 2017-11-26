@@ -7,7 +7,7 @@ namespace EmercomDisp.Data.Clients
     {
         IEnumerable<Call> GetCalls();
 
-        IEnumerable<Call> GetCallsByUrgency(string urgency);
+        IEnumerable<Call> GetCallsByCategory(string urgency);
 
         Call GetCallById(int id);
 

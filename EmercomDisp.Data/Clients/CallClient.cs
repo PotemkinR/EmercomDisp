@@ -42,14 +42,14 @@ namespace EmercomDisp.Data.Clients
             return calls;
         }
 
-        public IEnumerable<Call> GetCallsByUrgency(string urgency)
+        public IEnumerable<Call> GetCallsByCategory(string category)
         {
             var calls = new List<Call>();
             using (var client = new ServiceReference1.CallServiceClient())
             {
                 client.Open();
 
-                var callsDto = client.GetCallsByUrgency(urgency);
+                var callsDto = client.GetCallsByUrgency(category);
 
                 if (callsDto != null)
                 {

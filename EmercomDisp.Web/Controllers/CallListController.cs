@@ -24,15 +24,13 @@ namespace EmercomDisp.Web.Controllers
             return View(model);
         }
 
-        public PartialViewResult CallListItem(int callId)
+        public PartialViewResult CallListItem(Call call)
         {
-            Call _call = _callProvider.GetCallById(callId);
-
             CallItemViewModel model = new CallItemViewModel
             {
-                CallId = _call.Id,
-                Adress = _call.Adress,
-                CallTime = _call.CallTime
+                CallId = call.Id,
+                CallTime = call.CallTime,
+                Address = call.Address
             };
             return PartialView(model);
         }

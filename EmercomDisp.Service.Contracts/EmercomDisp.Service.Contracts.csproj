@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\FakeCallService.cs" />
     <Compile Include="Contracts\ICallService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

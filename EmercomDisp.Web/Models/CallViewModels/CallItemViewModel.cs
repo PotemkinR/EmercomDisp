@@ -6,7 +6,7 @@ namespace EmercomDisp.Web.Models.CallViewModels
     {
         public int CallId { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public DateTime CallTime { get; set; }
     }

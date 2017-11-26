@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\ServiceReference1\FakeCallService.wsdl" />
+    <None Include="Connected Services\ServiceReference1\CallService.wsdl" />
     <None Include="Connected Services\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>

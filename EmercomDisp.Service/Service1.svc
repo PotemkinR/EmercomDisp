@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Service="EmercomDisp.Service.Contracts.Contracts.FakeCallService" %>
+﻿<%@ ServiceHost Service="EmercomDisp.Service.CallServices.CallService" %>

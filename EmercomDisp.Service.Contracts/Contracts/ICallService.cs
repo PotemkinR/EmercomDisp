@@ -11,7 +11,7 @@ namespace EmercomDisp.Service.Contracts.Contracts
         IEnumerable<Call> GetCalls();
 
         [OperationContract]
-        IEnumerable<Call> GetCallsByUrgency(string urgency);
+        IEnumerable<Call> GetCallsByCategory(string urgency);
 
         [OperationContract]
         Call GetCallById(int id);

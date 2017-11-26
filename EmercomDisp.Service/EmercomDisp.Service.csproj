@@ -67,6 +67,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallServices\CallService.cs" />
+    <Compile Include="CallServices\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EmercomDisp.Model\EmercomDisp.Model.csproj">
+      <Project>{E56F9987-C3BD-4B7F-9298-0BA4748261E1}</Project>
+      <Name>EmercomDisp.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmercomDisp.Service.Contracts\EmercomDisp.Service.Contracts.csproj">
       <Project>{15f21aad-5523-49c6-960c-334b8c24ecfb}</Project>
       <Name>EmercomDisp.Service.Contracts</Name>

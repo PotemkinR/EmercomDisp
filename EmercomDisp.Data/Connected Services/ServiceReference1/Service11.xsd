@@ -8,75 +8,18 @@
   <xs:element name="ArrayOfCall" nillable="true" type="tns:ArrayOfCall" />
   <xs:complexType name="Call">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ArriveTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Brigade" nillable="true" type="tns:Brigade" />
+      <xs:element minOccurs="0" name="BrigadeId" type="xs:int" />
       <xs:element minOccurs="0" name="CallTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FinishTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Incident" nillable="true" type="tns:Incident" />
+      <xs:element minOccurs="0" name="IncidentId" type="xs:int" />
       <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReturnTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TransferTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Victims" nillable="true" type="tns:ArrayOfVictim" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Call" nillable="true" type="tns:Call" />
-  <xs:complexType name="Brigade">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Members" nillable="true" type="tns:ArrayOfBrigadeMember" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Brigade" nillable="true" type="tns:Brigade" />
-  <xs:complexType name="ArrayOfBrigadeMember">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BrigadeMember" nillable="true" type="tns:BrigadeMember" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBrigadeMember" nillable="true" type="tns:ArrayOfBrigadeMember" />
-  <xs:complexType name="BrigadeMember">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BrigadeId" type="xs:int" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="BrigadeMember" nillable="true" type="tns:BrigadeMember" />
-  <xs:complexType name="Incident">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cause" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Equipment" nillable="true" type="tns:ArrayOfEquipment" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Info" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Incident" nillable="true" type="tns:Incident" />
-  <xs:complexType name="ArrayOfEquipment">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Equipment" nillable="true" type="tns:Equipment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEquipment" nillable="true" type="tns:ArrayOfEquipment" />
-  <xs:complexType name="Equipment">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Equipment" nillable="true" type="tns:Equipment" />
-  <xs:complexType name="ArrayOfVictim">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Victim" nillable="true" type="tns:Victim" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVictim" nillable="true" type="tns:ArrayOfVictim" />
-  <xs:complexType name="Victim">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Victim" nillable="true" type="tns:Victim" />
 </xs:schema>

@@ -11,7 +11,7 @@
         <h3>Calls</h3>
         @foreach (var call in Model.CallList)
         {
-            Html.RenderAction("CallListItem", new { callId = call.Id });
+            Html.RenderAction("CallListItem", call);
         }
     </div>
 </div>
