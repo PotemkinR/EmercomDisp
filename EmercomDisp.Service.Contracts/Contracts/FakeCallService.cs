@@ -57,14 +57,7 @@ namespace EmercomDisp.Service.Contracts.Contracts
                     Id = 1,
                     Info = "Just fire",
                     Cause = "Smoking",
-                    Equipment = new List<Equipment>()
-                    {
-                        new Equipment
-                        {
-                            Id = 1,
-                            Name = "Superpower"
-                        }
-                    }
+                    Equipment = "Superpower"
                 },
                 Category = _categories[0]
             },
@@ -109,14 +102,7 @@ namespace EmercomDisp.Service.Contracts.Contracts
                     Id = 2,
                     Info = "Just fire",
                     Cause = "Smoking",
-                    Equipment = new List<Equipment>()
-                    {
-                        new Equipment
-                        {
-                            Id = 1,
-                            Name = "Superpower"
-                        }
-                    }
+                    Equipment = "Superpower"
                 },
                 Category = _categories[1]
             }

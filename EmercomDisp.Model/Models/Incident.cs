@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EmercomDisp.Model.Models
+﻿namespace EmercomDisp.Model.Models
 {
     public class Incident
     {
@@ -8,7 +6,7 @@ namespace EmercomDisp.Model.Models
 
         public string Info { get; set; }
 
-        public IEnumerable<Equipment> Equipment { get; set; }
+        public string Equipment { get; set; }
 
         public string Cause { get; set; }
     }
