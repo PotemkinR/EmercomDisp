@@ -6,6 +6,6 @@ namespace EmercomDisp.Model.Models
     {
         public int Id { get; set; }
 
-        public IEnumerable<BrigadeMember> Members { get; set; }
+        public IEnumerable<string> Members { get; set; }
     }
 }

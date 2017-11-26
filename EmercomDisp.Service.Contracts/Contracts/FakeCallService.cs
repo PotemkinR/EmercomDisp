@@ -43,13 +43,9 @@ namespace EmercomDisp.Service.Contracts.Contracts
                 Brigade = new Brigade
                 {
                     Id = 1,
-                    Members = new List<BrigadeMember>()
+                    Members = new List<string>()
                     {
-                        new BrigadeMember
-                        {
-                            Id = 1,
-                            Name = "Superman"
-                        }
+                        "Superman"
                     }
                 },
                 Incident = new Incident
@@ -88,13 +84,9 @@ namespace EmercomDisp.Service.Contracts.Contracts
                 Brigade = new Brigade
                 {
                     Id = 1,
-                    Members = new List<BrigadeMember>()
+                    Members = new List<string>()
                     {
-                        new BrigadeMember
-                        {
-                            Id = 1,
-                            Name = "Superman"
-                        }
+                        "Superman"
                     }
                 },
                 Incident = new Incident
