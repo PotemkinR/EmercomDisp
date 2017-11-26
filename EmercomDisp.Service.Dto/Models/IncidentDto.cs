@@ -8,7 +8,7 @@ namespace EmercomDisp.Service.Dto.Models
 
         public string Info { get; set; }
 
-        public IEnumerable<EquipmentDto> Equipment { get; set; }
+        public string Equipment { get; set; }
 
         public string Cause { get; set; }
     }

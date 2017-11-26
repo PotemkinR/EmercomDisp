@@ -7,7 +7,7 @@ namespace EmercomDisp.Service.Dto.Models
     {
         public int Id { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public string Reason { get; set; }
 
@@ -21,11 +21,9 @@ namespace EmercomDisp.Service.Dto.Models
 
         public DateTime ReturnTime { get; set; }
 
-        public IEnumerable<VictimDto> Victims { get; set; }
+        public int BrigadeId { get; set; }
 
-        public BrigadeDto Brigade { get; set; }
-
-        public IncidentDto Incident { get; set; }
+        public int IncidentId { get; set; }
 
         public string Category { get; set; }
     }

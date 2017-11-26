@@ -6,6 +6,6 @@ namespace EmercomDisp.Service.Dto.Models
     {
         public int Id { get; set; }
 
-        public IEnumerable<BrigadeMemberDto> Members { get; set; }
+        public IEnumerable<int> BrigadeMembersId { get; set; }
     }
 }
