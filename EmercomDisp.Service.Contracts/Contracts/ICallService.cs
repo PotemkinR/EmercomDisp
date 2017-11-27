@@ -1,4 +1,4 @@
-﻿using EmercomDisp.Model.Models;
+﻿using EmercomDisp.Service.Dto.Models;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -8,13 +8,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
     public interface ICallService
     {
         [OperationContract]
-        IEnumerable<Call> GetCalls();
+        IEnumerable<CallDto> GetCalls();
 
         [OperationContract]
-        IEnumerable<Call> GetCallsByCategory(string urgency);
+        IEnumerable<CallDto> GetCallsByCategory(string urgency);
 
         [OperationContract]
-        Call GetCallById(int id);
+        CallDto GetCallById(int id);
 
         [OperationContract]
         IEnumerable<string> GetCategories();

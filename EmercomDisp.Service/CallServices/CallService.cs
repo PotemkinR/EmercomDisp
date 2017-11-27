@@ -1,5 +1,5 @@
-﻿using EmercomDisp.Model.Models;
-using EmercomDisp.Service.Contracts.Contracts;
+﻿using EmercomDisp.Service.Contracts.Contracts;
+using EmercomDisp.Service.Dto.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,10 +14,10 @@ namespace EmercomDisp.Service.CallServices
         private readonly string _connectionString = ConfigurationManager
             .ConnectionStrings["EmercomBase"].ConnectionString;
 
-        public Call GetCallById(int id)
+        public CallDto GetCallById(int id)
         {
             _connection.ConnectionString = _connectionString;
-            var call = new Call();
+            var call = new CallDto();
 
             using (var cmd = new SqlCommand("GetCallById", _connection))
             {
@@ -48,10 +48,10 @@ namespace EmercomDisp.Service.CallServices
             return call;
         }
 
-        public IEnumerable<Call> GetCalls()
+        public IEnumerable<CallDto> GetCalls()
         {
             _connection.ConnectionString = _connectionString;
-            var callList = new List<Call>();
+            var callList = new List<CallDto>();
 
             using (var cmd = new SqlCommand("GetCalls", _connection))
             {
@@ -63,7 +63,7 @@ namespace EmercomDisp.Service.CallServices
                 {
                     while (reader.Read())
                     {
-                        var call = new Call
+                        var call = new CallDto
                         {
                             Id = (int)reader[0],
                             Address = reader[1].ToString(),
@@ -85,10 +85,10 @@ namespace EmercomDisp.Service.CallServices
             return callList;
         }
 
-        public IEnumerable<Call> GetCallsByCategory(string category)
+        public IEnumerable<CallDto> GetCallsByCategory(string category)
         {
             _connection.ConnectionString = _connectionString;
-            var callList = new List<Call>();
+            var callList = new List<CallDto>();
 
             using (var cmd = new SqlCommand("GetCallsByUrgency", _connection))
             {
@@ -101,7 +101,7 @@ namespace EmercomDisp.Service.CallServices
                 {
                     while (reader.Read())
                     {
-                        var call = new Call
+                        var call = new CallDto
                         {
                             Id = (int)reader[0],
                             Address = reader[1].ToString(),

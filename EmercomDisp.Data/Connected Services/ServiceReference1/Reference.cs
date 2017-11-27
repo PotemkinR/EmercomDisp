@@ -9,29 +9,236 @@
 //------------------------------------------------------------------------------
 
 namespace EmercomDisp.Data.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CallDto", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class CallDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ArriveTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BrigadeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CallTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FinishTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IncidentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReasonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ReturnTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TransferTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ArriveTime {
+            get {
+                return this.ArriveTimeField;
+            }
+            set {
+                if ((this.ArriveTimeField.Equals(value) != true)) {
+                    this.ArriveTimeField = value;
+                    this.RaisePropertyChanged("ArriveTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BrigadeId {
+            get {
+                return this.BrigadeIdField;
+            }
+            set {
+                if ((this.BrigadeIdField.Equals(value) != true)) {
+                    this.BrigadeIdField = value;
+                    this.RaisePropertyChanged("BrigadeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CallTime {
+            get {
+                return this.CallTimeField;
+            }
+            set {
+                if ((this.CallTimeField.Equals(value) != true)) {
+                    this.CallTimeField = value;
+                    this.RaisePropertyChanged("CallTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FinishTime {
+            get {
+                return this.FinishTimeField;
+            }
+            set {
+                if ((this.FinishTimeField.Equals(value) != true)) {
+                    this.FinishTimeField = value;
+                    this.RaisePropertyChanged("FinishTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IncidentId {
+            get {
+                return this.IncidentIdField;
+            }
+            set {
+                if ((this.IncidentIdField.Equals(value) != true)) {
+                    this.IncidentIdField = value;
+                    this.RaisePropertyChanged("IncidentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reason {
+            get {
+                return this.ReasonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReasonField, value) != true)) {
+                    this.ReasonField = value;
+                    this.RaisePropertyChanged("Reason");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ReturnTime {
+            get {
+                return this.ReturnTimeField;
+            }
+            set {
+                if ((this.ReturnTimeField.Equals(value) != true)) {
+                    this.ReturnTimeField = value;
+                    this.RaisePropertyChanged("ReturnTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TransferTime {
+            get {
+                return this.TransferTimeField;
+            }
+            set {
+                if ((this.TransferTimeField.Equals(value) != true)) {
+                    this.TransferTimeField = value;
+                    this.RaisePropertyChanged("TransferTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICallService")]
     public interface ICallService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCalls", ReplyAction="http://tempuri.org/ICallService/GetCallsResponse")]
-        EmercomDisp.Model.Models.Call[] GetCalls();
+        EmercomDisp.Data.ServiceReference1.CallDto[] GetCalls();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCalls", ReplyAction="http://tempuri.org/ICallService/GetCallsResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call[]> GetCallsAsync();
+        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByUrgency", ReplyAction="http://tempuri.org/ICallService/GetCallsByUrgencyResponse")]
-        EmercomDisp.Model.Models.Call[] GetCallsByUrgency(string urgency);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByCategory", ReplyAction="http://tempuri.org/ICallService/GetCallsByCategoryResponse")]
+        EmercomDisp.Data.ServiceReference1.CallDto[] GetCallsByCategory(string urgency);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByUrgency", ReplyAction="http://tempuri.org/ICallService/GetCallsByUrgencyResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call[]> GetCallsByUrgencyAsync(string urgency);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallById", ReplyAction="http://tempuri.org/ICallService/GetCallByIdResponse")]
-        EmercomDisp.Model.Models.Call GetCallById(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByCategory", ReplyAction="http://tempuri.org/ICallService/GetCallsByCategoryResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsByCategoryAsync(string urgency);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallById", ReplyAction="http://tempuri.org/ICallService/GetCallByIdResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call> GetCallByIdAsync(int id);
+        EmercomDisp.Data.ServiceReference1.CallDto GetCallById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallById", ReplyAction="http://tempuri.org/ICallService/GetCallByIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto> GetCallByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCategories", ReplyAction="http://tempuri.org/ICallService/GetCategoriesResponse")]
         string[] GetCategories();
@@ -67,27 +274,27 @@ namespace EmercomDisp.Data.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public EmercomDisp.Model.Models.Call[] GetCalls() {
+        public EmercomDisp.Data.ServiceReference1.CallDto[] GetCalls() {
             return base.Channel.GetCalls();
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call[]> GetCallsAsync() {
+        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsAsync() {
             return base.Channel.GetCallsAsync();
         }
         
-        public EmercomDisp.Model.Models.Call[] GetCallsByUrgency(string urgency) {
-            return base.Channel.GetCallsByUrgency(urgency);
+        public EmercomDisp.Data.ServiceReference1.CallDto[] GetCallsByCategory(string urgency) {
+            return base.Channel.GetCallsByCategory(urgency);
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call[]> GetCallsByUrgencyAsync(string urgency) {
-            return base.Channel.GetCallsByUrgencyAsync(urgency);
+        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsByCategoryAsync(string urgency) {
+            return base.Channel.GetCallsByCategoryAsync(urgency);
         }
         
-        public EmercomDisp.Model.Models.Call GetCallById(int id) {
+        public EmercomDisp.Data.ServiceReference1.CallDto GetCallById(int id) {
             return base.Channel.GetCallById(id);
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Model.Models.Call> GetCallByIdAsync(int id) {
+        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto> GetCallByIdAsync(int id) {
             return base.Channel.GetCallByIdAsync(id);
         }
         

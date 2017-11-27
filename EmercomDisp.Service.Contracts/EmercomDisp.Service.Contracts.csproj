@@ -55,6 +55,10 @@
       <Project>{e56f9987-c3bd-4b7f-9298-0ba4748261e1}</Project>
       <Name>EmercomDisp.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmercomDisp.Service.Dto\EmercomDisp.Service.Dto.csproj">
+      <Project>{31537669-93D4-48E9-9445-B7EC4C4FE318}</Project>
+      <Name>EmercomDisp.Service.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

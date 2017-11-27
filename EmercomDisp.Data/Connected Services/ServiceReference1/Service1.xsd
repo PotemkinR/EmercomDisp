@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1122/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Model.Models" />
+  <xs:import schemaLocation="http://localhost:1122/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" />
   <xs:import schemaLocation="http://localhost:1122/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="GetCalls">
     <xs:complexType>
@@ -10,21 +10,21 @@
   <xs:element name="GetCallsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Model.Models" minOccurs="0" name="GetCallsResult" nillable="true" type="q1:ArrayOfCall" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetCallsResult" nillable="true" type="q1:ArrayOfCallDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCallsByUrgency">
+  <xs:element name="GetCallsByCategory">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="urgency" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCallsByUrgencyResponse">
+  <xs:element name="GetCallsByCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Model.Models" minOccurs="0" name="GetCallsByUrgencyResult" nillable="true" type="q2:ArrayOfCall" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetCallsByCategoryResult" nillable="true" type="q2:ArrayOfCallDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +38,7 @@
   <xs:element name="GetCallByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Model.Models" minOccurs="0" name="GetCallByIdResult" nillable="true" type="q3:Call" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetCallByIdResult" nillable="true" type="q3:CallDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

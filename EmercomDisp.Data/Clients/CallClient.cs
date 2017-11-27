@@ -16,7 +16,17 @@ namespace EmercomDisp.Data.Clients
 
                 if (callDto != null)
                 {
-                    call = callDto;
+                    call.Id = callDto.Id;
+                    call.Address = callDto.Address;
+                    call.ArriveTime = callDto.ArriveTime;
+                    call.BrigadeId = callDto.BrigadeId;
+                    call.CallTime = callDto.CallTime;
+                    call.Category = callDto.Category;
+                    call.FinishTime = callDto.FinishTime;
+                    call.IncidentId = callDto.IncidentId;
+                    call.Reason = callDto.Reason;
+                    call.ReturnTime = callDto.ReturnTime;
+                    call.TransferTime = callDto.ReturnTime;
                 }
                 client.Close();
             }
@@ -32,8 +42,22 @@ namespace EmercomDisp.Data.Clients
                 var callsDto = client.GetCalls();
                 if(callsDto != null)
                 {
-                    foreach(var call in callsDto)
+                    foreach(var callDto in callsDto)
                     {
+                        var call = new Call
+                        {
+                            Id = callDto.Id,
+                            Address = callDto.Address,
+                            ArriveTime = callDto.ArriveTime,
+                            BrigadeId = callDto.BrigadeId,
+                            CallTime = callDto.CallTime,
+                            Category = callDto.Category,
+                            FinishTime = callDto.FinishTime,
+                            IncidentId = callDto.IncidentId,
+                            Reason = callDto.Reason,
+                            ReturnTime = callDto.ReturnTime,
+                            TransferTime = callDto.ReturnTime
+                        };
                         calls.Add(call);
                     }
                 }
@@ -49,12 +73,26 @@ namespace EmercomDisp.Data.Clients
             {
                 client.Open();
 
-                var callsDto = client.GetCallsByUrgency(category);
+                var callsDto = client.GetCallsByCategory(category);
 
                 if (callsDto != null)
                 {
-                    foreach (var call in callsDto)
+                    foreach (var callDto in callsDto)
                     {
+                        var call = new Call
+                        {
+                            Id = callDto.Id,
+                            Address = callDto.Address,
+                            ArriveTime = callDto.ArriveTime,
+                            BrigadeId = callDto.BrigadeId,
+                            CallTime = callDto.CallTime,
+                            Category = callDto.Category,
+                            FinishTime = callDto.FinishTime,
+                            IncidentId = callDto.IncidentId,
+                            Reason = callDto.Reason,
+                            ReturnTime = callDto.ReturnTime,
+                            TransferTime = callDto.ReturnTime
+                        };
                         calls.Add(call);
                     }
                 }

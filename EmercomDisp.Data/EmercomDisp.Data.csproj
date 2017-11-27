@@ -66,6 +66,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Connected Services\ServiceReference1\CallService.wsdl" />
+    <None Include="Connected Services\ServiceReference1\EmercomDisp.Data.ServiceReference1.CallDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
