@@ -14,12 +14,17 @@ namespace EmercomDisp.Web.Controllers
             _callProvider = callProvider;
         }
         
-        public ActionResult CallList()
+        public ActionResult CallList(string category)
         {
-            CallListViewModel model = new CallListViewModel
+            var model = new CallListViewModel();
+            if (string.IsNullOrEmpty(category))
             {
-                CallList = _callProvider.GetCalls()
-            };
+                model.CallList = _callProvider.GetCalls();
+            }
+            else
+            {
+                model.CallList = _callProvider.GetCallsByCategory(category);
+            }
 
             return View(model);
         }

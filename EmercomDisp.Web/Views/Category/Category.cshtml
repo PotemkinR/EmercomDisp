@@ -1,6 +1,6 @@
 ﻿@model EmercomDisp.Web.Models.CategoryViewModels.CategoryViewModel
-
-@foreach (string category in Model.Categories)
+@Html.ActionLink("All", "CallList", "CallList")
+@foreach (string categoryName in Model.Categories)
 {
-    <h5>@category</h5>
+    <h5>@Html.ActionLink(categoryName,"CallList","CallList",new { category = categoryName },null)</h5>
 }

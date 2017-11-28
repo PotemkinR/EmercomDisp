@@ -89,11 +89,10 @@ namespace EmercomDisp.Service.CallServices
         {
             _connection.ConnectionString = _connectionString;
             var callList = new List<CallDto>();
-
-            using (var cmd = new SqlCommand("GetCallsByUrgency", _connection))
+            using (var cmd = new SqlCommand("GetCallsByCategory", _connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CategoryId", category);
+                cmd.Parameters.AddWithValue("@CategoryName", category);
 
                 _connection.Open();
 
