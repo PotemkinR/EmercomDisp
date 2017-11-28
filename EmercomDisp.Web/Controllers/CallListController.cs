@@ -31,7 +31,7 @@ namespace EmercomDisp.Web.Controllers
 
         public PartialViewResult CallListItem(Call call)
         {
-            CallItemViewModel model = new CallItemViewModel
+            var model = new CallItemViewModel
             {
                 CallId = call.Id,
                 CallTime = call.CallTime,

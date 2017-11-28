@@ -1,4 +1,5 @@
-﻿using EmercomDisp.Model.Models;
+﻿using EmercomDisp.Data.ServiceReference1;
+using EmercomDisp.Model.Models;
 using System.Collections.Generic;
 
 namespace EmercomDisp.Data.Clients
@@ -8,7 +9,7 @@ namespace EmercomDisp.Data.Clients
         public Call GetCallById(int id)
         {    
             var call = new Call();
-            using (var client = new ServiceReference1.CallServiceClient())
+            using (var client = new CallServiceClient())
             {
                 client.Open();
 
@@ -16,17 +17,7 @@ namespace EmercomDisp.Data.Clients
 
                 if (callDto != null)
                 {
-                    call.Id = callDto.Id;
-                    call.Address = callDto.Address;
-                    call.ArriveTime = callDto.ArriveTime;
-                    call.BrigadeId = callDto.BrigadeId;
-                    call.CallTime = callDto.CallTime;
-                    call.Category = callDto.Category;
-                    call.FinishTime = callDto.FinishTime;
-                    call.IncidentId = callDto.IncidentId;
-                    call.Reason = callDto.Reason;
-                    call.ReturnTime = callDto.ReturnTime;
-                    call.TransferTime = callDto.ReturnTime;
+                    call = MapCall(callDto);
                 }
                 client.Close();
             }
@@ -36,7 +27,7 @@ namespace EmercomDisp.Data.Clients
         public IEnumerable<Call> GetCalls()
         {
             var calls = new List<Call>();
-            using (var client = new ServiceReference1.CallServiceClient())
+            using (var client = new CallServiceClient())
             {
                 client.Open();
                 var callsDto = client.GetCalls();
@@ -44,20 +35,7 @@ namespace EmercomDisp.Data.Clients
                 {
                     foreach(var callDto in callsDto)
                     {
-                        var call = new Call
-                        {
-                            Id = callDto.Id,
-                            Address = callDto.Address,
-                            ArriveTime = callDto.ArriveTime,
-                            BrigadeId = callDto.BrigadeId,
-                            CallTime = callDto.CallTime,
-                            Category = callDto.Category,
-                            FinishTime = callDto.FinishTime,
-                            IncidentId = callDto.IncidentId,
-                            Reason = callDto.Reason,
-                            ReturnTime = callDto.ReturnTime,
-                            TransferTime = callDto.ReturnTime
-                        };
+                        var call = MapCall(callDto);
                         calls.Add(call);
                     }
                 }
@@ -69,7 +47,7 @@ namespace EmercomDisp.Data.Clients
         public IEnumerable<Call> GetCallsByCategory(string category)
         {
             var calls = new List<Call>();
-            using (var client = new ServiceReference1.CallServiceClient())
+            using (var client = new CallServiceClient())
             {
                 client.Open();
 
@@ -79,20 +57,7 @@ namespace EmercomDisp.Data.Clients
                 {
                     foreach (var callDto in callsDto)
                     {
-                        var call = new Call
-                        {
-                            Id = callDto.Id,
-                            Address = callDto.Address,
-                            ArriveTime = callDto.ArriveTime,
-                            BrigadeId = callDto.BrigadeId,
-                            CallTime = callDto.CallTime,
-                            Category = callDto.Category,
-                            FinishTime = callDto.FinishTime,
-                            IncidentId = callDto.IncidentId,
-                            Reason = callDto.Reason,
-                            ReturnTime = callDto.ReturnTime,
-                            TransferTime = callDto.ReturnTime
-                        };
+                        var call = MapCall(callDto);
                         calls.Add(call);
                     }
                 }
@@ -104,7 +69,7 @@ namespace EmercomDisp.Data.Clients
         public IEnumerable<string> GetCategories()
         {
             var categories = new List<string>();
-            using (var client = new ServiceReference1.CallServiceClient())
+            using (var client = new CallServiceClient())
             {
                 client.Open();
                 var categoriesDto = client.GetCategories();
@@ -118,6 +83,26 @@ namespace EmercomDisp.Data.Clients
                 client.Close();
             }
             return categories;
+        }
+
+        private Call MapCall(CallDto callDto)
+        {
+            var call = new Call
+            {
+                Id = callDto.Id,
+                Address = callDto.Address,
+                ArriveTime = callDto.ArriveTime,
+                BrigadeId = callDto.BrigadeId,
+                CallTime = callDto.CallTime,
+                Category = callDto.Category,
+                FinishTime = callDto.FinishTime,
+                IncidentId = callDto.IncidentId,
+                Reason = callDto.Reason,
+                ReturnTime = callDto.ReturnTime,
+                TransferTime = callDto.ReturnTime
+            };
+
+            return call;
         }
     }
 }

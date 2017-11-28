@@ -30,17 +30,7 @@ namespace EmercomDisp.Service.CallServices
                 {
                     while (reader.Read())
                     {
-                        call.Id = (int)reader[0];
-                        call.Address = reader[1].ToString();
-                        call.Reason = reader[2].ToString();
-                        call.CallTime = (DateTime)reader[3];
-                        call.TransferTime = (DateTime)reader[4];
-                        call.ArriveTime = (DateTime)reader[5];
-                        call.FinishTime = (DateTime)reader[6];
-                        call.ReturnTime = (DateTime)reader[7];
-                        call.Category = reader[12].ToString();
-                        call.BrigadeId = (int)reader[9];
-                        call.IncidentId = (int)reader[10];
+                        call = GetCallFromDb(reader);
                     }
                 };
                 _connection.Close();
@@ -63,20 +53,7 @@ namespace EmercomDisp.Service.CallServices
                 {
                     while (reader.Read())
                     {
-                        var call = new CallDto
-                        {
-                            Id = (int)reader[0],
-                            Address = reader[1].ToString(),
-                            Reason = reader[2].ToString(),
-                            CallTime = (DateTime)reader[3],
-                            TransferTime = (DateTime)reader[4],
-                            ArriveTime = (DateTime)reader[5],
-                            FinishTime = (DateTime)reader[6],
-                            ReturnTime = (DateTime)reader[7],
-                            Category = reader[8].ToString(),
-                            BrigadeId = (int)reader[9],
-                            IncidentId = (int)reader[10]
-                        };
+                        var call = GetCallFromDb(reader);
                         callList.Add(call);
                     }
                 };
@@ -100,20 +77,7 @@ namespace EmercomDisp.Service.CallServices
                 {
                     while (reader.Read())
                     {
-                        var call = new CallDto
-                        {
-                            Id = (int)reader[0],
-                            Address = reader[1].ToString(),
-                            Reason = reader[2].ToString(),
-                            CallTime = (DateTime)reader[3],
-                            TransferTime = (DateTime)reader[4],
-                            ArriveTime = (DateTime)reader[5],
-                            FinishTime = (DateTime)reader[6],
-                            ReturnTime = (DateTime)reader[7],
-                            Category = reader[8].ToString(),
-                            BrigadeId = (int)reader[9],
-                            IncidentId = (int)reader[10]
-                        };
+                        var call = GetCallFromDb(reader);
                         callList.Add(call);
                     }
                 };
@@ -145,6 +109,25 @@ namespace EmercomDisp.Service.CallServices
                 _connection.Close();
             }
             return categoriesList;
+        }
+
+        private CallDto GetCallFromDb(SqlDataReader reader)
+        {
+            var call = new CallDto()
+            {
+                Id = (int)reader[0],
+                Address = reader[1].ToString(),
+                Reason = reader[2].ToString(),
+                CallTime = (DateTime)reader[3],
+                TransferTime = (DateTime)reader[4],
+                ArriveTime = (DateTime)reader[5],
+                FinishTime = (DateTime)reader[6],
+                ReturnTime = (DateTime)reader[7],
+                Category = reader[12].ToString(),
+                BrigadeId = (int)reader[9],
+                IncidentId = (int)reader[10]
+            };
+            return call;
         }
     }
 }
