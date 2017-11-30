@@ -11,8 +11,13 @@ namespace EmercomDisp.Service.CallServices
     public class CallService : ICallService
     {
         private SqlConnection _connection = new SqlConnection();
-        private readonly string _connectionString = ConfigurationManager
-            .ConnectionStrings["EmercomBase"].ConnectionString;
+        private readonly string _connectionString;
+
+        public CallService()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["EmercomBase"].ConnectionString
+            ?? throw new SomethingWrongException("Connection error");
+        }
 
         public CallDto GetCallById(int id)
         {

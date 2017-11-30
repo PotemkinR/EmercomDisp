@@ -29,6 +29,7 @@ namespace EmercomDisp.Web.Controllers
             return View(model);
         }
 
+        [ChildActionOnly]
         public PartialViewResult CallListItem(Call call)
         {
             var model = new CallItemViewModel
