@@ -91,15 +91,9 @@ namespace EmercomDisp.Data.Clients
             {
                 Id = callDto.Id,
                 Address = callDto.Address,
-                ArriveTime = callDto.ArriveTime,
-                BrigadeId = callDto.BrigadeId,
                 CallTime = callDto.CallTime,
                 Category = callDto.Category,
-                FinishTime = callDto.FinishTime,
-                IncidentId = callDto.IncidentId,
-                Reason = callDto.Reason,
-                ReturnTime = callDto.ReturnTime,
-                TransferTime = callDto.ReturnTime
+                Reason = callDto.Reason
             };
 
             return call;

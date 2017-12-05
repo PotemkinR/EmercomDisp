@@ -19,24 +19,6 @@ namespace EmercomDisp.Service.Dto.Models
         public DateTime CallTime { get; set; }
 
         [DataMember]
-        public DateTime TransferTime { get; set; }
-
-        [DataMember]
-        public DateTime ArriveTime { get; set; }
-
-        [DataMember]
-        public DateTime FinishTime { get; set; }
-
-        [DataMember]
-        public DateTime ReturnTime { get; set; }
-
-        [DataMember]
-        public int BrigadeId { get; set; }
-
-        [DataMember]
-        public int IncidentId { get; set; }
-
-        [DataMember]
         public string Category { get; set; }
     }
 }

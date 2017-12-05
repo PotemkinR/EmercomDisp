@@ -10,108 +10,124 @@ namespace EmercomDisp.Service.CallServices
 {
     public class CallService : ICallService
     {
-        private SqlConnection _connection = new SqlConnection();
         private readonly string _connectionString;
 
         public CallService()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["EmercomBase"].ConnectionString
-            ?? throw new SomethingWrongException("Connection error");
+            try
+            {
+                _connectionString = ConfigurationManager.ConnectionStrings["EmercomBase"].ConnectionString;               
+            }
+            catch(ConfigurationErrorsException e)
+            {
+                throw new SomethingWrongException(e.Message);
+            }
         }
 
         public CallDto GetCallById(int id)
         {
-            _connection.ConnectionString = _connectionString;
             var call = new CallDto();
 
-            using (var cmd = new SqlCommand("GetCallById", _connection))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id", id);
-
-                _connection.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                connection.ConnectionString = _connectionString;
+                
+                using (var cmd = new SqlCommand("GetCallById", connection))
                 {
-                    while (reader.Read())
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        call = GetCallFromDb(reader);
-                    }
-                };
-                _connection.Close();
+                        while (reader.Read())
+                        {
+                            call = GetCallFromDb(reader);
+                        }
+                    };
+                    connection.Close();
+                }
             }
             return call;
         }
 
         public IEnumerable<CallDto> GetCalls()
         {
-            _connection.ConnectionString = _connectionString;
             var callList = new List<CallDto>();
 
-            using (var cmd = new SqlCommand("GetCalls", _connection))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                _connection.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (var cmd = new SqlCommand("GetCalls", connection))
                 {
-                    while (reader.Read())
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        var call = GetCallFromDb(reader);
-                        callList.Add(call);
-                    }
-                };
-                _connection.Close();
+                        while (reader.Read())
+                        {
+                            var call = GetCallFromDb(reader);
+                            callList.Add(call);
+                        }
+                    };
+                    connection.Close();
+                }
             }
             return callList;
         }
 
         public IEnumerable<CallDto> GetCallsByCategory(string category)
         {
-            _connection.ConnectionString = _connectionString;
             var callList = new List<CallDto>();
-            using (var cmd = new SqlCommand("GetCallsByCategory", _connection))
+
+            using (var connection = new SqlConnection(_connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CategoryName", category);
-
-                _connection.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (var cmd = new SqlCommand("GetCallsByCategory", connection))
                 {
-                    while (reader.Read())
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CategoryName", category);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        var call = GetCallFromDb(reader);
-                        callList.Add(call);
-                    }
-                };
-                _connection.Close();
+                        while (reader.Read())
+                        {
+                            var call = GetCallFromDb(reader);
+                            callList.Add(call);
+                        }
+                    };
+                    connection.Close();
+                }
             }
             return callList;
         }
 
         public IEnumerable<string> GetCategories()
         {
-            _connection.ConnectionString = _connectionString;
             var categoriesList = new List<string>();
 
-            using (var cmd = new SqlCommand("GetCategories", _connection))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                _connection.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (var cmd = new SqlCommand("GetCategories", connection))
                 {
-                    while (reader.Read())
-                    {
-                        var category = reader["Name"].ToString();
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                        categoriesList.Add(category);
-                    }
-                };
-                _connection.Close();
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var category = reader["Name"].ToString();
+
+                            categoriesList.Add(category);
+                        }
+                    };
+                    connection.Close();
+                }
             }
             return categoriesList;
         }
@@ -124,13 +140,7 @@ namespace EmercomDisp.Service.CallServices
                 Address = reader[1].ToString(),
                 Reason = reader[2].ToString(),
                 CallTime = (DateTime)reader[3],
-                TransferTime = (DateTime)reader[4],
-                ArriveTime = (DateTime)reader[5],
-                FinishTime = (DateTime)reader[6],
-                ReturnTime = (DateTime)reader[7],
-                Category = reader[12].ToString(),
-                BrigadeId = (int)reader[9],
-                IncidentId = (int)reader[10]
+                Category = reader[6].ToString()
             };
             return call;
         }

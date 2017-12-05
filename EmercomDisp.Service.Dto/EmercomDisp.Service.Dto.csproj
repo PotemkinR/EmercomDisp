@@ -44,6 +44,7 @@
     <Compile Include="Models\BrigadeDto.cs" />
     <Compile Include="Models\BrigadeMemberDto.cs" />
     <Compile Include="Models\CallDto.cs" />
+    <Compile Include="Models\GoingDto.cs" />
     <Compile Include="Models\IncidentDto.cs" />
     <Compile Include="Exceptions\SomethingWrongException.cs" />
     <Compile Include="Models\VictimDto.cs" />

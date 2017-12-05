@@ -1,5 +1,6 @@
 ﻿using EmercomDisp.Data.Clients;
 using EmercomDisp.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace EmercomDisp.BLL.Providers
 
         public CallProvider(ICallClient repository)
         {
-            _client = repository;
+            _client = repository ?? throw new ArgumentNullException("repository");
         }
 
         public IEnumerable<Call> GetCalls()

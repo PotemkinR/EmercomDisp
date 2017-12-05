@@ -1,7 +1,6 @@
 ﻿using EmercomDisp.BLL.Providers;
-using EmercomDisp.Web.Models;
 using log4net;
-using System.Linq;
+using System;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
@@ -13,7 +12,7 @@ namespace EmercomDisp.Web.Controllers
 
         public HomeController(ICallProvider callProvider)
         {
-            _callProvider = callProvider;
+            _callProvider = callProvider ?? throw new ArgumentNullException("CallProvider");
         }
 
         public ActionResult Index()

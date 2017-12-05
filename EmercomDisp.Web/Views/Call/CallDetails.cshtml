@@ -4,69 +4,46 @@
     ViewBag.Title = "CallDetails";
 }
 
-<h2>Call Details</h2>
+<h2>CallDetails</h2>
 
 <div>
-    <h4> </h4>
+    <h4>Call Details</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Call.Address)
         </dt>
+
         <dd>
-            @Html.DisplayFor(Model => Model.Call.Address)
+            @Html.DisplayFor(model => model.Call.Address)
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Call.Reason)
         </dt>
+
         <dd>
-            @Html.DisplayFor(Model => Model.Call.Reason)
+            @Html.DisplayFor(model => model.Call.Reason)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Call.CallTime)
         </dt>
+
         <dd>
-            @Html.DisplayFor(Model => Model.Call.CallTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.TransferTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(Model => Model.Call.TransferTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.ArriveTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(Model => Model.Call.ArriveTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.FinishTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(Model => Model.Call.FinishTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.ReturnTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(Model => Model.Call.ReturnTime)
+            @Html.DisplayFor(model => model.Call.CallTime)
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Call.Category)
         </dt>
+
         <dd>
-            @Html.DisplayFor(Model => Model.Call.Category)
+            @Html.DisplayFor(model => model.Call.Category)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.BrigadeId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(Model => Model.Call.BrigadeId)
-        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "CallList", "CallList");
+    @Html.ActionLink("Back to list", "CallList","CallList")
 </p>

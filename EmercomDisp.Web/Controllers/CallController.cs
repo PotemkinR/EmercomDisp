@@ -1,5 +1,6 @@
 ﻿using EmercomDisp.BLL.Providers;
 using EmercomDisp.Web.Models.CallViewModels;
+using System;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
@@ -10,7 +11,7 @@ namespace EmercomDisp.Web.Controllers
 
         public CallController(ICallProvider callProvider)
         {
-            _callProvider = callProvider;
+            _callProvider = callProvider ?? throw new ArgumentNullException("CallProvider");
         }
 
         public ActionResult CallDetails(int id)

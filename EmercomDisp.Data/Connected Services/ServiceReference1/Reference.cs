@@ -26,34 +26,16 @@ namespace EmercomDisp.Data.ServiceReference1 {
         private string AddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ArriveTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BrigadeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CallTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FinishTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IncidentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReasonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ReturnTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TransferTimeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -74,32 +56,6 @@ namespace EmercomDisp.Data.ServiceReference1 {
                 if ((object.ReferenceEquals(this.AddressField, value) != true)) {
                     this.AddressField = value;
                     this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ArriveTime {
-            get {
-                return this.ArriveTimeField;
-            }
-            set {
-                if ((this.ArriveTimeField.Equals(value) != true)) {
-                    this.ArriveTimeField = value;
-                    this.RaisePropertyChanged("ArriveTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BrigadeId {
-            get {
-                return this.BrigadeIdField;
-            }
-            set {
-                if ((this.BrigadeIdField.Equals(value) != true)) {
-                    this.BrigadeIdField = value;
-                    this.RaisePropertyChanged("BrigadeId");
                 }
             }
         }
@@ -131,19 +87,6 @@ namespace EmercomDisp.Data.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FinishTime {
-            get {
-                return this.FinishTimeField;
-            }
-            set {
-                if ((this.FinishTimeField.Equals(value) != true)) {
-                    this.FinishTimeField = value;
-                    this.RaisePropertyChanged("FinishTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -157,19 +100,6 @@ namespace EmercomDisp.Data.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IncidentId {
-            get {
-                return this.IncidentIdField;
-            }
-            set {
-                if ((this.IncidentIdField.Equals(value) != true)) {
-                    this.IncidentIdField = value;
-                    this.RaisePropertyChanged("IncidentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Reason {
             get {
                 return this.ReasonField;
@@ -178,32 +108,6 @@ namespace EmercomDisp.Data.ServiceReference1 {
                 if ((object.ReferenceEquals(this.ReasonField, value) != true)) {
                     this.ReasonField = value;
                     this.RaisePropertyChanged("Reason");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ReturnTime {
-            get {
-                return this.ReturnTimeField;
-            }
-            set {
-                if ((this.ReturnTimeField.Equals(value) != true)) {
-                    this.ReturnTimeField = value;
-                    this.RaisePropertyChanged("ReturnTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime TransferTime {
-            get {
-                return this.TransferTimeField;
-            }
-            set {
-                if ((this.TransferTimeField.Equals(value) != true)) {
-                    this.TransferTimeField = value;
-                    this.RaisePropertyChanged("TransferTime");
                 }
             }
         }
