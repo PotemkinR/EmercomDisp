@@ -5,22 +5,30 @@ using System.ServiceModel;
 namespace EmercomDisp.Service.Contracts.Contracts
 {
     [ServiceContract]
-    public interface ICallService
+    public interface IUserService
     {
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
-        IEnumerable<CallDto> GetCalls();
+        IEnumerable<UserDto> GetUsers();
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
-        IEnumerable<CallDto> GetCallsByCategory(string urgency);
+        bool UserIsValid(string name, string passwordHash);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
-        CallDto GetCallById(int id);
+        UserDto GetUserByName(string name);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
-        IEnumerable<string> GetCategories();
+        void CreateUser(UserDto user);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        void DeleteUser(string name);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        void UpdateUser(UserDto user);
     }
 }

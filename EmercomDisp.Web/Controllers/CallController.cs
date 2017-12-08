@@ -1,5 +1,5 @@
 ﻿using EmercomDisp.BLL.Providers;
-using EmercomDisp.Web.Models.CallViewModels;
+using EmercomDisp.Web.Models.Calls;
 using System;
 using System.Web.Mvc;
 

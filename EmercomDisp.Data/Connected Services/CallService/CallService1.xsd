@@ -16,4 +16,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CallDto" nillable="true" type="tns:CallDto" />
+  <xs:complexType name="ConnectionFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConnectionFault" nillable="true" type="tns:ConnectionFault" />
 </xs:schema>

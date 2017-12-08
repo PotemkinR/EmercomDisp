@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Service="EmercomDisp.Service.CallServices.CallService" %>

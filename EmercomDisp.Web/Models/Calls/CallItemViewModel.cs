@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EmercomDisp.Web.Models.CallViewModels
+namespace EmercomDisp.Web.Models.Calls
 {
     public class CallItemViewModel
     {

@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.ServiceModel;
 
-namespace EmercomDisp.Service.CallServices
+namespace EmercomDisp.Service.Services
 {
     public class CallService : ICallService
     {
@@ -20,7 +21,7 @@ namespace EmercomDisp.Service.CallServices
             }
             catch(ConfigurationErrorsException e)
             {
-                throw new SomethingWrongException(e.Message);
+                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
             }
         }
 

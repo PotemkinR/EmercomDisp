@@ -128,6 +128,8 @@
     <Compile Include="Controllers\CallListController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -136,10 +138,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CallViewModels\CallDetailsViewModel.cs" />
-    <Compile Include="Models\CallViewModels\CallItemViewModel.cs" />
-    <Compile Include="Models\CallViewModels\CallListViewModel.cs" />
+    <Compile Include="Models\Calls\CallDetailsViewModel.cs" />
+    <Compile Include="Models\Calls\CallItemViewModel.cs" />
+    <Compile Include="Models\Calls\CallListViewModel.cs" />
     <Compile Include="Models\CategoryViewModels\CategoryViewModel.cs" />
+    <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +159,7 @@
     <Content Include="Views\CallList\CallListItem.cshtml" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Call\CallDetails.cshtml" />
+    <Content Include="Views\User\CreateUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmercomDisp.BLL\EmercomDisp.BLL.csproj">

@@ -1,7 +1,7 @@
 ﻿using EmercomDisp.Model.Models;
 using System.Collections.Generic;
 
-namespace EmercomDisp.Web.Models.CallViewModels
+namespace EmercomDisp.Web.Models.Calls
 {
     public class CallListViewModel
     {

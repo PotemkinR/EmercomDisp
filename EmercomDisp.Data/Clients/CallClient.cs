@@ -1,25 +1,36 @@
-﻿using EmercomDisp.Data.ServiceReference1;
+﻿using EmercomDisp.Data.CallService;
 using EmercomDisp.Model.Models;
+using log4net;
 using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace EmercomDisp.Data.Clients
 {
     public class CallClient : ICallClient
     {
+        private readonly ILog _log = LogManager.GetLogger("LOGGER");
+
         public Call GetCallById(int id)
         {    
             var call = new Call();
             using (var client = new CallServiceClient())
             {
-                client.Open();
-
-                var callDto = client.GetCallById(id);
-
-                if (callDto != null)
+                try
                 {
-                    call = MapCall(callDto);
+                    client.Open();
+
+                    var callDto = client.GetCallById(id);
+
+                    if (callDto != null)
+                    {
+                        call = MapCall(callDto);
+                    }
+                    client.Close();
                 }
-                client.Close();
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
             }
             return call;
         }
@@ -29,17 +40,24 @@ namespace EmercomDisp.Data.Clients
             var calls = new List<Call>();
             using (var client = new CallServiceClient())
             {
-                client.Open();
-                var callsDto = client.GetCalls();
-                if(callsDto != null)
+                try
                 {
-                    foreach(var callDto in callsDto)
+                    client.Open();
+                    var callsDto = client.GetCalls();
+                    if (callsDto != null)
                     {
-                        var call = MapCall(callDto);
-                        calls.Add(call);
+                        foreach (var callDto in callsDto)
+                        {
+                            var call = MapCall(callDto);
+                            calls.Add(call);
+                        }
                     }
+                    client.Close();
                 }
-                client.Close();
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
             }
             return calls;
         }
@@ -49,20 +67,28 @@ namespace EmercomDisp.Data.Clients
             var calls = new List<Call>();
             using (var client = new CallServiceClient())
             {
-                client.Open();
-
-                var callsDto = client.GetCallsByCategory(category);
-
-                if (callsDto != null)
+                try
                 {
-                    foreach (var callDto in callsDto)
+                    client.Open();
+
+                    var callsDto = client.GetCallsByCategory(category);
+
+                    if (callsDto != null)
                     {
-                        var call = MapCall(callDto);
-                        calls.Add(call);
+                        foreach (var callDto in callsDto)
+                        {
+                            var call = MapCall(callDto);
+                            calls.Add(call);
+                        }
                     }
+                    client.Close();
                 }
-                client.Close();
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
             }
+        
             return calls;
         }
 
@@ -71,16 +97,23 @@ namespace EmercomDisp.Data.Clients
             var categories = new List<string>();
             using (var client = new CallServiceClient())
             {
-                client.Open();
-                var categoriesDto = client.GetCategories();
-                if (categoriesDto != null)
+                try
                 {
-                    foreach (var category in categoriesDto)
+                    client.Open();
+                    var categoriesDto = client.GetCategories();
+                    if (categoriesDto != null)
                     {
-                        categories.Add(category);
+                        foreach (var category in categoriesDto)
+                        {
+                            categories.Add(category);
+                        }
                     }
+                    client.Close();
                 }
-                client.Close();
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
             }
             return categories;
         }

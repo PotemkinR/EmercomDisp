@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmercomDisp.Data.ServiceReference1 {
+namespace EmercomDisp.Data.CallService {
     using System.Runtime.Serialization;
     using System;
     
@@ -122,29 +122,78 @@ namespace EmercomDisp.Data.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class ConnectionFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICallService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CallService.ICallService")]
     public interface ICallService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCalls", ReplyAction="http://tempuri.org/ICallService/GetCallsResponse")]
-        EmercomDisp.Data.ServiceReference1.CallDto[] GetCalls();
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/GetCallsConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.CallService.CallDto[] GetCalls();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCalls", ReplyAction="http://tempuri.org/ICallService/GetCallsResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsAsync();
+        System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto[]> GetCallsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByCategory", ReplyAction="http://tempuri.org/ICallService/GetCallsByCategoryResponse")]
-        EmercomDisp.Data.ServiceReference1.CallDto[] GetCallsByCategory(string urgency);
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/GetCallsByCategoryConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.CallService.CallDto[] GetCallsByCategory(string urgency);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallsByCategory", ReplyAction="http://tempuri.org/ICallService/GetCallsByCategoryResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsByCategoryAsync(string urgency);
+        System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto[]> GetCallsByCategoryAsync(string urgency);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallById", ReplyAction="http://tempuri.org/ICallService/GetCallByIdResponse")]
-        EmercomDisp.Data.ServiceReference1.CallDto GetCallById(int id);
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/GetCallByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.CallService.CallDto GetCallById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCallById", ReplyAction="http://tempuri.org/ICallService/GetCallByIdResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto> GetCallByIdAsync(int id);
+        System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto> GetCallByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCategories", ReplyAction="http://tempuri.org/ICallService/GetCategoriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/GetCategoriesConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         string[] GetCategories();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCategories", ReplyAction="http://tempuri.org/ICallService/GetCategoriesResponse")]
@@ -152,12 +201,12 @@ namespace EmercomDisp.Data.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICallServiceChannel : EmercomDisp.Data.ServiceReference1.ICallService, System.ServiceModel.IClientChannel {
+    public interface ICallServiceChannel : EmercomDisp.Data.CallService.ICallService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CallServiceClient : System.ServiceModel.ClientBase<EmercomDisp.Data.ServiceReference1.ICallService>, EmercomDisp.Data.ServiceReference1.ICallService {
+    public partial class CallServiceClient : System.ServiceModel.ClientBase<EmercomDisp.Data.CallService.ICallService>, EmercomDisp.Data.CallService.ICallService {
         
         public CallServiceClient() {
         }
@@ -178,27 +227,27 @@ namespace EmercomDisp.Data.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public EmercomDisp.Data.ServiceReference1.CallDto[] GetCalls() {
+        public EmercomDisp.Data.CallService.CallDto[] GetCalls() {
             return base.Channel.GetCalls();
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsAsync() {
+        public System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto[]> GetCallsAsync() {
             return base.Channel.GetCallsAsync();
         }
         
-        public EmercomDisp.Data.ServiceReference1.CallDto[] GetCallsByCategory(string urgency) {
+        public EmercomDisp.Data.CallService.CallDto[] GetCallsByCategory(string urgency) {
             return base.Channel.GetCallsByCategory(urgency);
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto[]> GetCallsByCategoryAsync(string urgency) {
+        public System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto[]> GetCallsByCategoryAsync(string urgency) {
             return base.Channel.GetCallsByCategoryAsync(urgency);
         }
         
-        public EmercomDisp.Data.ServiceReference1.CallDto GetCallById(int id) {
+        public EmercomDisp.Data.CallService.CallDto GetCallById(int id) {
             return base.Channel.GetCallById(id);
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Data.ServiceReference1.CallDto> GetCallByIdAsync(int id) {
+        public System.Threading.Tasks.Task<EmercomDisp.Data.CallService.CallDto> GetCallByIdAsync(int id) {
             return base.Channel.GetCallByIdAsync(id);
         }
         
