@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILog _log = LogManager.GetLogger("LOGGER");

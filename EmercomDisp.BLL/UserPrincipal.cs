@@ -21,7 +21,11 @@ namespace EmercomDisp.BLL
 
         public bool IsInRole(string role)
         {
-            return Roles.Contains(role);
+            if (Roles != null)
+            {
+                return Roles.Contains(role);
+            }
+            return false;
         }
     }
 }

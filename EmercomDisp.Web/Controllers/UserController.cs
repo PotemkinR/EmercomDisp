@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly IUserProvider _userProvider;

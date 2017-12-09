@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize]
     public class CallController : Controller
     {
         private readonly ICallProvider _callProvider;

@@ -1,33 +1,23 @@
 ﻿using EmercomDisp.BLL.Providers;
 using System;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace EmercomDisp.BLL.Services
 {
-    public class UserService : IUserService
+    public class UserValidationService : IUserValidationService
     {
         private readonly IUserProvider _userProvider;
+        private readonly IPasswordEncryptService _passwordEncryptService;
 
-        public UserService(IUserProvider userProvider)
+        public UserValidationService(IUserProvider userProvider,
+            IPasswordEncryptService passwordEncryptService)
         {
             _userProvider = userProvider ?? throw new ArgumentNullException("User Provider");
+            _passwordEncryptService = passwordEncryptService ?? throw new ArgumentNullException("Password Encrypt Service");
         }
-
-        public byte[] EncryptPassword(string password)
-        {
-            var result = string.Empty;
-            using (SHA256 hash = SHA256.Create())
-            {
-                var enc = Encoding.UTF8;
-                return hash.ComputeHash(enc.GetBytes(password));
-            }
-        }
-
         public bool IsValidUser(string name, string password)
         {
-            var passwordHash = EncryptPassword(password);
+            var passwordHash = _passwordEncryptService.EncryptPassword(password);
             var user = _userProvider.GetUserByName(name);
 
             if (user != null)

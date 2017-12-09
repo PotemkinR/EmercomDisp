@@ -8,13 +8,13 @@ namespace EmercomDisp.BLL.Providers
     public class UserProvider : IUserProvider
     {
         private readonly IUserClient _userClient;
-        private readonly IUserService _userService;
+        private readonly IPasswordEncryptService _passwordEncryptService;
 
         public UserProvider(IUserClient userClient,
-            IUserService userService)
+            IPasswordEncryptService userService)
         {
-            _userClient = userClient ?? throw new ArgumentNullException();
-            _userService = userService ?? throw new ArgumentNullException();
+            _userClient = userClient ?? throw new ArgumentNullException("User Client");
+            _passwordEncryptService = userService ?? throw new ArgumentNullException("Password Encrypt Service");
         }
 
         public void CreateUser(User user)
@@ -23,7 +23,7 @@ namespace EmercomDisp.BLL.Providers
             {
                 Name = user.Name,
                 Email = user.Email,
-                PasswordHash = _userService.EncryptPassword(user.Password)
+                PasswordHash = _passwordEncryptService.EncryptPassword(user.Password)
             };
             _userClient.CreateUser(newUser);
         }

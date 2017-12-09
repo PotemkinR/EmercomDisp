@@ -18,6 +18,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("D", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <div class="pull-right">
+                        @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new {@class = "navbar-brand" })
+                    </div>
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

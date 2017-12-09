@@ -11,7 +11,8 @@ namespace EmercomDisp.BLL.Dependencies
             For<ICallProvider>().Use<CallProvider>();
             For<IUserProvider>().Use<UserProvider>();
             For<ILoginService>().Use<LoginService>();
-            For<IUserService>().Use<UserService>();
+            For<IPasswordEncryptService>().Use<PasswordEncryptService>();
+            For<IUserValidationService>().Use<UserValidationService>();
         }
     }
 }

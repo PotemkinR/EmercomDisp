@@ -48,7 +48,7 @@ namespace EmercomDisp.Web.Controllers
         public ActionResult Logout()
         {
             _loginService.Logout();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
     }
 }

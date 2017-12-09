@@ -1,8 +1,7 @@
 ﻿namespace EmercomDisp.BLL.Services
 {
-    public interface IUserService
+    public interface IUserValidationService
     {
-        byte[] EncryptPassword(string password);
         bool IsValidUser(string name, string password);
     }
 }
