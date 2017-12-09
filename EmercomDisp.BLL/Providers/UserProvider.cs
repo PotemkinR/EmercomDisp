@@ -32,12 +32,5 @@ namespace EmercomDisp.BLL.Providers
         {
             return _userClient.GetUserByName(name);
         }
-
-        public bool IsValidUser(string name, string password)
-        {
-            var passwordHash = _userService.EncryptPassword(password);
-
-            return _userClient.UserIsValid(name, passwordHash);
-        }
     }
 }

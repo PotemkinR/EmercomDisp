@@ -10,6 +10,6 @@ namespace EmercomDisp.Service.Dto.Models
 
         public byte[] PasswordHash { get; set; }
 
-        public IEnumerable<RoleDto> Roles { get; set; }
+        public IEnumerable<string> Roles { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EmercomDisp.Web.Models.CategoryViewModels
+namespace EmercomDisp.Web.Models.Categories
 {
     public class CategoryViewModel
     {

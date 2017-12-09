@@ -12,6 +12,6 @@ namespace EmercomDisp.Model.Models
 
         public byte[] PasswordHash { get; set; }
 
-        public IEnumerable<Role> Roles { get; set; }
+        public IEnumerable<string> Roles { get; set; }
     }
 }

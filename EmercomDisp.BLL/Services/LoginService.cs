@@ -10,10 +10,13 @@ namespace EmercomDisp.BLL.Services
     public class LoginService : ILoginService
     {
         private readonly IUserProvider _userProvider;
+        private readonly IUserService _userService;
 
-        public LoginService(IUserProvider userProvider)
+        public LoginService(IUserProvider userProvider,
+            IUserService userService)
         {
-            _userProvider = userProvider ?? throw new ArgumentNullException();
+            _userProvider = userProvider ?? throw new ArgumentNullException("User Provider");
+            _userService = userService ?? throw new ArgumentNullException("User Service");
         }
 
         public LoginResult Login(string userName, string password)
@@ -23,7 +26,7 @@ namespace EmercomDisp.BLL.Services
                 return LoginResult.EmptyCredentials;
             }
 
-            if (_userProvider.IsValidUser(userName, password))
+            if (_userService.IsValidUser(userName, password))
             {
                 var user = _userProvider.GetUserByName(userName);
                 var userData = JsonConvert.SerializeObject(user);

@@ -44,7 +44,29 @@ namespace EmercomDisp.Data.Clients
 
         public User GetUserByName(string name)
         {
-            throw new NotImplementedException();
+            var user = new User();
+            using (var client = new UserServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var userDto = client.GetUserByName(name);
+
+                    if (userDto != null)
+                    {
+                        user.Name = userDto.Name;
+                        user.PasswordHash = userDto.PasswordHash;
+                        user.Email = userDto.Email;
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+            return user;
         }
 
         public IEnumerable<User> GetUsers()

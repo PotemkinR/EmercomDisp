@@ -6,6 +6,5 @@ namespace EmercomDisp.BLL.Providers
     {
         User GetUserByName(string name);
         void CreateUser(User user);
-        bool IsValidUser(string userName, string password);
     }
 }

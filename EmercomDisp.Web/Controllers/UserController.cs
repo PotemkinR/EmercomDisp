@@ -1,7 +1,6 @@
 ﻿using EmercomDisp.BLL.Providers;
 using EmercomDisp.Model.Models;
 using EmercomDisp.Web.Models.Users;
-using StructureMap;
 using System;
 using System.Web.Mvc;
 

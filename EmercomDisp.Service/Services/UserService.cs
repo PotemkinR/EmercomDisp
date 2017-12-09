@@ -53,7 +53,32 @@ namespace EmercomDisp.Service.Services
 
         public UserDto GetUserByName(string name)
         {
-            throw new System.NotImplementedException();
+            var user = new UserDto();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("GetUserByName", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@name", name);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            user.Name = reader[1].ToString();
+                            user.PasswordHash = (byte[])reader[2];
+                            user.Email = reader[3].ToString();
+                        }
+                    };
+                    connection.Close();
+                }
+            }
+            return user;
         }
 
         public IEnumerable<UserDto> GetUsers()

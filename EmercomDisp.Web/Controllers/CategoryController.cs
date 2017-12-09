@@ -1,5 +1,5 @@
 ﻿using EmercomDisp.BLL.Providers;
-using EmercomDisp.Web.Models.CategoryViewModels;
+using EmercomDisp.Web.Models.Categories;
 using System;
 using System.Web.Mvc;
 
