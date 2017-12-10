@@ -51,8 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\CallClient.cs" />
-    <Compile Include="Clients\ICallClient.cs" />
-    <Compile Include="Clients\IUserClient.cs" />
+    <Compile Include="Clients\~Interfaces\ICallClient.cs" />
+    <Compile Include="Clients\~Interfaces\IUserClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
     <Compile Include="Connected Services\CallService\Reference.cs">
       <AutoGen>True</AutoGen>
