@@ -51,6 +51,33 @@ namespace EmercomDisp.Service.Services
             throw new System.NotImplementedException();
         }
 
+        public IEnumerable<string> GetRoles()
+        {
+            var roles = new List<string>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand("GetRoles", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var category = reader["Name"].ToString();
+
+                            roles.Add(category);
+                        }
+                    };
+                    connection.Close();
+                }
+            }
+            return roles;
+        }
+
         public UserDto GetUserByName(string name)
         {
             var user = new UserDto();
@@ -83,17 +110,63 @@ namespace EmercomDisp.Service.Services
 
         public IEnumerable<UserDto> GetUsers()
         {
-            throw new System.NotImplementedException();
+            var userList = new List<UserDto>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand("GetUsers", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var user = new UserDto()
+                            {
+                                Name = reader[1].ToString(),
+                                Email = reader[3].ToString()
+                            };
+                            userList.Add(user);
+                        }
+                    };
+                    connection.Close();
+                }
+            }
+            return userList;
         }
 
         public void UpdateUser(UserDto user)
         {
-            throw new System.NotImplementedException();
-        }
+            var call = new CallDto();
 
-        public bool UserIsValid(string name, string passwordHash)
-        {
-            throw new System.NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("UpdateUser", connection))
+                {
+                    var roles = new DataTable();
+                    roles.Columns.Add("RoleName", typeof(string));
+                    foreach (var role in user.Roles)
+                    {
+                        roles.Rows.Add(role);
+                    }
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@name", user.Name);                  
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                    cmd.Parameters.AddWithValue("@roleList", roles);
+
+                    connection.Open();
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
     }
 }

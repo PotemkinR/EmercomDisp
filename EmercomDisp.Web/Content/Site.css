@@ -16,3 +16,15 @@ textarea {
     max-width: 280px;
 }
 
+.table {
+    display: table;
+}
+
+.header-row, row {
+    display: table-row;
+}
+
+.header-cell, cell {
+    display: table-cell;
+}
+

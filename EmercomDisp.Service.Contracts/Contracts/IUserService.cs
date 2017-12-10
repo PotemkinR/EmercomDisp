@@ -13,10 +13,6 @@ namespace EmercomDisp.Service.Contracts.Contracts
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
-        bool UserIsValid(string name, string passwordHash);
-
-        [OperationContract]
-        [FaultContract(typeof(ConnectionFault))]
         UserDto GetUserByName(string name);
 
         [OperationContract]
@@ -30,5 +26,9 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         void UpdateUser(UserDto user);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        IEnumerable<string> GetRoles();
     }
 }

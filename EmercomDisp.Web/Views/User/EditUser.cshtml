@@ -1,10 +1,10 @@
 ﻿@model EmercomDisp.Web.Models.Users.UserModel
 
 @{
-    ViewBag.Title = "CreateUser";
+    ViewBag.Title = "EditUser";
 }
 
-<h2>CreateUser</h2>
+<h2>EditUser</h2>
 
 @using (Html.BeginForm())
 {
@@ -37,26 +37,24 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <fieldset>
             <legend>Roles</legend>
             <div>
-                <input type="checkbox" id="admin" name="Roles" value="Admin">
+                <input type="checkbox" id="admin" name="admin" value="Admin">
                 <label for="admin">Admin</label>
             </div>
             <div>
-                <input type="checkbox" id="editor" name="Roles" value="Editor">
+                <input type="checkbox" id="editor" name="editor" value="Editor">
                 <label for="editor">Editor</label>
             </div>
             <div>
-                <input type="checkbox" id="user" name="Roles" value="User" checked disabled="disabled">
+                <input type="checkbox" id="user" name="user" value="User" checked disabled>
                 <label for="user">User</label>
             </div>
         </fieldset>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -6,11 +6,8 @@ namespace EmercomDisp.Data.Clients
     public interface ICallClient
     {
         IEnumerable<Call> GetCalls();
-
         IEnumerable<Call> GetCallsByCategory(string urgency);
-
         Call GetCallById(int id);
-
         IEnumerable<string> GetCategories();
     }
 }

@@ -104,6 +104,9 @@
     <None Include="Connected Services\UserService\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\UserService\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\EmercomDisp.Model.Models.Call.datasource" />
   </ItemGroup>

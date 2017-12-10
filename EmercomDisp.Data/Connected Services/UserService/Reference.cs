@@ -32,7 +32,7 @@ namespace EmercomDisp.Data.UserService {
         private byte[] PasswordHashField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private EmercomDisp.Data.UserService.RoleDto[] RolesField;
+        private string[] RolesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -84,7 +84,7 @@ namespace EmercomDisp.Data.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public EmercomDisp.Data.UserService.RoleDto[] Roles {
+        public string[] Roles {
             get {
                 return this.RolesField;
             }
@@ -92,51 +92,6 @@ namespace EmercomDisp.Data.UserService {
                 if ((object.ReferenceEquals(this.RolesField, value) != true)) {
                     this.RolesField = value;
                     this.RaisePropertyChanged("Roles");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RoleDto", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
-    [System.SerializableAttribute()]
-    public partial class RoleDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -207,13 +162,6 @@ namespace EmercomDisp.Data.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
         System.Threading.Tasks.Task<EmercomDisp.Data.UserService.UserDto[]> GetUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UserIsValid", ReplyAction="http://tempuri.org/IUserService/UserIsValidResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/UserIsValidConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
-        bool UserIsValid(string name, string passwordHash);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UserIsValid", ReplyAction="http://tempuri.org/IUserService/UserIsValidResponse")]
-        System.Threading.Tasks.Task<bool> UserIsValidAsync(string name, string passwordHash);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByName", ReplyAction="http://tempuri.org/IUserService/GetUserByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/GetUserByNameConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.UserService.UserDto GetUserByName(string name);
@@ -241,6 +189,13 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
         System.Threading.Tasks.Task UpdateUserAsync(EmercomDisp.Data.UserService.UserDto user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/GetRolesConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        string[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        System.Threading.Tasks.Task<string[]> GetRolesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -278,14 +233,6 @@ namespace EmercomDisp.Data.UserService {
             return base.Channel.GetUsersAsync();
         }
         
-        public bool UserIsValid(string name, string passwordHash) {
-            return base.Channel.UserIsValid(name, passwordHash);
-        }
-        
-        public System.Threading.Tasks.Task<bool> UserIsValidAsync(string name, string passwordHash) {
-            return base.Channel.UserIsValidAsync(name, passwordHash);
-        }
-        
         public EmercomDisp.Data.UserService.UserDto GetUserByName(string name) {
             return base.Channel.GetUserByName(name);
         }
@@ -316,6 +263,14 @@ namespace EmercomDisp.Data.UserService {
         
         public System.Threading.Tasks.Task UpdateUserAsync(EmercomDisp.Data.UserService.UserDto user) {
             return base.Channel.UpdateUserAsync(user);
+        }
+        
+        public string[] GetRoles() {
+            return base.Channel.GetRoles();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetRolesAsync() {
+            return base.Channel.GetRolesAsync();
         }
     }
 }

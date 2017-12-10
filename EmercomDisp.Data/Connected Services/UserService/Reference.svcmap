@@ -23,8 +23,9 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="aeec5a14-22db-4385-97e2-cf12c6456960" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?disco" />
-    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="21f50cbb-89ce-417f-acd1-32242fe901df" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?xsd=xsd0" />
     <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="29519ef0-6361-45b8-a288-911d75a62b7a" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?wsdl" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="21f50cbb-89ce-417f-acd1-32242fe901df" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="a98536c5-ee56-40f2-ac30-6d299eb1b231" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?xsd=xsd3" />
     <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="771c49c5-c286-4810-96ad-c1f7b952e430" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?xsd=xsd2" />
     <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="88d4d260-207b-424d-bb48-7e1fb376721f" SourceId="1" SourceUrl="http://localhost:1122/UserService.svc?xsd=xsd1" />
   </Metadata>
