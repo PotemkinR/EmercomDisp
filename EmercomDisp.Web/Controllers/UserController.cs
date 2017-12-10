@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly IUserProvider _userProvider;
@@ -42,7 +42,7 @@ namespace EmercomDisp.Web.Controllers
                     Name = user.Name,
                     Email = user.Email,
                     Password = user.Password,
-                    Roles = user.Roles
+                    Roles = GetRolesForUser(user)
                 };
                 _userProvider.CreateUser(newUser);
             }
@@ -77,25 +77,12 @@ namespace EmercomDisp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //переписать
-                var roles = new List<string>();
-                if (Request.Form["admin"] != null)
-                {
-                    roles.Add("Admin");
-                    roles.Add("Editor");
-                }
-                if (Request.Form["editor"] != null)
-                {
-                    roles.Add("Editor");
-                }
-                roles.Add("User");
-
                 var updatedUser = new User
                 {
                     Name = user.Name,
                     Email = user.Email,
                     Password = user.Password,
-                    Roles = roles
+                    Roles = GetRolesForUser(user)
                 };
                 
                 _userProvider.UpdateUser(updatedUser);
@@ -119,6 +106,25 @@ namespace EmercomDisp.Web.Controllers
                 Users = _userProvider.GetUsers()
             };
             return View(model);
+        }
+
+        //переделать?
+        private IEnumerable<string> GetRolesForUser(UserModel user)
+        {   
+            var roles = new List<string>();
+
+            if (Request.Form["admin"] != null)
+            {
+                roles.Add("Admin");
+                roles.Add("Editor");
+            }
+            if (Request.Form["editor"] != null)
+            {
+                roles.Add("Editor");
+            }
+            roles.Add("User");
+
+            return roles;
         }
     }
 }

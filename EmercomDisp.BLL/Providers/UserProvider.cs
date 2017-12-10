@@ -29,7 +29,8 @@ namespace EmercomDisp.BLL.Providers
             {
                 Name = user.Name,
                 Email = user.Email,
-                PasswordHash = _passwordEncryptService.EncryptPassword(user.Password)
+                PasswordHash = _passwordEncryptService.EncryptPassword(user.Password),
+                Roles = user.Roles
             };
             _userClient.CreateUser(newUser);
         }

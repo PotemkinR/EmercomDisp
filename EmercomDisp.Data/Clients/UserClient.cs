@@ -86,6 +86,7 @@ namespace EmercomDisp.Data.Clients
                         user.Name = userDto.Name;
                         user.PasswordHash = userDto.PasswordHash;
                         user.Email = userDto.Email;
+                        user.Roles = userDto.Roles;
                     }
                     client.Close();
                 }

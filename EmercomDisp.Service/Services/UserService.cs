@@ -33,10 +33,49 @@ namespace EmercomDisp.Service.Services
 
                 using (var cmd = new SqlCommand("CreateUser", connection))
                 {
+                    var roles = new DataTable();
+                    roles.Columns.Add("RoleName", typeof(string));
+                    foreach (var role in user.Roles)
+                    {
+                        roles.Rows.Add(role);
+                    }
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@name", user.Name);
                     cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
                     cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@roleList", roles);
+
+                    connection.Open();
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+
+        public void UpdateUser(UserDto user)
+        {
+            var call = new CallDto();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("UpdateUser", connection))
+                {
+                    var roles = new DataTable();
+                    roles.Columns.Add("RoleName", typeof(string));
+                    foreach (var role in user.Roles)
+                    {
+                        roles.Rows.Add(role);
+                    }
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@name", user.Name);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                    cmd.Parameters.AddWithValue("@roleList", roles);
 
                     connection.Open();
 
@@ -80,7 +119,10 @@ namespace EmercomDisp.Service.Services
 
         public UserDto GetUserByName(string name)
         {
-            var user = new UserDto();
+            var user = new UserDto
+            {
+                Roles = new List<string>()
+            };
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -100,6 +142,23 @@ namespace EmercomDisp.Service.Services
                             user.Name = reader[1].ToString();
                             user.PasswordHash = (byte[])reader[2];
                             user.Email = reader[3].ToString();
+                        }
+                    };
+                    connection.Close();
+                }
+                using (var cmd = new SqlCommand("GetUserRoles", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@name", name);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var role = reader[0].ToString();
+                            user.Roles.Add(role);
                         }
                     };
                     connection.Close();
@@ -136,37 +195,6 @@ namespace EmercomDisp.Service.Services
                 }
             }
             return userList;
-        }
-
-        public void UpdateUser(UserDto user)
-        {
-            var call = new CallDto();
-
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.ConnectionString = _connectionString;
-
-                using (var cmd = new SqlCommand("UpdateUser", connection))
-                {
-                    var roles = new DataTable();
-                    roles.Columns.Add("RoleName", typeof(string));
-                    foreach (var role in user.Roles)
-                    {
-                        roles.Rows.Add(role);
-                    }
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", user.Name);                  
-                    cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
-                    cmd.Parameters.AddWithValue("@roleList", roles);
-
-                    connection.Open();
-
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-        }
+        }   
     }
 }
