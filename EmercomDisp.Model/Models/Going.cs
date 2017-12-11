@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EmercomDisp.Model.Models
 {
@@ -17,5 +18,7 @@ namespace EmercomDisp.Model.Models
         public int BrigadeId { get; set; }
 
         public int IncidentId { get; set; }
+
+        public IEnumerable<string> Equipment { get; set; }
     }
 }

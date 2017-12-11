@@ -8,6 +8,8 @@ namespace EmercomDisp.Data.Dependencies
         public DataRegistry()
         {
             For<ICallClient>().Use<CallClient>();
+            For<IUserClient>().Use<UserClient>();
+            For<IIncidentClient>().Use<IncidentClient>();
         }
     }
 }

@@ -4,8 +4,6 @@
     ViewBag.Title = "CallDetails";
 }
 
-<h2>CallDetails</h2>
-
 <div>
     <h4>Call Details</h4>
     <hr />
@@ -51,6 +49,7 @@
 
     </dl>
 </div>
+@{Html.RenderAction("IncidentDetails", "Incident"); }
 <p>
-    @Html.ActionLink("Back to list", "CallList","CallList")
+    @Html.ActionLink("Back to list", "CallList", "CallList")
 </p>

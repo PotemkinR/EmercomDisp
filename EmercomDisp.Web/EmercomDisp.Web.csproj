@@ -135,6 +135,7 @@
     <Compile Include="Controllers\CallListController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncidentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Models\Calls\CallItemViewModel.cs" />
     <Compile Include="Models\Calls\CallListViewModel.cs" />
     <Compile Include="Models\Categories\CategoryViewModel.cs" />
+    <Compile Include="Models\Incidents\IncidentDetailsModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Users\UserListModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
@@ -173,6 +175,7 @@
     <Content Include="Views\User\EditUser.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Incident\IncidentDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -51,10 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\CallClient.cs" />
+    <Compile Include="Clients\IncidentClient.cs" />
     <Compile Include="Clients\~Interfaces\ICallClient.cs" />
+    <Compile Include="Clients\~Interfaces\IIncidentClient.cs" />
     <Compile Include="Clients\~Interfaces\IUserClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
     <Compile Include="Connected Services\CallService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\IncidentService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -91,6 +98,19 @@
     <None Include="Connected Services\CallService\EmercomDisp.Data.CallService.CallDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\IncidentService\EmercomDisp.Data.IncidentService.IncidentDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\IncidentService\IncidentService.wsdl" />
+    <None Include="Connected Services\IncidentService\IncidentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IncidentService\IncidentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IncidentService\IncidentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserService\EmercomDisp.Data.UserService.UserDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -115,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CallService\" />
+    <WCFMetadataStorage Include="Connected Services\IncidentService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +164,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IncidentService\IncidentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IncidentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IncidentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IncidentService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
