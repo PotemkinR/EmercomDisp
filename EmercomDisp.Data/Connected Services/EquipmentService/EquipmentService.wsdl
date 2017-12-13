@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EquipmentService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1122/EquipmentService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1122/EquipmentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" />
+      <xsd:import schemaLocation="http://localhost:1122/EquipmentService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEquipmentService_GetEquipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipment" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipment_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipmentById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentById" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipmentById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipmentById_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_CreateEquipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEquipment" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_CreateEquipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_CreateEquipment_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEquipment" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipment_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_DeleteEquipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEquipment" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_DeleteEquipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_DeleteEquipment_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:portType name="IEquipmentService">
+    <wsdl:operation name="GetEquipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipment" message="tns:IEquipmentService_GetEquipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentResponse" message="tns:IEquipmentService_GetEquipment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_GetEquipment_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipmentById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentById" message="tns:IEquipmentService_GetEquipmentById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse" message="tns:IEquipmentService_GetEquipmentById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_GetEquipmentById_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEquipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipment" message="tns:IEquipmentService_CreateEquipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentResponse" message="tns:IEquipmentService_CreateEquipment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_CreateEquipment_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEquipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipment" message="tns:IEquipmentService_UpdateEquipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentResponse" message="tns:IEquipmentService_UpdateEquipment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_UpdateEquipment_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEquipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipment" message="tns:IEquipmentService_DeleteEquipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipmentResponse" message="tns:IEquipmentService_DeleteEquipment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_DeleteEquipment_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEquipmentService" type="tns:IEquipmentService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEquipment">
+      <soap:operation soapAction="http://tempuri.org/IEquipmentService/GetEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipmentById">
+      <soap:operation soapAction="http://tempuri.org/IEquipmentService/GetEquipmentById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEquipment">
+      <soap:operation soapAction="http://tempuri.org/IEquipmentService/CreateEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEquipment">
+      <soap:operation soapAction="http://tempuri.org/IEquipmentService/UpdateEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEquipment">
+      <soap:operation soapAction="http://tempuri.org/IEquipmentService/DeleteEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EquipmentService">
+    <wsdl:port name="BasicHttpBinding_IEquipmentService" binding="tns:BasicHttpBinding_IEquipmentService">
+      <soap:address location="http://localhost:1122/EquipmentService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -60,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\EquipmentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\VictimsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,11 +73,13 @@
     <Compile Include="Repositories\BrigadeRepository.cs" />
     <Compile Include="Repositories\CallRepository.cs" />
     <Compile Include="Repositories\CallResponseRepository.cs" />
+    <Compile Include="Repositories\EquipmentRepository.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\VictimsRepository.cs" />
     <Compile Include="Repositories\~Interfaces\IBrigadeRepository.cs" />
     <Compile Include="Repositories\~Interfaces\ICallRepository.cs" />
     <Compile Include="Repositories\~Interfaces\ICallResponseRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\IEquipmentRepository.cs" />
     <Compile Include="Repositories\~Interfaces\IIncidentRepository.cs" />
     <Compile Include="Repositories\~Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -148,6 +155,19 @@
     <None Include="Connected Services\CallService\EmercomDisp.Data.CallService.CallDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\EquipmentService\EmercomDisp.Data.EquipmentService.EquipmentDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EquipmentService\EquipmentService.wsdl" />
+    <None Include="Connected Services\EquipmentService\EquipmentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EquipmentService\EquipmentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EquipmentService\EquipmentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\IncidentService\EmercomDisp.Data.IncidentService.IncidentDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -200,6 +220,7 @@
     <WCFMetadataStorage Include="Connected Services\BrigadeService\" />
     <WCFMetadataStorage Include="Connected Services\CallResponseService\" />
     <WCFMetadataStorage Include="Connected Services\CallService\" />
+    <WCFMetadataStorage Include="Connected Services\EquipmentService\" />
     <WCFMetadataStorage Include="Connected Services\IncidentService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
     <WCFMetadataStorage Include="Connected Services\VictimsService\" />
@@ -290,6 +311,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\VictimsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EquipmentService\EquipmentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EquipmentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EquipmentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\EquipmentService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

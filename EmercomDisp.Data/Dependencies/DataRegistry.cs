@@ -13,6 +13,7 @@ namespace EmercomDisp.Data.Dependencies
             For<IBrigadeRepository>().Use<BrigadeRepository>();
             For<ICallResponseRepository>().Use<CallResponseRepository>();
             For<IVictimsRepository>().Use<VictimsRepository>();
+            For<IEquipmentRepository>().Use<EquipmentRepository>();
         }
     }
 }

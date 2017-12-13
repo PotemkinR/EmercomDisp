@@ -27,4 +27,7 @@ textarea {
 .header-cell, cell {
     display: table-cell;
 }
+.btn-span {
+    margin-right: 5px;
+}
 

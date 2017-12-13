@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d114ddb6-6d51-4167-af04-4a41c4a1e4fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1122/EquipmentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EquipmentService.xsd" MetadataType="Schema" ID="88e369b5-f1e6-4499-90fb-ca21442c0047" SourceId="1" SourceUrl="http://localhost:1122/EquipmentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EquipmentService1.xsd" MetadataType="Schema" ID="9d951c4b-4a90-4c8d-b210-b3742093f2ce" SourceId="1" SourceUrl="http://localhost:1122/EquipmentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EquipmentService2.xsd" MetadataType="Schema" ID="41b2935a-e7b1-4b79-be58-50de1be02352" SourceId="1" SourceUrl="http://localhost:1122/EquipmentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EquipmentService.wsdl" MetadataType="Wsdl" ID="431b09b9-83c7-4b2c-8f3d-bcf6cf172c92" SourceId="1" SourceUrl="http://localhost:1122/EquipmentService.svc?wsdl" />
+    <MetadataFile FileName="EquipmentService.disco" MetadataType="Disco" ID="39db6253-682d-430c-a72e-f9acd1a0daab" SourceId="1" SourceUrl="http://localhost:1122/EquipmentService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

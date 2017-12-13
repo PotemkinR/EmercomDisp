@@ -52,11 +52,13 @@
     <Compile Include="Providers\BrigadeProvider.cs" />
     <Compile Include="Providers\CallProvider.cs" />
     <Compile Include="Providers\CallResponseProvider.cs" />
+    <Compile Include="Providers\EquipmentProvider.cs" />
     <Compile Include="Providers\IncidentProvider.cs" />
     <Compile Include="Providers\VictimsProvider.cs" />
     <Compile Include="Providers\~Interfaces\IBrigadeProvider.cs" />
     <Compile Include="Providers\~Interfaces\ICallProvider.cs" />
     <Compile Include="Providers\~Interfaces\ICallResponseProvider.cs" />
+    <Compile Include="Providers\~Interfaces\IEquipmentProvider.cs" />
     <Compile Include="Providers\~Interfaces\IIncidentProvider.cs" />
     <Compile Include="Providers\~Interfaces\IVictimsProvider.cs" />
     <Compile Include="Services\~Interfaces\ILoginService.cs" />

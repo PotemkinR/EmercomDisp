@@ -25,12 +25,12 @@
             <span style="font-size: 14px;">@Html.DisplayFor(model => brigade.MemberCount)</span>
         </td>
         <td class="col-lg-3">
-            <button type="button" class="btn btn-warning col-lg-3" onclick="location.href='@Url.Action("EditBrigade", "Brigade", new { id = brigade.Id })';return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-warning col-lg-3" onclick="location.href='@Url.Action("EditBrigade", "Brigade", new { id = brigade.Id })';return false;"><span class="btn-span glyphicon glyphicon-pencil"></span></button>
 
-            <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("DeleteBrigade", "Brigade", new { id = brigade.Id })' ;return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-trash"></span></button>
+            <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("DeleteBrigade", "Brigade", new { id = brigade.Id })' ;return false;"><span class="btn-span glyphicon glyphicon-trash"></span></button>
         </td>
     </tr>
     }
 </table>
-<button type="button" class="btn btn-default col-lg-12" onclick="location.href='@Url.Action("CreateBrigade", "Brigade")';return false;"><span style="margin-right: 5px"></span>Create Brigade</button>
+<button type="button" class="btn btn-default col-lg-12" onclick="location.href='@Url.Action("CreateBrigade", "Brigade")';return false;"><span class="btn-span"></span>Create Brigade</button>
 <h2>@Html.ActionLink("Brigade Members List", "BrigadeMembersList", "Brigade")</h2>

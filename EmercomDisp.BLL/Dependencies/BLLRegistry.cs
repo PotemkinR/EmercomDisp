@@ -17,6 +17,7 @@ namespace EmercomDisp.BLL.Dependencies
             For<IBrigadeProvider>().Use<BrigadeProvider>();
             For<IVictimsProvider>().Use<VictimsProvider>();
             For<ICallResponseProvider>().Use<CallResponseProvider>();
+            For<IEquipmentProvider>().Use<EquipmentProvider>();
         }
     }
 }

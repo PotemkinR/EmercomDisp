@@ -136,6 +136,7 @@
     <Compile Include="Controllers\CallListController.cs" />
     <Compile Include="Controllers\CallResponseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -158,6 +159,9 @@
     <Compile Include="Models\Calls\CallItemViewModel.cs" />
     <Compile Include="Models\Calls\CallListViewModel.cs" />
     <Compile Include="Models\Categories\CategoryViewModel.cs" />
+    <Compile Include="Models\Equipment_\EquipmentCreateModel.cs" />
+    <Compile Include="Models\Equipment_\EquipmentEditModel.cs" />
+    <Compile Include="Models\Equipment_\EquipmentListModel.cs" />
     <Compile Include="Models\Incidents\IncidentDetailsModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Users\UserListModel.cs" />
@@ -191,6 +195,9 @@
     <Content Include="Views\Brigade\CreateBrigadeMember.cshtml" />
     <Content Include="Views\Brigade\EditBrigade.cshtml" />
     <Content Include="Views\Brigade\CreateBrigade.cshtml" />
+    <Content Include="Views\Equipment\EquipmentList.cshtml" />
+    <Content Include="Views\Equipment\CreateEquipment.cshtml" />
+    <Content Include="Views\Equipment\EditEquipment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
