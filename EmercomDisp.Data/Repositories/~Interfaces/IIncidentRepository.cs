@@ -1,8 +1,8 @@
 ﻿using EmercomDisp.Model.Models;
 
-namespace EmercomDisp.Data.Clients
+namespace EmercomDisp.Data.Repositories
 {
-    public interface IIncidentClient
+    public interface IIncidentRepository
     {
         Incident GetIncidentById(int id);
     }

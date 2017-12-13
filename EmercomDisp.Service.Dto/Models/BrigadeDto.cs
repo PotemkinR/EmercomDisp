@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace EmercomDisp.Service.Dto.Models
+﻿namespace EmercomDisp.Service.Dto.Models
 {
     public class BrigadeDto
     {
         public int Id { get; set; }
 
-        public IEnumerable<int> BrigadeMembersId { get; set; }
+        public string Name { get; set; }
+
+        public int MemberCount { get; set; }
     }
 }

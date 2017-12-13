@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace EmercomDisp.Service.Dto.Models
 {
     [DataContract]
-    public class GoingDto
+    public class CallResponseDto
     { 
         [DataMember]
         public int Id { get; set; }
@@ -26,7 +26,7 @@ namespace EmercomDisp.Service.Dto.Models
         public DateTime ReturnTime { get; set; }
 
         [DataMember]
-        public int BrigadeId { get; set; }
+        public string BrigadeName { get; set; }
 
         [DataMember]
         public int IncidentId { get; set; }

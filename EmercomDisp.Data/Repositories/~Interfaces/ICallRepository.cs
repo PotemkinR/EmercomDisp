@@ -1,9 +1,9 @@
 ﻿using EmercomDisp.Model.Models;
 using System.Collections.Generic;
 
-namespace EmercomDisp.Data.Clients
+namespace EmercomDisp.Data.Repositories
 {
-    public interface ICallClient
+    public interface ICallRepository
     {
         IEnumerable<Call> GetCalls();
         IEnumerable<Call> GetCallsByCategory(string urgency);

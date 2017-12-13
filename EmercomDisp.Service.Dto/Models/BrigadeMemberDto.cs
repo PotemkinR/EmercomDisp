@@ -6,6 +6,6 @@
 
         public string Name { get; set; }
 
-        public int BrigadeId { get; set; }
+        public string BrigadeName { get; set; }
     }
 }

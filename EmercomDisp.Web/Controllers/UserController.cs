@@ -108,6 +108,14 @@ namespace EmercomDisp.Web.Controllers
             return View(model);
         }
 
+        public ActionResult DeleteUser(string name)
+        {
+            if (HttpContext.User.Identity.Name != name)
+            {
+                _userProvider.DeleteUser(name);
+            }
+            return RedirectToAction("UserList");
+        }
         //переделать?
         private IEnumerable<string> GetRolesForUser(UserModel user)
         {   

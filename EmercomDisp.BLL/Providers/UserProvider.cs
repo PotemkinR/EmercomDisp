@@ -1,5 +1,5 @@
 ﻿using EmercomDisp.BLL.Services;
-using EmercomDisp.Data.Clients;
+using EmercomDisp.Data.Repositories;
 using EmercomDisp.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -8,19 +8,19 @@ namespace EmercomDisp.BLL.Providers
 {
     public class UserProvider : IUserProvider
     {
-        private readonly IUserClient _userClient;
+        private readonly IUserRepository _userRepository;
         private readonly IPasswordEncryptService _passwordEncryptService;
 
-        public UserProvider(IUserClient userClient,
+        public UserProvider(IUserRepository userRepository,
             IPasswordEncryptService userService)
         {
-            _userClient = userClient ?? throw new ArgumentNullException("User Client");
+            _userRepository = userRepository ?? throw new ArgumentNullException("User Repository");
             _passwordEncryptService = userService ?? throw new ArgumentNullException("Password Encrypt Service");
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _userClient.GetUsers();
+            return _userRepository.GetUsers();
         }
 
         public void CreateUser(User user)
@@ -32,7 +32,7 @@ namespace EmercomDisp.BLL.Providers
                 PasswordHash = _passwordEncryptService.EncryptPassword(user.Password),
                 Roles = user.Roles
             };
-            _userClient.CreateUser(newUser);
+            _userRepository.CreateUser(newUser);
         }
 
         public void UpdateUser(User user)
@@ -44,17 +44,22 @@ namespace EmercomDisp.BLL.Providers
                 PasswordHash = _passwordEncryptService.EncryptPassword(user.Password),
                 Roles = user.Roles
             };
-            _userClient.UpdateUser(newUser);
+            _userRepository.UpdateUser(newUser);
         }
 
         public IEnumerable<string> GetRoles()
         {
-            return _userClient.GetRoles();
+            return _userRepository.GetRoles();
         }
 
         public User GetUserByName(string name)
         {
-            return _userClient.GetUserByName(name);
+            return _userRepository.GetUserByName(name);
+        }
+
+        public void DeleteUser(string name)
+        {
+            _userRepository.DeleteUser(name);
         }
     }
 }

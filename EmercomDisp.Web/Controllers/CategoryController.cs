@@ -12,7 +12,7 @@ namespace EmercomDisp.Web.Controllers
 
         public CategoryController(ICallProvider callProvider)
         {
-            _callProvider = callProvider ?? throw new ArgumentNullException("CallProvider");
+            _callProvider = callProvider ?? throw new ArgumentNullException("Call Provider");
         }
         public PartialViewResult Category()
         {

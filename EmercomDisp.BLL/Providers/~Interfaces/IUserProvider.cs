@@ -9,6 +9,7 @@ namespace EmercomDisp.BLL.Providers
         User GetUserByName(string name);
         void CreateUser(User user);
         void UpdateUser(User user);
+        void DeleteUser(string name);
         IEnumerable<string> GetRoles();
     }
 }

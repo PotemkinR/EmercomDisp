@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EmercomDisp.Model.Models
 {
-    public class Going
+    public class CallResponse
     {
         public int Id { get; set; }
 
@@ -15,9 +15,7 @@ namespace EmercomDisp.Model.Models
 
         public DateTime ReturnTime { get; set; }
 
-        public int BrigadeId { get; set; }
-
-        public int IncidentId { get; set; }
+        public string BrigadeName { get; set; }
 
         public IEnumerable<string> Equipment { get; set; }
     }

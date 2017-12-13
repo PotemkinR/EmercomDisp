@@ -131,8 +131,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\BrigadeController.cs" />
     <Compile Include="Controllers\CallController.cs" />
     <Compile Include="Controllers\CallListController.cs" />
+    <Compile Include="Controllers\CallResponseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidentController.cs" />
@@ -146,6 +148,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Brigades\BrigadeListModel.cs" />
+    <Compile Include="Models\Brigades\BrigadeMemberEditModel.cs" />
+    <Compile Include="Models\Brigades\BrigadeMemberCreateModel.cs" />
+    <Compile Include="Models\Brigades\BrigadeMembersListModel.cs" />
+    <Compile Include="Models\Brigades\BrigadeModel.cs" />
+    <Compile Include="Models\CallResponses\CallResponseListModel.cs" />
     <Compile Include="Models\Calls\CallDetailsViewModel.cs" />
     <Compile Include="Models\Calls\CallItemViewModel.cs" />
     <Compile Include="Models\Calls\CallListViewModel.cs" />
@@ -176,6 +184,13 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Incident\IncidentDetails.cshtml" />
+    <Content Include="Views\CallResponse\CallResponseList.cshtml" />
+    <Content Include="Views\Brigade\BrigadeList.cshtml" />
+    <Content Include="Views\Brigade\BrigadeMembersList.cshtml" />
+    <Content Include="Views\Brigade\EditBrigadeMember.cshtml" />
+    <Content Include="Views\Brigade\CreateBrigadeMember.cshtml" />
+    <Content Include="Views\Brigade\EditBrigade.cshtml" />
+    <Content Include="Views\Brigade\CreateBrigade.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="08b73f3e-cd4c-40e9-95d5-3b219fb62b6f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1122/VictimsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VictimsService.disco" MetadataType="Disco" ID="1315d1e6-7160-4e2d-9ca7-0fcd2daf30e7" SourceId="1" SourceUrl="http://localhost:1122/VictimsService.svc?disco" />
+    <MetadataFile FileName="VictimsService.xsd" MetadataType="Schema" ID="2777f6da-9888-45a0-8d29-e4a3d78dd8bd" SourceId="1" SourceUrl="http://localhost:1122/VictimsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="VictimsService1.xsd" MetadataType="Schema" ID="1ffcd758-0fb9-4032-8699-38c4bd3d107b" SourceId="1" SourceUrl="http://localhost:1122/VictimsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="VictimsService.wsdl" MetadataType="Wsdl" ID="ed2ec224-9c48-4668-80d9-834b868612b9" SourceId="1" SourceUrl="http://localhost:1122/VictimsService.svc?wsdl" />
+    <MetadataFile FileName="VictimsService2.xsd" MetadataType="Schema" ID="6314d99f-ab7c-4f66-b47c-b6df518d1a57" SourceId="1" SourceUrl="http://localhost:1122/VictimsService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

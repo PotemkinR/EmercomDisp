@@ -4,9 +4,9 @@ using log4net;
 using System.Collections.Generic;
 using System.ServiceModel;
 
-namespace EmercomDisp.Data.Clients
+namespace EmercomDisp.Data.Repositories
 {
-    public class CallClient : ICallClient
+    public class CallRepository : ICallRepository
     {
         private readonly ILog _log = LogManager.GetLogger("LOGGER");
 

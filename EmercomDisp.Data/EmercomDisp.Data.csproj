@@ -50,12 +50,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\CallClient.cs" />
-    <Compile Include="Clients\IncidentClient.cs" />
-    <Compile Include="Clients\~Interfaces\ICallClient.cs" />
-    <Compile Include="Clients\~Interfaces\IIncidentClient.cs" />
-    <Compile Include="Clients\~Interfaces\IUserClient.cs" />
-    <Compile Include="Clients\UserClient.cs" />
+    <Compile Include="Connected Services\BrigadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CallResponseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\VictimsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\BrigadeRepository.cs" />
+    <Compile Include="Repositories\CallRepository.cs" />
+    <Compile Include="Repositories\CallResponseRepository.cs" />
+    <Compile Include="Repositories\IncidentRepository.cs" />
+    <Compile Include="Repositories\VictimsRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\IBrigadeRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\ICallRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\ICallResponseRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\IIncidentRepository.cs" />
+    <Compile Include="Repositories\~Interfaces\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Connected Services\CallService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +93,7 @@
     </Compile>
     <Compile Include="Dependencies\DataRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\~Interfaces\IVictimsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmercomDisp.Model\EmercomDisp.Model.csproj">
@@ -82,6 +103,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\BrigadeService\BrigadeService.wsdl" />
+    <None Include="Connected Services\BrigadeService\BrigadeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BrigadeService\BrigadeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BrigadeService\BrigadeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BrigadeService\EmercomDisp.Data.BrigadeService.BrigadeDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BrigadeService\EmercomDisp.Data.BrigadeService.BrigadeMemberDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CallResponseService\CallResponseService.wsdl" />
+    <None Include="Connected Services\CallResponseService\CallResponseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallResponseService\CallResponseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallResponseService\CallResponseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallResponseService\EmercomDisp.Data.CallResponseService.CallResponseDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\CallService\CallService.wsdl" />
     <None Include="Connected Services\CallService\CallService.xsd">
       <SubType>Designer</SubType>
@@ -127,6 +177,19 @@
     <None Include="Connected Services\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\VictimsService\EmercomDisp.Data.VictimsService.VictimDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VictimsService\VictimsService.wsdl" />
+    <None Include="Connected Services\VictimsService\VictimsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\VictimsService\VictimsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\VictimsService\VictimsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\EmercomDisp.Model.Models.Call.datasource" />
   </ItemGroup>
@@ -134,9 +197,12 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BrigadeService\" />
+    <WCFMetadataStorage Include="Connected Services\CallResponseService\" />
     <WCFMetadataStorage Include="Connected Services\CallService\" />
     <WCFMetadataStorage Include="Connected Services\IncidentService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
+    <WCFMetadataStorage Include="Connected Services\VictimsService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\CallService\CallService.disco" />
@@ -179,6 +245,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\IncidentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrigadeService\BrigadeService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrigadeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrigadeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BrigadeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallResponseService\CallResponseService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallResponseService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallResponseService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallResponseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VictimsService\VictimsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VictimsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VictimsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VictimsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

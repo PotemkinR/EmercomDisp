@@ -1,9 +1,9 @@
 ﻿using EmercomDisp.Model.Models;
 using System.Collections.Generic;
 
-namespace EmercomDisp.Data.Clients
+namespace EmercomDisp.Data.Repositories
 {
-    public interface IUserClient
+    public interface IUserRepository
     {
         IEnumerable<User> GetUsers();
         User GetUserByName(string name);

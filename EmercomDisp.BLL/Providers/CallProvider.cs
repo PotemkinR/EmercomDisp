@@ -1,4 +1,4 @@
-﻿using EmercomDisp.Data.Clients;
+﻿using EmercomDisp.Data.Repositories;
 using EmercomDisp.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -8,31 +8,31 @@ namespace EmercomDisp.BLL.Providers
 {
     public class CallProvider:ICallProvider
     {
-        private readonly ICallClient _client;
+        private readonly ICallRepository _callRepository;
 
-        public CallProvider(ICallClient repository)
+        public CallProvider(ICallRepository callRepository)
         {
-            _client = repository ?? throw new ArgumentNullException("repository");
+            _callRepository = callRepository ?? throw new ArgumentNullException("Call Repository");
         }
 
         public IEnumerable<Call> GetCalls()
         {
-            return _client.GetCalls().ToList();
+            return _callRepository.GetCalls().ToList();
         }
 
         public IEnumerable<Call> GetCallsByCategory(string category)
         {
-            return _client.GetCallsByCategory(category);
+            return _callRepository.GetCallsByCategory(category);
         }
 
         public Call GetCallById(int id)
         {
-            return _client.GetCallById(id);
+            return _callRepository.GetCallById(id);
         }
 
         public IEnumerable<string> GetCategories()
         {
-            return _client.GetCategories();
+            return _callRepository.GetCategories();
         }
     }
 }

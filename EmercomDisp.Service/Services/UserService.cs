@@ -25,8 +25,6 @@ namespace EmercomDisp.Service.Services
         }
         public void CreateUser(UserDto user)
         {
-            var call = new CallDto();
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -56,8 +54,6 @@ namespace EmercomDisp.Service.Services
 
         public void UpdateUser(UserDto user)
         {
-            var call = new CallDto();
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -87,7 +83,21 @@ namespace EmercomDisp.Service.Services
 
         public void DeleteUser(string name)
         {
-            throw new System.NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("DeleteUser", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@name", name);
+
+                    connection.Open();
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
 
         public IEnumerable<string> GetRoles()

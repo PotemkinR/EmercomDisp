@@ -27,11 +27,12 @@
                     <span style="font-size: 17px;">@Html.DisplayFor(model => user.Email)</span>
                 </td>
                 <td class="col-lg-3">
-                    <button type="button" class="btn btn-warning col-lg-3" onclick="location.href='@Url.Action("EditUser", "User", new { name = user.Name })';return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-pencil"></span>Edit</button>
+                    <button type="button" class="btn btn-warning col-lg-3" onclick="location.href='@Url.Action("EditUser", "User", new { name = user.Name })';return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-pencil"></span></button>
 
-                    <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("DeleteUser", "User", new { name = user.Name })' ;return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-trash"></span>Delete</button>
+                    <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("DeleteUser", "User", new { name = user.Name })' ;return false;"><span style="margin-right: 5px" class="glyphicon glyphicon-trash"></span></button>
                 </td>
             </tr>
         }
-    </table>
+    </table>    
 </div>
+<button type="button" class="btn btn-default col-lg-3" onclick="location.href='@Url.Action("CreateUser", "User")';return false;"><span style="margin-right: 5px"></span>New User</button>

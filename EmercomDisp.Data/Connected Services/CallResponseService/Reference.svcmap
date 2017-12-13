@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f8fe6093-c646-4b47-bce0-34ac37e5a00c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1122/CallResponseService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CallResponseService.xsd" MetadataType="Schema" ID="1ac45276-5d7b-4de8-a3bf-c6cfd7e0dbf3" SourceId="1" SourceUrl="http://localhost:1122/CallResponseService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CallResponseService1.xsd" MetadataType="Schema" ID="ffc89c8c-5760-43d3-a940-19ca57fbe97b" SourceId="1" SourceUrl="http://localhost:1122/CallResponseService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CallResponseService2.xsd" MetadataType="Schema" ID="2b278d2a-804a-494d-882e-996329c42ec9" SourceId="1" SourceUrl="http://localhost:1122/CallResponseService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CallResponseService.wsdl" MetadataType="Wsdl" ID="66824ad3-3db0-4462-a3f8-3a61609b16fb" SourceId="1" SourceUrl="http://localhost:1122/CallResponseService.svc?wsdl" />
+    <MetadataFile FileName="CallResponseService.disco" MetadataType="Disco" ID="bfc9ff8d-8915-4941-919c-5443b9a83776" SourceId="1" SourceUrl="http://localhost:1122/CallResponseService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

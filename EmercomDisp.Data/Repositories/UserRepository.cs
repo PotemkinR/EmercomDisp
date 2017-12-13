@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 
-namespace EmercomDisp.Data.Clients
+namespace EmercomDisp.Data.Repositories
 {
-    public class UserClient : IUserClient
+    public class UserRepository : IUserRepository
     {
         private readonly ILog _log = LogManager.GetLogger("LOGGER");
 
@@ -41,7 +41,21 @@ namespace EmercomDisp.Data.Clients
 
         public void DeleteUser(string name)
         {
-            throw new NotImplementedException();
+            using (var client = new UserServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    client.DeleteUser(name);
+
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
         }
 
         public IEnumerable<string> GetRoles()

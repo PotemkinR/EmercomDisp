@@ -12,7 +12,7 @@ namespace EmercomDisp.Web.Controllers
 
         public CallController(ICallProvider callProvider)
         {
-            _callProvider = callProvider ?? throw new ArgumentNullException("CallProvider");
+            _callProvider = callProvider ?? throw new ArgumentNullException("Call Provider");
         }
 
         public ActionResult CallDetails(int id)

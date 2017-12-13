@@ -7,49 +7,45 @@
 <div>
     <h4>Call Details</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Call.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Call.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.Reason)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Call.Reason)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.CallTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Call.CallTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Call.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Call.Category)
-        </dd>
-
-    </dl>
+    <table class="table table-striped table-hover table-responsive table-condensed">
+        <tr>
+            <th>
+                <h3 style="font-size:x-large"><span style="font-weight:bolder">Id</span></h3>
+            </th>
+            <th>
+                <h3 style="font-size:x-large"><span style="font-weight:bolder">Address</span></h3>
+            </th>
+            <th>
+                <h3 style="font-size:x-large"><span style="font-weight:bolder">Reason</span></h3>
+            </th>
+            <th>
+                <h3 style="font-size:x-large"><span style="font-weight:bolder">Call Time</span></h3>
+            </th>
+            <th>
+                <h3 style="font-size:x-large"><span style="font-weight:bolder">Category</span></h3>
+            </th>
+        </tr>
+        <tr>
+            <td class="col-lg-2">
+                <span style="font-size: 17px;">@Html.DisplayFor(Model => Model.Call.Id)</span>
+            </td>
+            <td class="col-lg-2">
+                <span style="font-size: 17px;">@Html.DisplayFor(Model => Model.Call.Address)</span>
+            </td>
+            <td class="col-lg-2">
+                <span style="font-size: 17px;">@Html.DisplayFor(Model => Model.Call.Reason)</span>
+            </td>
+            <td class="col-lg-2">
+                <span style="font-size: 17px;">@Html.DisplayFor(Model => Model.Call.CallTime)</span>
+            </td>
+            <td class="col-lg-2">
+                <span style="font-size: 17px;">@Html.DisplayFor(Model => Model.Call.Category)</span>
+            </td>
+        </tr>
+    </table>
 </div>
 @{Html.RenderAction("IncidentDetails", "Incident"); }
+@{Html.RenderAction("CallResponseList", "CallResponse"); }
 <p>
     @Html.ActionLink("Back to list", "CallList", "CallList")
 </p>

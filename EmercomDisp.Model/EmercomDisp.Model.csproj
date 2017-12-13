@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Brigade.cs" />
+    <Compile Include="Models\BrigadeMember.cs" />
     <Compile Include="Models\Call.cs" />
-    <Compile Include="Models\Going.cs" />
+    <Compile Include="Models\CallResponse.cs" />
     <Compile Include="Models\Incident.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Victim.cs" />
