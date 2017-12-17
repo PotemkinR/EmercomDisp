@@ -210,6 +210,27 @@ namespace EmercomDisp.Data.CallResponseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/GetCallResponsesForCall", ReplyAction="http://tempuri.org/ICallResponseService/GetCallResponsesForCallResponse")]
         System.Threading.Tasks.Task<EmercomDisp.Data.CallResponseService.CallResponseDto[]> GetCallResponsesForCallAsync(int callId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/GetCallResponseById", ReplyAction="http://tempuri.org/ICallResponseService/GetCallResponseByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ConnectionFault), Action="http://tempuri.org/ICallResponseService/GetCallResponseByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.CallResponseService.CallResponseDto GetCallResponseById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/GetCallResponseById", ReplyAction="http://tempuri.org/ICallResponseService/GetCallResponseByIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.CallResponseService.CallResponseDto> GetCallResponseByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/UpdateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/UpdateCallResponseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ConnectionFault), Action="http://tempuri.org/ICallResponseService/UpdateCallResponseConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void UpdateCallResponse(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/UpdateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/UpdateCallResponseResponse")]
+        System.Threading.Tasks.Task UpdateCallResponseAsync(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/DeleteCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/DeleteCallResponseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ConnectionFault), Action="http://tempuri.org/ICallResponseService/DeleteCallResponseConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void DeleteCallResponse(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/DeleteCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/DeleteCallResponseResponse")]
+        System.Threading.Tasks.Task DeleteCallResponseAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -245,6 +266,30 @@ namespace EmercomDisp.Data.CallResponseService {
         
         public System.Threading.Tasks.Task<EmercomDisp.Data.CallResponseService.CallResponseDto[]> GetCallResponsesForCallAsync(int callId) {
             return base.Channel.GetCallResponsesForCallAsync(callId);
+        }
+        
+        public EmercomDisp.Data.CallResponseService.CallResponseDto GetCallResponseById(int id) {
+            return base.Channel.GetCallResponseById(id);
+        }
+        
+        public System.Threading.Tasks.Task<EmercomDisp.Data.CallResponseService.CallResponseDto> GetCallResponseByIdAsync(int id) {
+            return base.Channel.GetCallResponseByIdAsync(id);
+        }
+        
+        public void UpdateCallResponse(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse) {
+            base.Channel.UpdateCallResponse(callResponse);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCallResponseAsync(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse) {
+            return base.Channel.UpdateCallResponseAsync(callResponse);
+        }
+        
+        public void DeleteCallResponse(int id) {
+            base.Channel.DeleteCallResponse(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCallResponseAsync(int id) {
+            return base.Channel.DeleteCallResponseAsync(id);
         }
     }
 }

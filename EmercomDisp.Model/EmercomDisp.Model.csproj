@@ -45,7 +45,6 @@
     <Compile Include="Models\Call.cs" />
     <Compile Include="Models\CallResponse.cs" />
     <Compile Include="Models\Equipment.cs" />
-    <Compile Include="Models\Incident.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Victim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

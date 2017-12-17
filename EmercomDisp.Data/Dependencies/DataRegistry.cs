@@ -9,7 +9,6 @@ namespace EmercomDisp.Data.Dependencies
         {
             For<ICallRepository>().Use<CallRepository>();
             For<IUserRepository>().Use<UserRepository>();
-            For<IIncidentRepository>().Use<IncidentRepository>();
             For<IBrigadeRepository>().Use<BrigadeRepository>();
             For<ICallResponseRepository>().Use<CallResponseRepository>();
             For<IVictimsRepository>().Use<VictimsRepository>();

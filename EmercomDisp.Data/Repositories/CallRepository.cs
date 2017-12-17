@@ -118,6 +118,55 @@ namespace EmercomDisp.Data.Repositories
             return categories;
         }
 
+        public void UpdateCall(Call call)
+        {
+            using (var client = new CallServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var updatedCall = new CallDto()
+                    {
+                        Id = call.Id,
+                        Address = call.Address,
+                        Reason = call.Reason,
+                        CallTime = call.CallTime,
+                        Category = call.Category,
+                        IncidentDescription = call.IncidentDescription,
+                        IncidentCause = call.IncidentCause
+                    };
+
+                    client.UpdateCall(updatedCall);
+
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+        }
+
+        public void DeleteCall(int id)
+        {
+            using (var client = new CallServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    client.DeleteCall(id);
+
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+        }
+
         private Call MapCall(CallDto callDto)
         {
             var call = new Call
@@ -126,7 +175,9 @@ namespace EmercomDisp.Data.Repositories
                 Address = callDto.Address,
                 CallTime = callDto.CallTime,
                 Category = callDto.Category,
-                Reason = callDto.Reason
+                Reason = callDto.Reason,
+                IncidentDescription = callDto.IncidentDescription,
+                IncidentCause = callDto.IncidentCause
             };
 
             return call;

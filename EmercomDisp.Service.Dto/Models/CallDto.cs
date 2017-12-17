@@ -20,5 +20,11 @@ namespace EmercomDisp.Service.Dto.Models
 
         [DataMember]
         public string Category { get; set; }
+
+        [DataMember]
+        public string IncidentDescription { get; set; }
+
+        [DataMember]
+        public string IncidentCause { get; set; }
     }
 }

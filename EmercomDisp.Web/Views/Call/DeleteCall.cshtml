@@ -1,0 +1,54 @@
+﻿@model EmercomDisp.Web.Models.Calls.CallDetailsViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Call.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Call.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Call.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Call.Reason)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Call.IncidentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Call.IncidentDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Call.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Call.Category)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />           
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back", "CallDetails", new { id = Model.Call.Id })
+</p>

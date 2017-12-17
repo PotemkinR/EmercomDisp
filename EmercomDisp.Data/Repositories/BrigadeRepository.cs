@@ -202,6 +202,38 @@ namespace EmercomDisp.Data.Repositories
             return brigadeMembers;
         }
 
+        public IEnumerable<BrigadeMember> GetBrigadeMembersByBrigadeId(int id)
+        {
+            var brigadeMembers = new List<BrigadeMember>();
+            using (var client = new BrigadeServiceClient())
+            {
+                try
+                {
+                    client.Open();
+                    var brigadeMembersDto = client.GetBrigadeMembersByBrigadeId(id);
+                    if (brigadeMembersDto != null)
+                    {
+                        foreach (var brigadeMemberDto in brigadeMembersDto)
+                        {
+                            var brigadeMember = new BrigadeMember()
+                            {
+                                Name = brigadeMemberDto.Name,
+                                Id = brigadeMemberDto.Id,
+                                BrigadeName = brigadeMemberDto.BrigadeName
+                            };
+                            brigadeMembers.Add(brigadeMember);
+                        }
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+            return brigadeMembers;
+        }
+
         public void UpdateBrigadeMember(BrigadeMember brigadeMember)
         {
             using (var client = new BrigadeServiceClient())

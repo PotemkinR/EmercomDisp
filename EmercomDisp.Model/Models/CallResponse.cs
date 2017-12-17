@@ -17,6 +17,8 @@ namespace EmercomDisp.Model.Models
 
         public string BrigadeName { get; set; }
 
+        public int IncidentId { get; set; }
+
         public IEnumerable<string> Equipment { get; set; }
     }
 }

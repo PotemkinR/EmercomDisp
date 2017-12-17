@@ -23,10 +23,16 @@ namespace EmercomDisp.Data.VictimsService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AgeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResidenceField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -35,6 +41,19 @@ namespace EmercomDisp.Data.VictimsService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Age {
+            get {
+                return this.AgeField;
+            }
+            set {
+                if ((this.AgeField.Equals(value) != true)) {
+                    this.AgeField = value;
+                    this.RaisePropertyChanged("Age");
+                }
             }
         }
         
@@ -60,6 +79,19 @@ namespace EmercomDisp.Data.VictimsService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Residence {
+            get {
+                return this.ResidenceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResidenceField, value) != true)) {
+                    this.ResidenceField = value;
+                    this.RaisePropertyChanged("Residence");
                 }
             }
         }
@@ -123,12 +155,40 @@ namespace EmercomDisp.Data.VictimsService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="VictimsService.IVictimsService")]
     public interface IVictimsService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsForIncident", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsForIncidentResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/GetVictimsForIncidentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
-        EmercomDisp.Data.VictimsService.VictimDto[] GetVictimsForIncident(int incidentId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimById", ReplyAction="http://tempuri.org/IVictimsService/GetVictimByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/GetVictimByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.VictimsService.VictimDto GetVictimById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsForIncident", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsForIncidentResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto[]> GetVictimsForIncidentAsync(int incidentId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimById", ReplyAction="http://tempuri.org/IVictimsService/GetVictimByIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto> GetVictimByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentId", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.VictimsService.VictimDto[] GetVictimsByIncidentId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentId", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto[]> GetVictimsByIncidentIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/AddVictim", ReplyAction="http://tempuri.org/IVictimsService/AddVictimResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/AddVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void AddVictim(EmercomDisp.Data.VictimsService.VictimDto victim, int callId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/AddVictim", ReplyAction="http://tempuri.org/IVictimsService/AddVictimResponse")]
+        System.Threading.Tasks.Task AddVictimAsync(EmercomDisp.Data.VictimsService.VictimDto victim, int callId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/UpdateVictim", ReplyAction="http://tempuri.org/IVictimsService/UpdateVictimResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/UpdateVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void UpdateVictim(EmercomDisp.Data.VictimsService.VictimDto victim);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/UpdateVictim", ReplyAction="http://tempuri.org/IVictimsService/UpdateVictimResponse")]
+        System.Threading.Tasks.Task UpdateVictimAsync(EmercomDisp.Data.VictimsService.VictimDto victim);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/DeleteVictim", ReplyAction="http://tempuri.org/IVictimsService/DeleteVictimResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/DeleteVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void DeleteVictim(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/DeleteVictim", ReplyAction="http://tempuri.org/IVictimsService/DeleteVictimResponse")]
+        System.Threading.Tasks.Task DeleteVictimAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +218,44 @@ namespace EmercomDisp.Data.VictimsService {
                 base(binding, remoteAddress) {
         }
         
-        public EmercomDisp.Data.VictimsService.VictimDto[] GetVictimsForIncident(int incidentId) {
-            return base.Channel.GetVictimsForIncident(incidentId);
+        public EmercomDisp.Data.VictimsService.VictimDto GetVictimById(int id) {
+            return base.Channel.GetVictimById(id);
         }
         
-        public System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto[]> GetVictimsForIncidentAsync(int incidentId) {
-            return base.Channel.GetVictimsForIncidentAsync(incidentId);
+        public System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto> GetVictimByIdAsync(int id) {
+            return base.Channel.GetVictimByIdAsync(id);
+        }
+        
+        public EmercomDisp.Data.VictimsService.VictimDto[] GetVictimsByIncidentId(int id) {
+            return base.Channel.GetVictimsByIncidentId(id);
+        }
+        
+        public System.Threading.Tasks.Task<EmercomDisp.Data.VictimsService.VictimDto[]> GetVictimsByIncidentIdAsync(int id) {
+            return base.Channel.GetVictimsByIncidentIdAsync(id);
+        }
+        
+        public void AddVictim(EmercomDisp.Data.VictimsService.VictimDto victim, int callId) {
+            base.Channel.AddVictim(victim, callId);
+        }
+        
+        public System.Threading.Tasks.Task AddVictimAsync(EmercomDisp.Data.VictimsService.VictimDto victim, int callId) {
+            return base.Channel.AddVictimAsync(victim, callId);
+        }
+        
+        public void UpdateVictim(EmercomDisp.Data.VictimsService.VictimDto victim) {
+            base.Channel.UpdateVictim(victim);
+        }
+        
+        public System.Threading.Tasks.Task UpdateVictimAsync(EmercomDisp.Data.VictimsService.VictimDto victim) {
+            return base.Channel.UpdateVictimAsync(victim);
+        }
+        
+        public void DeleteVictim(int id) {
+            base.Channel.DeleteVictim(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteVictimAsync(int id) {
+            return base.Channel.DeleteVictimAsync(id);
         }
     }
 }

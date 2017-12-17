@@ -2,6 +2,7 @@
 using EmercomDisp.Model.Models;
 using EmercomDisp.Web.Models.Brigades;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,10 +19,21 @@ namespace EmercomDisp.Web.Controllers
 
         public ActionResult BrigadeList()
         {
-            var model = new BrigadeListModel()
+            var model = new BrigadeListModel();
+            var brigadeModelList = new List<BrigadeModel>();
+            var brigadeList = _brigadeProvider.GetBrigades();
+            foreach(var brigade in brigadeList)
             {
-                Brigades = _brigadeProvider.GetBrigades()
-            };
+                var brigadeModel = new BrigadeModel()
+                {
+                    Id = brigade.Id,
+                    BrigadeName = brigade.Name,
+                    Members = _brigadeProvider.GetBrigadeMembersByBrigadeId(brigade.Id)
+                };
+                brigadeModelList.Add(brigadeModel);
+            }
+            model.Brigades = brigadeModelList;
+
             return View(model);
         }
 
@@ -44,7 +56,7 @@ namespace EmercomDisp.Web.Controllers
 
             var brigade = _brigadeProvider.GetBrigadeById((int)id);
 
-            if(brigade != null)
+            if(brigade.Id != 0)
             {
                 var model = new BrigadeModel()
                 {
@@ -95,9 +107,13 @@ namespace EmercomDisp.Web.Controllers
             return View();
         }
 
-        public ActionResult DeleteBrigade(int id)
+        public ActionResult DeleteBrigade(int? id)
         {
-            _brigadeProvider.DeleteBrigade(id);
+            if(id == null )
+            {
+                return RedirectToAction("BrigadeList");
+            }
+            _brigadeProvider.DeleteBrigade((int)id);
             return RedirectToAction("BrigadeList");
         }
 
@@ -111,6 +127,7 @@ namespace EmercomDisp.Web.Controllers
 
             var brigadeMember = _brigadeProvider.GetBrigadeMemberById((int)id);
             var brigades = _brigadeProvider.GetBrigades();
+
             if (brigadeMember.Name != null)
             {
                 var model = new BrigadeMemberEditModel()
@@ -143,10 +160,13 @@ namespace EmercomDisp.Web.Controllers
                 };
 
                 _brigadeProvider.UpdateBrigadeMember(updatedBrigadeMember);
+
+                return RedirectToAction("BrigadeMembersList");
             }
-            return RedirectToAction("BrigadeMembersList");
+            return View();
         }
 
+        [HttpPost]
         public ActionResult DeleteBrigadeMember(int id)
         {
             _brigadeProvider.DeleteBrigadeMember(id);
@@ -179,8 +199,10 @@ namespace EmercomDisp.Web.Controllers
                     BrigadeName = model.SelectedBrigadeName
                 };
                 _brigadeProvider.CreateBrigadeMember(newBrigadeMember);
+
+                return RedirectToAction("BrigadeMembersList");
             }
-            return RedirectToAction("BrigadeMembersList");
+            return View();
         }
     }
 }

@@ -48,7 +48,6 @@
     <Compile Include="Contracts\ICallResponseService.cs" />
     <Compile Include="Contracts\ICallService.cs" />
     <Compile Include="Contracts\IEquipmentService.cs" />
-    <Compile Include="Contracts\IIncidentService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IVictimsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

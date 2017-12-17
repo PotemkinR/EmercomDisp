@@ -130,12 +130,27 @@ namespace EmercomDisp.Data.EquipmentService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipment", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentResponse")]
         System.Threading.Tasks.Task<EmercomDisp.Data.EquipmentService.EquipmentDto[]> GetEquipmentAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdConnectionFaultF" +
+            "ault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.EquipmentService.EquipmentDto[] GetEquipmentByCallResponseId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.EquipmentService.EquipmentDto[]> GetEquipmentByCallResponseIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentById", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.EquipmentService.EquipmentDto GetEquipmentById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentById", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse")]
         System.Threading.Tasks.Task<EmercomDisp.Data.EquipmentService.EquipmentDto> GetEquipmentByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipmentList", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void UpdateEquipmentList(EmercomDisp.Data.EquipmentService.EquipmentDto[] equipment, int callResponseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipmentList", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentListResponse")]
+        System.Threading.Tasks.Task UpdateEquipmentListAsync(EmercomDisp.Data.EquipmentService.EquipmentDto[] equipment, int callResponseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/CreateEquipment", ReplyAction="http://tempuri.org/IEquipmentService/CreateEquipmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/CreateEquipmentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
@@ -194,12 +209,28 @@ namespace EmercomDisp.Data.EquipmentService {
             return base.Channel.GetEquipmentAsync();
         }
         
+        public EmercomDisp.Data.EquipmentService.EquipmentDto[] GetEquipmentByCallResponseId(int id) {
+            return base.Channel.GetEquipmentByCallResponseId(id);
+        }
+        
+        public System.Threading.Tasks.Task<EmercomDisp.Data.EquipmentService.EquipmentDto[]> GetEquipmentByCallResponseIdAsync(int id) {
+            return base.Channel.GetEquipmentByCallResponseIdAsync(id);
+        }
+        
         public EmercomDisp.Data.EquipmentService.EquipmentDto GetEquipmentById(int id) {
             return base.Channel.GetEquipmentById(id);
         }
         
         public System.Threading.Tasks.Task<EmercomDisp.Data.EquipmentService.EquipmentDto> GetEquipmentByIdAsync(int id) {
             return base.Channel.GetEquipmentByIdAsync(id);
+        }
+        
+        public void UpdateEquipmentList(EmercomDisp.Data.EquipmentService.EquipmentDto[] equipment, int callResponseId) {
+            base.Channel.UpdateEquipmentList(equipment, callResponseId);
+        }
+        
+        public System.Threading.Tasks.Task UpdateEquipmentListAsync(EmercomDisp.Data.EquipmentService.EquipmentDto[] equipment, int callResponseId) {
+            return base.Channel.UpdateEquipmentListAsync(equipment, callResponseId);
         }
         
         public void CreateEquipment(EmercomDisp.Data.EquipmentService.EquipmentDto equipment) {

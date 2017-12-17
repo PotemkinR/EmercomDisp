@@ -35,6 +35,12 @@ namespace EmercomDisp.Data.CallService {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IncidentCauseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IncidentDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReasonField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -95,6 +101,32 @@ namespace EmercomDisp.Data.CallService {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IncidentCause {
+            get {
+                return this.IncidentCauseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IncidentCauseField, value) != true)) {
+                    this.IncidentCauseField = value;
+                    this.RaisePropertyChanged("IncidentCause");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IncidentDescription {
+            get {
+                return this.IncidentDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IncidentDescriptionField, value) != true)) {
+                    this.IncidentDescriptionField = value;
+                    this.RaisePropertyChanged("IncidentDescription");
                 }
             }
         }
@@ -198,6 +230,20 @@ namespace EmercomDisp.Data.CallService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/GetCategories", ReplyAction="http://tempuri.org/ICallService/GetCategoriesResponse")]
         System.Threading.Tasks.Task<string[]> GetCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/UpdateCall", ReplyAction="http://tempuri.org/ICallService/UpdateCallResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/UpdateCallConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void UpdateCall(EmercomDisp.Data.CallService.CallDto call);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/UpdateCall", ReplyAction="http://tempuri.org/ICallService/UpdateCallResponse")]
+        System.Threading.Tasks.Task UpdateCallAsync(EmercomDisp.Data.CallService.CallDto call);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/DeleteCall", ReplyAction="http://tempuri.org/ICallService/DeleteCallResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallService.ConnectionFault), Action="http://tempuri.org/ICallService/DeleteCallConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        void DeleteCall(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallService/DeleteCall", ReplyAction="http://tempuri.org/ICallService/DeleteCallResponse")]
+        System.Threading.Tasks.Task DeleteCallAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -257,6 +303,22 @@ namespace EmercomDisp.Data.CallService {
         
         public System.Threading.Tasks.Task<string[]> GetCategoriesAsync() {
             return base.Channel.GetCategoriesAsync();
+        }
+        
+        public void UpdateCall(EmercomDisp.Data.CallService.CallDto call) {
+            base.Channel.UpdateCall(call);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCallAsync(EmercomDisp.Data.CallService.CallDto call) {
+            return base.Channel.UpdateCallAsync(call);
+        }
+        
+        public void DeleteCall(int id) {
+            base.Channel.DeleteCall(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCallAsync(int id) {
+            return base.Channel.DeleteCallAsync(id);
         }
     }
 }

@@ -13,5 +13,9 @@ namespace EmercomDisp.Model.Models
         public DateTime CallTime { get; set; }
 
         public string Category { get; set; }
+
+        public string IncidentDescription { get; set; }
+
+        public string IncidentCause { get; set; }
     }
 }

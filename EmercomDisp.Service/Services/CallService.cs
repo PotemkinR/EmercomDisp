@@ -88,7 +88,7 @@ namespace EmercomDisp.Service.Services
                 using (var cmd = new SqlCommand("GetCallsByCategory", connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CategoryName", category);
+                    cmd.Parameters.AddWithValue("@categoryName", category);
 
                     connection.Open();
 
@@ -141,9 +141,76 @@ namespace EmercomDisp.Service.Services
                 Address = reader[1].ToString(),
                 Reason = reader[2].ToString(),
                 CallTime = (DateTime)reader[3],
-                Category = reader[6].ToString()
+                Category = reader[6].ToString(),
+                IncidentDescription = reader[8].ToString(),
+                IncidentCause = reader[9].ToString()
             };
             return call;
+        }
+
+        public void UpdateCall(CallDto call)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                connection.Open();
+
+                var transaction = connection.BeginTransaction();
+                try
+                {
+                    var command1 = new SqlCommand("UpdateCall", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = transaction
+                    };
+                    
+                    command1.Parameters.AddWithValue("@id", call.Id);
+                    command1.Parameters.AddWithValue("@address", call.Address);
+                    command1.Parameters.AddWithValue("@reason", call.Reason);
+                    command1.Parameters.AddWithValue("@callTime", call.CallTime);
+                    command1.Parameters.AddWithValue("@category", call.Category);
+                    command1.ExecuteNonQuery();
+
+                    var command2 = new SqlCommand("UpdateIncident", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = transaction
+                    };
+
+                    command2.Parameters.AddWithValue("@id", call.Id);
+                    command2.Parameters.AddWithValue("@description", call.IncidentDescription);
+                    command2.Parameters.AddWithValue("@cause", call.IncidentCause);
+
+                    command1.ExecuteNonQuery();
+                    command2.ExecuteNonQuery();
+
+                    transaction.Commit();
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                }
+            }
+        }
+
+        public void DeleteCall(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("DeleteCall", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
     }
 }

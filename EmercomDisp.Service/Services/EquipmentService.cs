@@ -54,6 +54,78 @@ namespace EmercomDisp.Service.Services
             return equipmentList;
         }
 
+        public IEnumerable<EquipmentDto> GetEquipmentByCallResponseId(int id)
+        {
+            var equipmentList = new List<EquipmentDto>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand("GetEquipmentByCallResponseId", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var equipmentItem = new EquipmentDto()
+                            {
+                                Id = (int)reader[0],
+                                Name = reader[1].ToString()
+                            };
+                            equipmentList.Add(equipmentItem);
+                        }
+                    };
+                    connection.Close();
+                }
+            }
+            return equipmentList;
+        }
+
+        public void UpdateEquipmentList(IEnumerable<EquipmentDto> equipment, int callResponseId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                connection.Open();
+
+                var transaction = connection.BeginTransaction();
+                try
+                {
+                    var command1 = new SqlCommand("DeleteEquipmentByCallResponseId", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = transaction
+                    };
+
+                    command1.Parameters.AddWithValue("@id", callResponseId);
+                    command1.ExecuteNonQuery();
+
+                    foreach (var item in equipment)
+                    {
+                        var command = new SqlCommand("AddEquipmentByCallResponseId", connection)
+                        {
+                            CommandType = CommandType.StoredProcedure,
+                            Transaction = transaction
+                        };
+                        command.Parameters.AddWithValue("@id", item.Id);
+                        command.Parameters.AddWithValue("@callResponseId", callResponseId);
+                        command.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                }
+            }
+        }
+
         public EquipmentDto GetEquipmentById(int id)
         {
             var equipment = new EquipmentDto();

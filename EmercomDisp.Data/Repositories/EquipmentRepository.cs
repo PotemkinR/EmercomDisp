@@ -41,6 +41,66 @@ namespace EmercomDisp.Data.Repositories
             return equipmentList;
         }
 
+        public IEnumerable<Equipment> GetEquipmentByCallResponseId(int id)
+        {
+            var equipmentList = new List<Equipment>();
+            using (var client = new EquipmentServiceClient())
+            {
+                try
+                {
+                    client.Open();
+                    var equipmentListDto = client.GetEquipmentByCallResponseId(id);
+                    if (equipmentListDto != null)
+                    {
+                        foreach (var equipmentItemDto in equipmentListDto)
+                        {
+                            var equipmentItem = new Equipment()
+                            {
+                                Id = equipmentItemDto.Id,
+                                Name = equipmentItemDto.Name
+                            };
+                            equipmentList.Add(equipmentItem);
+                        }
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+            return equipmentList;
+        }
+
+        public void UpdateEquipmentList(IEnumerable<Equipment> equipment, int callResponseId)
+        {
+            using (var client = new EquipmentServiceClient())
+            {
+                try
+                {
+                    client.Open();
+                    var equipmentListDto = new List<EquipmentDto>();
+                    foreach (var item in equipment)
+                    {
+                        var itemDto = new EquipmentDto()
+                        {
+                            Id = item.Id,
+                            Name = item.Name
+                        };
+                        equipmentListDto.Add(itemDto);
+                    }
+
+                    client.UpdateEquipmentList(equipmentListDto.ToArray(), callResponseId);
+
+                    client.Close();
+                }
+                catch (FaultException<ConnectionFault> e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+        }
+
         public Equipment GetEquipmentById(int id)
         {
             var equipment = new Equipment();

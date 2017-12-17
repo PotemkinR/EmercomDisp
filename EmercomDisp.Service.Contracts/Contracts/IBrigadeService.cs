@@ -25,6 +25,10 @@ namespace EmercomDisp.Service.Contracts.Contracts
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        IEnumerable<BrigadeMemberDto> GetBrigadeMembersByBrigadeId(int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
         void UpdateBrigade(BrigadeDto brigade);
 
         [OperationContract]

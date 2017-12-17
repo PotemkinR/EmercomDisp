@@ -244,6 +244,14 @@ namespace EmercomDisp.Data.BrigadeService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembers", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersResponse")]
         System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeMemberDto[]> GetBrigadeMembersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeId", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdConnectionFaultFau" +
+            "lt", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        EmercomDisp.Data.BrigadeService.BrigadeMemberDto[] GetBrigadeMembersByBrigadeId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeId", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdResponse")]
+        System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeMemberDto[]> GetBrigadeMembersByBrigadeIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/UpdateBrigade", ReplyAction="http://tempuri.org/IBrigadeService/UpdateBrigadeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/UpdateBrigadeConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateBrigade(EmercomDisp.Data.BrigadeService.BrigadeDto brigade);
@@ -351,6 +359,14 @@ namespace EmercomDisp.Data.BrigadeService {
         
         public System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeMemberDto[]> GetBrigadeMembersAsync() {
             return base.Channel.GetBrigadeMembersAsync();
+        }
+        
+        public EmercomDisp.Data.BrigadeService.BrigadeMemberDto[] GetBrigadeMembersByBrigadeId(int id) {
+            return base.Channel.GetBrigadeMembersByBrigadeId(id);
+        }
+        
+        public System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeMemberDto[]> GetBrigadeMembersByBrigadeIdAsync(int id) {
+            return base.Channel.GetBrigadeMembersByBrigadeIdAsync(id);
         }
         
         public void UpdateBrigade(EmercomDisp.Data.BrigadeService.BrigadeDto brigade) {

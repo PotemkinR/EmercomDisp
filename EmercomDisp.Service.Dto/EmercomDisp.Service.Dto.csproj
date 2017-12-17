@@ -46,7 +46,6 @@
     <Compile Include="Models\CallDto.cs" />
     <Compile Include="Models\CallResponseDto.cs" />
     <Compile Include="Models\EquipmentDto.cs" />
-    <Compile Include="Models\IncidentDto.cs" />
     <Compile Include="Exceptions\ConnectionFault.cs" />
     <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\VictimDto.cs" />

@@ -50,6 +50,11 @@ namespace EmercomDisp.BLL.Providers
             return _brigadeRepository.GetBrigadeMembers();
         }
 
+        public IEnumerable<BrigadeMember> GetBrigadeMembersByBrigadeId(int id)
+        {
+            return _brigadeRepository.GetBrigadeMembersByBrigadeId(id);
+        }
+
         public BrigadeMember GetBrigadeMemberById(int id)
         {
             return _brigadeRepository.GetBrigadeMemberById(id);

@@ -22,5 +22,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         IEnumerable<string> GetCategories();
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        void UpdateCall(CallDto call);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        void DeleteCall(int id);
     }
 }

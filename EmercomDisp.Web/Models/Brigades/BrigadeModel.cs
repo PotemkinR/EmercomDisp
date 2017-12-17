@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EmercomDisp.Model.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmercomDisp.Web.Models.Brigades
 {
@@ -8,5 +10,7 @@ namespace EmercomDisp.Web.Models.Brigades
 
         [Required]
         public string BrigadeName { get; set; }
+
+        public IEnumerable<BrigadeMember> Members { get; set; }
     }
 }

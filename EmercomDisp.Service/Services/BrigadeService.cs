@@ -124,6 +124,37 @@ namespace EmercomDisp.Service.Services
             return brigadeList;
         }
 
+        public IEnumerable<BrigadeMemberDto> GetBrigadeMembersByBrigadeId(int id)
+        {
+            var brigadeMembersList = new List<BrigadeMemberDto>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand("GetBrigadeMembersByBrigadeId", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var brigadeMember = new BrigadeMemberDto()
+                            {
+                                Name = reader[1].ToString(),
+                                Id = (int)reader[0]
+                            };
+                            brigadeMembersList.Add(brigadeMember);
+                        }
+                    };
+                    connection.Close();
+                }
+            }
+            return brigadeMembersList;
+        }
+
         public void UpdateBrigade(BrigadeDto brigade)
         {
             using (var connection = new SqlConnection(_connectionString))

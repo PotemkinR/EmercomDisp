@@ -13,6 +13,7 @@ namespace EmercomDisp.Data.Repositories
         void CreateBrigade(Brigade brigade);
         void DeleteBrigade(int id);
         IEnumerable<BrigadeMember> GetBrigadeMembers();
+        IEnumerable<BrigadeMember> GetBrigadeMembersByBrigadeId(int id);
         BrigadeMember GetBrigadeMemberById(int id);
         void UpdateBrigadeMember(BrigadeMember brigadeMember);
         void DeleteBrigadeMember(int id);

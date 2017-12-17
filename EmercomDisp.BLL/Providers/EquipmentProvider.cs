@@ -19,6 +19,16 @@ namespace EmercomDisp.BLL.Providers
             return _equipmentRepository.GetEquipment();
         }
 
+        public IEnumerable<Equipment> GetEquipmentByCallResponseId(int id)
+        {
+            return _equipmentRepository.GetEquipmentByCallResponseId(id);
+        }
+
+        public void UpdateEquipmentList(IEnumerable<Equipment> equipment, int callResponseId)
+        {
+            _equipmentRepository.UpdateEquipmentList(equipment, callResponseId);
+        }
+
         public Equipment GetEquipmentById(int id)
         {
             return _equipmentRepository.GetEquipmentById(id);

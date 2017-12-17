@@ -14,9 +14,24 @@ namespace EmercomDisp.BLL.Providers
             _callResponseRepository = callResponseRepository ?? throw new ArgumentNullException("Call Response Repository");
         }
 
+        public CallResponse GetCallResponseById(int id)
+        {
+            return _callResponseRepository.GetCallResponseById(id);
+        }
+
         public IEnumerable<CallResponse> GetCallResponsesForCall(int callId)
         {
             return _callResponseRepository.GetCallResponsesForCall(callId);
+        }
+
+        public void UpdateCallResponse(CallResponse callResponse)
+        {
+            _callResponseRepository.UpdateCallResponse(callResponse);
+        }
+
+        public void DeleteCallResponse(int id)
+        {
+            _callResponseRepository.DeleteCallResponse(id);
         }
     }
 }

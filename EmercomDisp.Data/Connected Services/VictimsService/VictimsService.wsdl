@@ -7,26 +7,130 @@
       <xsd:import schemaLocation="http://localhost:1122/VictimsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IVictimsService_GetVictimsForIncident_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetVictimsForIncident" />
+  <wsdl:message name="IVictimsService_GetVictimById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVictimById" />
   </wsdl:message>
-  <wsdl:message name="IVictimsService_GetVictimsForIncident_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetVictimsForIncidentResponse" />
+  <wsdl:message name="IVictimsService_GetVictimById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVictimByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IVictimsService_GetVictimsForIncident_ConnectionFaultFault_FaultMessage">
+  <wsdl:message name="IVictimsService_GetVictimById_ConnectionFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
   </wsdl:message>
+  <wsdl:message name="IVictimsService_GetVictimsByIncidentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVictimsByIncidentId" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_GetVictimsByIncidentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVictimsByIncidentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_GetVictimsByIncidentId_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_AddVictim_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVictim" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_AddVictim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVictimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_AddVictim_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_UpdateVictim_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVictim" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_UpdateVictim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVictimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_UpdateVictim_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_DeleteVictim_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVictim" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_DeleteVictim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVictimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVictimsService_DeleteVictim_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+  </wsdl:message>
   <wsdl:portType name="IVictimsService">
-    <wsdl:operation name="GetVictimsForIncident">
-      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsForIncident" message="tns:IVictimsService_GetVictimsForIncident_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsForIncidentResponse" message="tns:IVictimsService_GetVictimsForIncident_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsForIncidentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_GetVictimsForIncident_ConnectionFaultFault_FaultMessage" />
+    <wsdl:operation name="GetVictimById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/GetVictimById" message="tns:IVictimsService_GetVictimById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/GetVictimByIdResponse" message="tns:IVictimsService_GetVictimById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/GetVictimByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_GetVictimById_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVictimsByIncidentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentId" message="tns:IVictimsService_GetVictimsByIncidentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdResponse" message="tns:IVictimsService_GetVictimsByIncidentId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_GetVictimsByIncidentId_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVictim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/AddVictim" message="tns:IVictimsService_AddVictim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/AddVictimResponse" message="tns:IVictimsService_AddVictim_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/AddVictimConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_AddVictim_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVictim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/UpdateVictim" message="tns:IVictimsService_UpdateVictim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/UpdateVictimResponse" message="tns:IVictimsService_UpdateVictim_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/UpdateVictimConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_UpdateVictim_ConnectionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVictim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVictimsService/DeleteVictim" message="tns:IVictimsService_DeleteVictim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVictimsService/DeleteVictimResponse" message="tns:IVictimsService_DeleteVictim_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVictimsService/DeleteVictimConnectionFaultFault" name="ConnectionFaultFault" message="tns:IVictimsService_DeleteVictim_ConnectionFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IVictimsService" type="tns:IVictimsService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetVictimsForIncident">
-      <soap:operation soapAction="http://tempuri.org/IVictimsService/GetVictimsForIncident" style="document" />
+    <wsdl:operation name="GetVictimById">
+      <soap:operation soapAction="http://tempuri.org/IVictimsService/GetVictimById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVictimsByIncidentId">
+      <soap:operation soapAction="http://tempuri.org/IVictimsService/GetVictimsByIncidentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddVictim">
+      <soap:operation soapAction="http://tempuri.org/IVictimsService/AddVictim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVictim">
+      <soap:operation soapAction="http://tempuri.org/IVictimsService/UpdateVictim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVictim">
+      <soap:operation soapAction="http://tempuri.org/IVictimsService/DeleteVictim" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

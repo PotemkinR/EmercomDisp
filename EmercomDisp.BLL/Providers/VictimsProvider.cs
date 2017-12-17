@@ -13,9 +13,30 @@ namespace EmercomDisp.BLL.Providers
         {
             _victimsRepository = victimsRepository ?? throw new ArgumentNullException("Victims Repository");
         }
-        public IEnumerable<Victim> GetVictimsForIncident(int incidentId)
+
+        public Victim GetVictimById(int id)
         {
-            return _victimsRepository.GetVictimsForIncident(incidentId);
+            return _victimsRepository.GetVictimById(id);
+        }
+
+        public IEnumerable<Victim> GetVictimsByIncidentId(int id)
+        {
+            return _victimsRepository.GetVictimsByIncidentId(id);
+        }
+
+        public void AddVictim(Victim victim, int callId)
+        {
+            _victimsRepository.AddVictim(victim, callId);
+        }
+
+        public void UpdateVictim(Victim victim)
+        {
+            _victimsRepository.UpdateVictim(victim);
+        }
+
+        public void DeleteVictim(int id)
+        {
+            _victimsRepository.DeleteVictim(id);
         }
     }
 }
