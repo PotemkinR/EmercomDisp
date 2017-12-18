@@ -38,22 +38,29 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            callResponse.Id = (int)reader[0];
-                            callResponse.TransferTime = (DateTime)reader[1];
-                            callResponse.ArriveTime = (DateTime)reader[2];
-                            callResponse.FinishTime = (DateTime)reader[3];
-                            callResponse.ReturnTime = (DateTime)reader[4];
-                            callResponse.IncidentId = (int)reader[5];
-                            callResponse.BrigadeName = reader[6].ToString();
-                        }
-                    };
-                    connection.Close();
+                            while (reader.Read())
+                            {
+                                callResponse.Id = (int)reader[0];
+                                callResponse.TransferTime = (DateTime)reader[1];
+                                callResponse.ArriveTime = (DateTime)reader[2];
+                                callResponse.FinishTime = (DateTime)reader[3];
+                                callResponse.ReturnTime = (DateTime)reader[4];
+                                callResponse.IncidentId = (int)reader[5];
+                                callResponse.BrigadeName = reader[6].ToString();
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return callResponse;
@@ -72,25 +79,32 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@callId", callId);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var callResponse = new CallResponseDto()
+                            while (reader.Read())
                             {
-                                Id = (int)reader[0],
-                                TransferTime = (DateTime)reader[3],
-                                ArriveTime = (DateTime)reader[4],
-                                FinishTime = (DateTime)reader[5],
-                                ReturnTime = (DateTime)reader[6],
-                                BrigadeName = reader[8].ToString()
-                            };
-                            callResponseList.Add(callResponse);
-                        }
-                    };
-                    connection.Close();
+                                var callResponse = new CallResponseDto()
+                                {
+                                    Id = (int)reader[0],
+                                    TransferTime = (DateTime)reader[3],
+                                    ArriveTime = (DateTime)reader[4],
+                                    FinishTime = (DateTime)reader[5],
+                                    ReturnTime = (DateTime)reader[6],
+                                    BrigadeName = reader[8].ToString()
+                                };
+                                callResponseList.Add(callResponse);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }           
             }
 
@@ -112,10 +126,17 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@finishTime", callResponse.FinishTime);
                     cmd.Parameters.AddWithValue("@returnTime", callResponse.ReturnTime);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -131,10 +152,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }

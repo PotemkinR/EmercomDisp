@@ -163,7 +163,7 @@ namespace EmercomDisp.Data.Repositories
 
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }

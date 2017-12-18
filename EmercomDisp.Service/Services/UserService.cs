@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using EmercomDisp.Service.Contracts.Contracts;
+﻿using EmercomDisp.Service.Contracts.Contracts;
 using EmercomDisp.Service.Dto.Models;
+using System.Collections.Generic;
 using System.Configuration;
-using System.ServiceModel;
-using System.Data.SqlClient;
 using System.Data;
-using System;
+using System.Data.SqlClient;
+using System.ServiceModel;
 
 namespace EmercomDisp.Service.Services
 {
@@ -24,31 +23,49 @@ namespace EmercomDisp.Service.Services
                 throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
             }
         }
+
         public void CreateUser(UserDto user)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
 
-                using (var cmd = new SqlCommand("CreateUser", connection))
+                connection.Open();
+                var transaction = connection.BeginTransaction();
+
+                try
                 {
-                    var roles = new DataTable();
-                    roles.Columns.Add("RoleName", typeof(string));
-                    foreach (var role in user.Roles)
+                    foreach (var item in user.Roles)
                     {
-                        roles.Rows.Add(role);
+                        using (var cmd = new SqlCommand("AddUserRole", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Transaction = transaction;
+
+                            cmd.Parameters.AddWithValue("@role", item);
+                            cmd.Parameters.AddWithValue("@userName", user.Name);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", user.Name);
-                    cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
-                    cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@roleList", roles);
+                    using (var cmd = new SqlCommand("CreateUser", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Transaction = transaction;
 
-                    connection.Open();
-
-                    cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@name", user.Name);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                        cmd.ExecuteNonQuery();
+                    }
+                    
+                    transaction.Commit();
                     connection.Close();
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
                 }
             }
         }
@@ -60,48 +77,50 @@ namespace EmercomDisp.Service.Services
                 connection.ConnectionString = _connectionString;
 
                 connection.Open();
-
                 var transaction = connection.BeginTransaction();
 
                 try
-                {
-                    var command1 = new SqlCommand("DeleteUserRoles", connection)
+                {                  
+                    using (var command = new SqlCommand("DeleteUserRoles", connection))
                     {
-                        CommandType = CommandType.StoredProcedure,
-                        Transaction = transaction
-                    };
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Transaction = transaction;                   
 
-                    command1.Parameters.AddWithValue("@name", user.Name);
-                    command1.ExecuteNonQuery();
-
-                    foreach (var item in user.Roles)
-                    {
-                        var command = new SqlCommand("AddUserRole", connection)
-                        {
-                            CommandType = CommandType.StoredProcedure,
-                            Transaction = transaction
-                        };
-                        command.Parameters.AddWithValue("@role", item);
-                        command.Parameters.AddWithValue("@userName", user.Name);
+                        command.Parameters.AddWithValue("@name", user.Name);
                         command.ExecuteNonQuery();
                     }
 
-                    var command2 = new SqlCommand("UpdateUser", connection)
+                    foreach (var item in user.Roles)
                     {
-                        CommandType = CommandType.StoredProcedure,
-                        Transaction = transaction
-                    };
+                        using (var command = new SqlCommand("AddUserRole", connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Transaction = transaction;
 
-                    command2.Parameters.AddWithValue("@name", user.Name);
-                    command2.Parameters.AddWithValue("@email", user.Email);
-                    command2.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
-                    command2.ExecuteNonQuery();
+                            command.Parameters.AddWithValue("@role", item);
+                            command.Parameters.AddWithValue("@userName", user.Name);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    using (var command = new SqlCommand("UpdateUser", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Transaction = transaction;
+
+                        command.Parameters.AddWithValue("@name", user.Name);
+                        command.Parameters.AddWithValue("@email", user.Email);
+                        command.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                        command.ExecuteNonQuery();
+                    }
 
                     transaction.Commit();
+                    connection.Close();
                 }
                 catch (SqlException e)
                 {
                     transaction.Rollback();
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
                 }
             }
         }
@@ -117,10 +136,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@name", name);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -135,18 +161,25 @@ namespace EmercomDisp.Service.Services
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
-                        {
-                            var category = reader["Name"].ToString();
+                        connection.Open();
 
-                            roles.Add(category);
-                        }
-                    };
-                    connection.Close();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var category = reader["Name"].ToString();
+
+                                roles.Add(category);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return roles;
@@ -158,45 +191,54 @@ namespace EmercomDisp.Service.Services
             {
                 Roles = new List<string>()
             };
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
 
-                using (var cmd = new SqlCommand("GetUserByName", connection))
+                connection.Open();
+                var transaction = connection.BeginTransaction();              
+
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", name);
-
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var cmd = new SqlCommand("GetUserByName", connection))
                     {
-                        while (reader.Read())
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Transaction = transaction;
+                        cmd.Parameters.AddWithValue("@name", name);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            user.Name = reader[1].ToString();
-                            user.PasswordHash = (byte[])reader[2];
-                            user.Email = reader[3].ToString();
-                        }
-                    };
+                            while (reader.Read())
+                            {
+                                user.Name = reader[1].ToString();
+                                user.PasswordHash = (byte[])reader[2];
+                                user.Email = reader[3].ToString();
+                            }
+                        };
+                    }
+
+                    using (var cmd = new SqlCommand("GetUserRoles", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Transaction = transaction;
+                        cmd.Parameters.AddWithValue("@name", name);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var role = reader[0].ToString();
+                                user.Roles.Add(role);
+                            }
+                        };
+                    }
+                    transaction.Commit();
                     connection.Close();
                 }
-                using (var cmd = new SqlCommand("GetUserRoles", connection))
+                catch(SqlException e)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", name);
-
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var role = reader[0].ToString();
-                            user.Roles.Add(role);
-                        }
-                    };
-                    connection.Close();
+                    transaction.Rollback();
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
                 }
             }
             return user;
@@ -212,21 +254,28 @@ namespace EmercomDisp.Service.Services
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var user = new UserDto()
+                            while (reader.Read())
                             {
-                                Name = reader[1].ToString(),
-                                Email = reader[3].ToString()
-                            };
-                            userList.Add(user);
-                        }
-                    };
-                    connection.Close();
+                                var user = new UserDto()
+                                {
+                                    Name = reader[1].ToString(),
+                                    Email = reader[3].ToString()
+                                };
+                                userList.Add(user);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return userList;

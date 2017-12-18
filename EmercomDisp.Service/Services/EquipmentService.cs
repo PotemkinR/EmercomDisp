@@ -34,21 +34,28 @@ namespace EmercomDisp.Service.Services
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var equipmentItem = new EquipmentDto()
+                            while (reader.Read())
                             {
-                                Id = (int)reader[0],
-                                Name = reader[1].ToString()
-                            };
-                            equipmentList.Add(equipmentItem);
-                        }
-                    };
-                    connection.Close();
+                                var equipmentItem = new EquipmentDto()
+                                {
+                                    Id = (int)reader[0],
+                                    Name = reader[1].ToString()
+                                };
+                                equipmentList.Add(equipmentItem);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return equipmentList;
@@ -65,21 +72,28 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var equipmentItem = new EquipmentDto()
+                            while (reader.Read())
                             {
-                                Id = (int)reader[0],
-                                Name = reader[1].ToString()
-                            };
-                            equipmentList.Add(equipmentItem);
-                        }
-                    };
-                    connection.Close();
+                                var equipmentItem = new EquipmentDto()
+                                {
+                                    Id = (int)reader[0],
+                                    Name = reader[1].ToString()
+                                };
+                                equipmentList.Add(equipmentItem);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return equipmentList;
@@ -122,6 +136,7 @@ namespace EmercomDisp.Service.Services
                 catch (SqlException e)
                 {
                     transaction.Rollback();
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
                 }
             }
         }
@@ -139,17 +154,24 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            equipment.Id = (int)reader[0];
-                            equipment.Name = reader[1].ToString();
-                        }
-                    };
-                    connection.Close();
+                            while (reader.Read())
+                            {
+                                equipment.Id = (int)reader[0];
+                                equipment.Name = reader[1].ToString();
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return equipment;
@@ -166,10 +188,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@name", equipment.Name);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -186,10 +215,17 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@id", equipment.Id);
                     cmd.Parameters.AddWithValue("@name", equipment.Name);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -205,10 +241,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }

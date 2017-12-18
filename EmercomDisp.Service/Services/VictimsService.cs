@@ -37,18 +37,25 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            victim.Name = reader[1].ToString();
-                            victim.Residence = reader[2].ToString();
-                            victim.Age = (int)reader[3];
-                        }
-                    };
-                    connection.Close();
+                            while (reader.Read())
+                            {
+                                victim.Name = reader[1].ToString();
+                                victim.Residence = reader[2].ToString();
+                                victim.Age = (int)reader[3];
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return victim;
@@ -65,23 +72,30 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var victimDto = new VictimDto()
+                            while (reader.Read())
                             {
-                                Id = (int)reader[0],
-                                Name = reader[1].ToString(),
-                                Residence = reader[2].ToString(),
-                                Age = (int)reader[3]
-                            };
-                            victimsList.Add(victimDto);
-                        }
-                    };
-                    connection.Close();
+                                var victimDto = new VictimDto()
+                                {
+                                    Id = (int)reader[0],
+                                    Name = reader[1].ToString(),
+                                    Residence = reader[2].ToString(),
+                                    Age = (int)reader[3]
+                                };
+                                victimsList.Add(victimDto);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return victimsList;
@@ -101,10 +115,17 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@age", victim.Age);
                     cmd.Parameters.AddWithValue("@incidentId", callId);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -123,10 +144,17 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@residence", victim.Residence);
                     cmd.Parameters.AddWithValue("@age", victim.Age);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -142,10 +170,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }

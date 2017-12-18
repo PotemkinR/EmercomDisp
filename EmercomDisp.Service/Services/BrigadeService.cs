@@ -43,17 +43,24 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            brigade.Id = (int)reader[0];
-                            brigade.Name = reader[1].ToString();
-                        }
-                    };
-                    connection.Close();
+                            while (reader.Read())
+                            {
+                                brigade.Id = (int)reader[0];
+                                brigade.Name = reader[1].ToString();
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return brigade;
@@ -69,25 +76,32 @@ namespace EmercomDisp.Service.Services
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var brigadeMember = new BrigadeMemberDto()
+                            while (reader.Read())
                             {
-                                Name = reader[1].ToString(),
-                                Id = (int)reader[0]
-                            };
-                            if (!reader.IsDBNull(4))
-                            {
-                                brigadeMember.BrigadeName = reader[4].ToString();
+                                var brigadeMember = new BrigadeMemberDto()
+                                {
+                                    Name = reader[1].ToString(),
+                                    Id = (int)reader[0]
+                                };
+                                if (!reader.IsDBNull(4))
+                                {
+                                    brigadeMember.BrigadeName = reader[4].ToString();
+                                }
+                                brigadeMembersList.Add(brigadeMember);
                             }
-                            brigadeMembersList.Add(brigadeMember);
-                        }
-                    };
-                    connection.Close();
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return brigadeMembersList;
@@ -103,22 +117,29 @@ namespace EmercomDisp.Service.Services
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var brigade = new BrigadeDto()
+                            while (reader.Read())
                             {
-                                Name = reader[1].ToString(),
-                                MemberCount = (int)reader[2],
-                                Id = (int)reader[0]
-                            };
-                            brigadeList.Add(brigade);
-                        }
-                    };
-                    connection.Close();
+                                var brigade = new BrigadeDto()
+                                {
+                                    Name = reader[1].ToString(),
+                                    MemberCount = (int)reader[2],
+                                    Id = (int)reader[0]
+                                };
+                                brigadeList.Add(brigade);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return brigadeList;
@@ -135,21 +156,28 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var brigadeMember = new BrigadeMemberDto()
+                            while (reader.Read())
                             {
-                                Name = reader[1].ToString(),
-                                Id = (int)reader[0]
-                            };
-                            brigadeMembersList.Add(brigadeMember);
-                        }
-                    };
-                    connection.Close();
+                                var brigadeMember = new BrigadeMemberDto()
+                                {
+                                    Name = reader[1].ToString(),
+                                    Id = (int)reader[0]
+                                };
+                                brigadeMembersList.Add(brigadeMember);
+                            }
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return brigadeMembersList;
@@ -167,10 +195,17 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@id", brigade.Id);
                     cmd.Parameters.AddWithValue("@name", brigade.Name);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -186,10 +221,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@name", brigade.Name);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -205,10 +247,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -226,21 +275,28 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            brigadeMember.Id = (int)reader[0];
-                            brigadeMember.Name = reader[1].ToString();
-                            if (!reader.IsDBNull(2))
+                            while (reader.Read())
                             {
-                                brigadeMember.BrigadeName = reader[2].ToString();
+                                brigadeMember.Id = (int)reader[0];
+                                brigadeMember.Name = reader[1].ToString();
+                                if (!reader.IsDBNull(2))
+                                {
+                                    brigadeMember.BrigadeName = reader[2].ToString();
+                                }
                             }
-                        }
-                    };
-                    connection.Close();
+                        };
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
             return brigadeMember;
@@ -265,10 +321,17 @@ namespace EmercomDisp.Service.Services
                     {
                         cmd.Parameters.AddWithValue("@brigadeName", DBNull.Value);
                     }
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -284,10 +347,17 @@ namespace EmercomDisp.Service.Services
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }
@@ -310,10 +380,17 @@ namespace EmercomDisp.Service.Services
                     {
                         cmd.Parameters.AddWithValue("@brigadeName", DBNull.Value);
                     }
-                    connection.Open();
+                    try
+                    {
+                        connection.Open();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
                 }
             }
         }     

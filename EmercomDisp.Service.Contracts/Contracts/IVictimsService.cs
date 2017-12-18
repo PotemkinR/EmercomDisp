@@ -9,22 +9,27 @@ namespace EmercomDisp.Service.Contracts.Contracts
     {
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         VictimDto GetVictimById(int id);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         IEnumerable<VictimDto> GetVictimsByIncidentId(int id);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         void AddVictim(VictimDto victim, int callId);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         void UpdateVictim(VictimDto victim);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         void DeleteVictim(int id);
     }
 }
