@@ -86,16 +86,11 @@ namespace EmercomDisp.Web.Controllers
                 };
                 
                 _userProvider.UpdateUser(updatedUser);
+
+                return RedirectToAction("UserList");
             }
 
-            var model = new UserModel()
-            {
-                Name = user.Name,
-                Email = user.Email,
-                Roles = user.Roles
-            };
-
-            return View(model);
+            return View();
         }
 
         [HttpGet]

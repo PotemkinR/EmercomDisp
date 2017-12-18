@@ -204,6 +204,8 @@
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -247,6 +249,7 @@
     <Compile Include="Models\Calls\CallEditModel.cs" />
     <Compile Include="Models\Calls\CallItemViewModel.cs" />
     <Compile Include="Models\Calls\CallListViewModel.cs" />
+    <Compile Include="Models\Calls\CallSearchModel.cs" />
     <Compile Include="Models\Categories\CategoryViewModel.cs" />
     <Compile Include="Models\Equipment_\EditEquipmentListModel.cs" />
     <Compile Include="Models\Equipment_\EquipmentCreateModel.cs" />
@@ -297,6 +300,8 @@
     <Content Include="Views\Call\DeleteCall.cshtml" />
     <Content Include="Views\CallResponse\EditCallResponse.cshtml" />
     <Content Include="Views\CallResponse\DeleteCallResponse.cshtml" />
+    <Content Include="Views\CallList\_SearchPanel.cshtml" />
+    <Content Include="Views\CallList\_SearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

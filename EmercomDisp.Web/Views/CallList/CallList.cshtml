@@ -2,15 +2,22 @@
 
 <h2>CallList</h2>
 
-    <div class="col-md-2">
-        <h4>Categories</h4>
-        @{Html.RenderAction("Category", "Category"); }
+<div class="col-md-2">
+    <h4>Categories</h4>
+    @{Html.RenderAction("Category", "Category"); }
+</div>
+<div class="col-md-10">
+    <div>
+        @{Html.RenderAction("_SearchPanel");}
     </div>
-    <div class="col-md-10">
-        <h3>Calls</h3>
+    <div id="result">
         @foreach (var call in Model.CallList)
         {
             Html.RenderAction("CallListItem", call);
         }
     </div>
-
+</div>
+@section Scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

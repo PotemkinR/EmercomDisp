@@ -1,0 +1,7 @@
+﻿@model EmercomDisp.Web.Models.Calls.CallListViewModel
+<div>
+    @foreach (var item in Model.CallList)
+    {
+        Html.RenderAction("CallListItem", item);
+    }
+</div>

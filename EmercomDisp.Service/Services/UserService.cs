@@ -5,6 +5,7 @@ using System.Configuration;
 using System.ServiceModel;
 using System.Data.SqlClient;
 using System.Data;
+using System;
 
 namespace EmercomDisp.Service.Services
 {
@@ -58,25 +59,49 @@ namespace EmercomDisp.Service.Services
             {
                 connection.ConnectionString = _connectionString;
 
-                using (var cmd = new SqlCommand("UpdateUser", connection))
+                connection.Open();
+
+                var transaction = connection.BeginTransaction();
+
+                try
                 {
-                    var roles = new DataTable();
-                    roles.Columns.Add("RoleName", typeof(string));
-                    foreach (var role in user.Roles)
+                    var command1 = new SqlCommand("DeleteUserRoles", connection)
                     {
-                        roles.Rows.Add(role);
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = transaction
+                    };
+
+                    command1.Parameters.AddWithValue("@name", user.Name);
+                    command1.ExecuteNonQuery();
+
+                    foreach (var item in user.Roles)
+                    {
+                        var command = new SqlCommand("AddUserRole", connection)
+                        {
+                            CommandType = CommandType.StoredProcedure,
+                            Transaction = transaction
+                        };
+                        command.Parameters.AddWithValue("@role", item);
+                        command.Parameters.AddWithValue("@userName", user.Name);
+                        command.ExecuteNonQuery();
                     }
 
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", user.Name);
-                    cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
-                    cmd.Parameters.AddWithValue("@roleList", roles);
+                    var command2 = new SqlCommand("UpdateUser", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = transaction
+                    };
 
-                    connection.Open();
+                    command2.Parameters.AddWithValue("@name", user.Name);
+                    command2.Parameters.AddWithValue("@email", user.Email);
+                    command2.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                    command2.ExecuteNonQuery();
 
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                    transaction.Commit();
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
                 }
             }
         }
