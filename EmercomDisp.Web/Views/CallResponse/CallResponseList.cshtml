@@ -43,7 +43,7 @@
                 @Html.DisplayFor(model => callResponse.ReturnTime)
             </td>
             <td>
-                @Html.ActionLink(Model.UsedEquipmentCount.ToString(), "EditEquipmentList", new { id = callResponse.Id, callId = Model.CallId })
+                @Html.ActionLink(callResponse.Equipment.Count().ToString(), "EditEquipmentList", new { id = callResponse.Id, callId = Model.CallId })
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditCallResponse", new { id = callResponse.Id }) |

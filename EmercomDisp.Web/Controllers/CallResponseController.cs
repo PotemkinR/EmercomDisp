@@ -28,8 +28,7 @@ namespace EmercomDisp.Web.Controllers
             var model = new CallResponseListModel()
             {
                 CallId = id,
-                CallResponses = _callResponseProvider.GetCallResponsesForCall(id),
-                UsedEquipmentCount = _equipmentProvider.GetEquipmentByCallResponseId(id).Count()
+                CallResponses = _callResponseProvider.GetCallResponsesForCall(id)
             };
             return PartialView(model);
         }

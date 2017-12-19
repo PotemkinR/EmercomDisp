@@ -8,7 +8,5 @@ namespace EmercomDisp.Web.Models.CallResponses
         public int CallId { get; set; }
 
         public IEnumerable<CallResponse> CallResponses { get; set; }
-
-        public int UsedEquipmentCount { get; set; }
     }
 }
