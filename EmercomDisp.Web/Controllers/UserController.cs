@@ -103,14 +103,34 @@ namespace EmercomDisp.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult DeleteUser(string name)
         {
-            if (HttpContext.User.Identity.Name != name)
+            if (name == null)
             {
-                _userProvider.DeleteUser(name);
+                return HttpNotFound();
             }
+            var user = _userProvider.GetUserByName(name);
+
+            if (user != null)
+            {
+                var model = new UserDeleteModel()
+                {
+                    Name = user.Name,
+                    Email = user.Email
+                };
+                return View(model);
+            }
+            return HttpNotFound();           
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(UserDeleteModel model)
+        {
+            _userProvider.DeleteUser(model.Name);
             return RedirectToAction("UserList");
         }
+
         //переделать?
         private IEnumerable<string> GetRolesForUser(UserModel user)
         {   

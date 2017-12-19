@@ -9,5 +9,7 @@ namespace EmercomDisp.Web.Models.Calls
         public string Address { get; set; }
 
         public DateTime CallTime { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

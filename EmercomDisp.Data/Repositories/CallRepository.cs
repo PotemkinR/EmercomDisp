@@ -1,6 +1,7 @@
 ﻿using EmercomDisp.Data.CallService;
 using EmercomDisp.Model.Models;
 using log4net;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -54,7 +55,7 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -83,7 +84,7 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -110,12 +111,43 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
             }
             return categories;
+        }
+
+        public int CreateCall(Call call)
+        {
+            int id = 0;
+            using (var client = new CallServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var newCall = new CallDto()
+                    {
+                        Address = call.Address,
+                        CallTime = call.CallTime,
+                        Category = call.Category,
+                        Reason = call.Reason
+                    };
+
+                    id = client.CreateCall(newCall);
+
+                    client.Close();
+
+                    
+                }
+                catch (Exception e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
+            return id;
         }
 
         public void UpdateCall(Call call)
@@ -141,7 +173,7 @@ namespace EmercomDisp.Data.Repositories
 
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -160,7 +192,7 @@ namespace EmercomDisp.Data.Repositories
 
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -176,6 +208,7 @@ namespace EmercomDisp.Data.Repositories
                 CallTime = callDto.CallTime,
                 Category = callDto.Category,
                 Reason = callDto.Reason,
+                IsActive = callDto.IsActive,
                 IncidentDescription = callDto.IncidentDescription,
                 IncidentCause = callDto.IncidentCause
             };

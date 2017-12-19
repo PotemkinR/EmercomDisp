@@ -1,29 +1,34 @@
 ﻿using EmercomDisp.BLL.Providers;
 using EmercomDisp.Model.Models;
 using EmercomDisp.Web.Models.Calls;
-using EmercomDisp.Web.Models.Equipment_;
 using System;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="User")]
     public class CallController : Controller
     {
         private readonly ICallProvider _callProvider;
         private readonly IVictimsProvider _victimsProvider;
+        private readonly IBrigadeProvider _brigadeProvider;
+        private readonly ICallResponseProvider _callResponseProvider;
 
         public CallController(ICallProvider callProvider,
-            IVictimsProvider victimsProvider)
+            IVictimsProvider victimsProvider,
+            IBrigadeProvider brigadeProvider,
+            ICallResponseProvider callResponseProvider)
         {
             _callProvider = callProvider ?? throw new ArgumentNullException("Call Provider");
             _victimsProvider = victimsProvider ?? throw new ArgumentNullException("Victims Provider");
+            _brigadeProvider = brigadeProvider ?? throw new ArgumentNullException("Brigade Provider");
+            _callResponseProvider = callResponseProvider ?? throw new ArgumentNullException("Call Response Provider");
         }
 
         public ActionResult CallDetails(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
@@ -41,6 +46,57 @@ namespace EmercomDisp.Web.Controllers
                 return View(model);
             }
             return HttpNotFound();
+        }
+
+        [HttpGet]
+        public ActionResult CreateCall()
+        {
+            var categories = _callProvider.GetCategories();
+            var brigades = _brigadeProvider.GetBrigades();
+            var model = new CallCreateModel()
+            {
+                Categories = categories.Select(category => new SelectListItem()
+                {
+                    Text = category,
+                    Value = category
+                }),
+                SelectedCategory = categories.First(),
+                Brigades = brigades.Select(brigade => new SelectListItem()
+                {
+                    Text = brigade.Name,
+                    Value = brigade.Name
+                }),
+                SelectedBrigade = brigades.First().Name
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateCall(CallCreateModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var newCall = new Call()
+                {
+                    Address = model.Address,
+                    CallTime = DateTime.Now,
+                    Category = model.SelectedCategory,
+                    Reason = model.Reason
+                };
+                int callId = _callProvider.CreateCall(newCall);
+
+                var newCallResponse = new CallResponse()
+                {
+                    TransferTime = DateTime.Now,
+                    BrigadeName = model.SelectedBrigade,
+                    IncidentId = callId
+                };
+
+                _callResponseProvider.CreateCallResponse(newCallResponse);
+
+                return RedirectToAction("CallDetails", new{ id = callId});
+            }
+            return View();
         }
 
         [HttpGet]

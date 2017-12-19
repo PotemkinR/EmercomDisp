@@ -1,6 +1,7 @@
 ﻿using EmercomDisp.BLL.Enums;
 using EmercomDisp.BLL.Services;
 using EmercomDisp.Web.Models.Login;
+using log4net;
 using System;
 using System.Web.Mvc;
 
@@ -9,6 +10,7 @@ namespace EmercomDisp.Web.Controllers
     public class LoginController : Controller
     {
         private readonly ILoginService _loginService;
+        private readonly ILog _log = LogManager.GetLogger("LOGGER");
 
         public LoginController(ILoginService loginService)
         {
@@ -28,6 +30,7 @@ namespace EmercomDisp.Web.Controllers
 
             if (result == LoginResult.NoError)
             {
+                _log.Info(HttpContext.User.Identity.Name + DateTime.Now.ToString());
                 return RedirectToAction("Index", "Home");
             }
 

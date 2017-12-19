@@ -7,6 +7,7 @@ namespace EmercomDisp.Data.Repositories
     {
         CallResponse GetCallResponseById(int id);
         IEnumerable<CallResponse> GetCallResponsesForCall(int callId);
+        void CreateCallResponse(CallResponse callResponse);
         void UpdateCallResponse(CallResponse callResponse);
         void DeleteCallResponse(int id);
     }

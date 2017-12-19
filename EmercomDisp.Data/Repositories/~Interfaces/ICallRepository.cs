@@ -9,6 +9,7 @@ namespace EmercomDisp.Data.Repositories
         IEnumerable<Call> GetCallsByCategory(string category);
         Call GetCallById(int id);
         IEnumerable<string> GetCategories();
+        int CreateCall(Call call);
         void UpdateCall(Call call);
         void DeleteCall(int id);
     }

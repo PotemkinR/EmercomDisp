@@ -68,7 +68,9 @@
     </table>
 </div>
 <h4>Call Responses:</h4>
-@{Html.RenderAction("CallResponseList", "CallResponse"); }
+<div class="col-md-offset-1">
+    @{Html.RenderAction("CallResponseList", "CallResponse"); }
+</div>
 <p>
     @Html.ActionLink("Back to list", "CallList", "CallList")
 </p>

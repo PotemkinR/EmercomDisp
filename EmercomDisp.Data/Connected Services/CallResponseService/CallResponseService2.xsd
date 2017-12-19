@@ -29,10 +29,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateCallResponse">
+  <xs:element name="CreateCallResponse">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="callResponse" nillable="true" type="q3:CallResponseDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCallResponseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCallResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="callResponse" nillable="true" type="q4:CallResponseDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

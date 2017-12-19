@@ -8,12 +8,12 @@
   <xs:element name="ArrayOfCallResponseDto" nillable="true" type="tns:ArrayOfCallResponseDto" />
   <xs:complexType name="CallResponseDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ArriveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ArriveTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="BrigadeName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FinishTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FinishTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IncidentId" type="xs:int" />
-      <xs:element minOccurs="0" name="ReturnTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReturnTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TransferTime" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
@@ -24,4 +24,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConnectionFault" nillable="true" type="tns:ConnectionFault" />
+  <xs:complexType name="SqlFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SqlFault" nillable="true" type="tns:SqlFault" />
 </xs:schema>

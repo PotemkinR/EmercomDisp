@@ -1,6 +1,7 @@
 ﻿using EmercomDisp.Data.CallResponseService;
 using EmercomDisp.Model.Models;
 using log4net;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -33,7 +34,7 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -70,13 +71,39 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
             }
 
             return callResponses;
+        }
+
+        public void CreateCallResponse(CallResponse callResponse)
+        {
+            using (var client = new CallResponseServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var newCallResponse = new CallResponseDto
+                    {
+                        IncidentId = callResponse.IncidentId,
+                        TransferTime = callResponse.TransferTime,
+                        BrigadeName = callResponse.BrigadeName
+                    };
+
+                    client.CreateCallResponse(newCallResponse);
+
+                    client.Close();
+                }
+                catch (Exception e)
+                {
+                    _log.Error(e.Message);
+                }
+            }
         }
 
         public void UpdateCallResponse(CallResponse callResponse)
@@ -100,7 +127,7 @@ namespace EmercomDisp.Data.Repositories
 
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -119,7 +146,7 @@ namespace EmercomDisp.Data.Repositories
 
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }

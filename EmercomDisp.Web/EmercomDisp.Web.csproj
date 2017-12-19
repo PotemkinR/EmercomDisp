@@ -238,6 +238,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Brigades\BrigadeListModel.cs" />
+    <Compile Include="Models\Brigades\BrigadeMemberDeleteModel.cs" />
     <Compile Include="Models\Brigades\BrigadeMemberEditModel.cs" />
     <Compile Include="Models\Brigades\BrigadeMemberCreateModel.cs" />
     <Compile Include="Models\Brigades\BrigadeMembersListModel.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Models\CallResponses\CallResponseDeleteModel.cs" />
     <Compile Include="Models\CallResponses\CallResponseEditModel.cs" />
     <Compile Include="Models\CallResponses\CallResponseListModel.cs" />
+    <Compile Include="Models\Calls\CallCreateModel.cs" />
     <Compile Include="Models\Calls\CallDetailsViewModel.cs" />
     <Compile Include="Models\Calls\CallEditModel.cs" />
     <Compile Include="Models\Calls\CallItemViewModel.cs" />
@@ -253,10 +255,12 @@
     <Compile Include="Models\Categories\CategoryViewModel.cs" />
     <Compile Include="Models\Equipment_\EditEquipmentListModel.cs" />
     <Compile Include="Models\Equipment_\EquipmentCreateModel.cs" />
+    <Compile Include="Models\Equipment_\EquipmentDeleteModel.cs" />
     <Compile Include="Models\Equipment_\EquipmentEditModel.cs" />
     <Compile Include="Models\Equipment_\EquipmentListModel.cs" />
     <Compile Include="Models\Equipment_\EquipmentSelectable.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
+    <Compile Include="Models\Users\UserDeleteModel.cs" />
     <Compile Include="Models\Users\UserListModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Models\Victims\VictimModel.cs" />
@@ -302,6 +306,11 @@
     <Content Include="Views\CallResponse\DeleteCallResponse.cshtml" />
     <Content Include="Views\CallList\_SearchPanel.cshtml" />
     <Content Include="Views\CallList\_SearchResult.cshtml" />
+    <Content Include="Views\Brigade\DeleteBrigade.cshtml" />
+    <Content Include="Views\Brigade\DeleteBrigadeMember.cshtml" />
+    <Content Include="Views\Equipment\DeleteEquipment.cshtml" />
+    <Content Include="Views\User\DeleteUser.cshtml" />
+    <Content Include="Views\Call\CreateCall.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

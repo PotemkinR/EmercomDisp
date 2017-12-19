@@ -14,6 +14,7 @@ namespace EmercomDisp.Web.Controllers
         {
             _callProvider = callProvider ?? throw new ArgumentNullException("Call Provider");
         }
+
         public PartialViewResult Category()
         {
             CategoryViewModel model = new CategoryViewModel

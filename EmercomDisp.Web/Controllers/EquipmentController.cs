@@ -2,11 +2,11 @@
 using EmercomDisp.Model.Models;
 using EmercomDisp.Web.Models.Equipment_;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize(Roles ="Admin, Editor")]
     public class EquipmentController : Controller
     {
         private readonly IEquipmentProvider _equipmentProvider;
@@ -88,14 +88,32 @@ namespace EmercomDisp.Web.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult DeleteEquipment(int? id)
         {
             if (id == null)
             {
                 return HttpNotFound();
             }
-            _equipmentProvider.DeleteEquipment((int)id);
 
+            var equipment = _equipmentProvider.GetEquipmentById((int)id);
+
+            if(equipment != null)
+            {
+                var model = new EquipmentDeleteModel()
+                {
+                    Name = equipment.Name
+                };
+                return View(model);
+            }
+
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEquipment(int id)
+        {
+            _equipmentProvider.DeleteEquipment(id);
             return RedirectToAction("EquipmentList");
         }
     }

@@ -14,6 +14,8 @@ namespace EmercomDisp.Model.Models
 
         public string Category { get; set; }
 
+        public bool IsActive { get; set; }
+
         public string IncidentDescription { get; set; }
 
         public string IncidentCause { get; set; }

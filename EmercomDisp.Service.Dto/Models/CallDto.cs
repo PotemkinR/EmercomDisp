@@ -22,6 +22,9 @@ namespace EmercomDisp.Service.Dto.Models
         public string Category { get; set; }
 
         [DataMember]
+        public bool IsActive { get; set; }
+
+        [DataMember]
         public string IncidentDescription { get; set; }
 
         [DataMember]

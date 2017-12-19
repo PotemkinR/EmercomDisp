@@ -30,6 +30,11 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        int CreateCall(CallDto call);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         void UpdateCall(CallDto call);
 
         [OperationContract]

@@ -20,6 +20,11 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        void CreateCallResponse(CallResponseDto callResponse);
+
+        [OperationContract]
+        [FaultContract(typeof(ConnectionFault))]
+        [FaultContract(typeof(SqlFault))]
         void UpdateCallResponse(CallResponseDto callResponse);
 
         [OperationContract]

@@ -9,6 +9,7 @@ namespace EmercomDisp.BLL.Providers
         IEnumerable<Call> GetCallsByCategory(string urgency);
         Call GetCallById(int id);
         IEnumerable<string> GetCategories();
+        int CreateCall(Call call);
         void UpdateCall(Call call);
         void DeleteCall(int id);
     }

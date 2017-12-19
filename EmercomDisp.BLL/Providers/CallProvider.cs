@@ -35,6 +35,11 @@ namespace EmercomDisp.BLL.Providers
             return _callRepository.GetCategories();
         }
 
+        public int CreateCall(Call call)
+        {
+            return _callRepository.CreateCall(call);
+        }
+
         public void UpdateCall(Call call)
         {
             _callRepository.UpdateCall(call);

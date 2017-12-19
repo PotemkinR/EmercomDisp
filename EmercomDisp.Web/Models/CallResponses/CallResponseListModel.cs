@@ -5,6 +5,8 @@ namespace EmercomDisp.Web.Models.CallResponses
 {
     public class CallResponseListModel
     {
+        public int CallId { get; set; }
+
         public IEnumerable<CallResponse> CallResponses { get; set; }
 
         public int UsedEquipmentCount { get; set; }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EmercomDisp.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="User")]
     public class CallListController : Controller
     {
         private readonly ICallProvider _callProvider;
@@ -39,7 +39,8 @@ namespace EmercomDisp.Web.Controllers
             {
                 CallId = call.Id,
                 CallTime = call.CallTime,
-                Address = call.Address
+                Address = call.Address,
+                IsActive = call.IsActive
             };
             return PartialView(model);
         }

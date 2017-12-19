@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize(Roles = "Admin, Editor")]
     public class BrigadeController : Controller
     {
         private readonly IBrigadeProvider _brigadeProvider;
@@ -107,13 +108,32 @@ namespace EmercomDisp.Web.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult DeleteBrigade(int? id)
         {
-            if(id == null )
+            if (id == null)
             {
-                return RedirectToAction("BrigadeList");
+                return HttpNotFound();
             }
-            _brigadeProvider.DeleteBrigade((int)id);
+
+            var brigade = _brigadeProvider.GetBrigadeById((int)id);
+            if (brigade != null)
+            {
+                var model = new BrigadeModel()
+                {
+                    Id = brigade.Id,
+                    BrigadeName = brigade.Name
+                };
+
+                return View(model);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBrigade(int id)
+        {
+            _brigadeProvider.DeleteBrigade(id);
             return RedirectToAction("BrigadeList");
         }
 
@@ -164,6 +184,29 @@ namespace EmercomDisp.Web.Controllers
                 return RedirectToAction("BrigadeMembersList");
             }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteBrigadeMember(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var brigadeMember = _brigadeProvider.GetBrigadeMemberById((int)id);
+            if (brigadeMember != null)
+            {
+                var model = new BrigadeMemberDeleteModel()
+                {
+                    Id = brigadeMember.Id,
+                    Name = brigadeMember.Name,
+                    BrigadeName = brigadeMember.BrigadeName
+                };
+
+                return View(model);
+            }
+            return HttpNotFound();
         }
 
         [HttpPost]

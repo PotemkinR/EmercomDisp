@@ -13,13 +13,13 @@ namespace EmercomDisp.Service.Dto.Models
         public DateTime TransferTime { get; set; }
 
         [DataMember]
-        public DateTime ArriveTime { get; set; }
+        public DateTime? ArriveTime { get; set; }
 
         [DataMember]
-        public DateTime FinishTime { get; set; }
+        public DateTime? FinishTime { get; set; }
 
         [DataMember]
-        public DateTime ReturnTime { get; set; }
+        public DateTime? ReturnTime { get; set; }
 
         [DataMember]
         public string BrigadeName { get; set; }

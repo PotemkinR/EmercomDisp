@@ -48,9 +48,9 @@ namespace EmercomDisp.Service.Services
                             {
                                 callResponse.Id = (int)reader[0];
                                 callResponse.TransferTime = (DateTime)reader[1];
-                                callResponse.ArriveTime = (DateTime)reader[2];
-                                callResponse.FinishTime = (DateTime)reader[3];
-                                callResponse.ReturnTime = (DateTime)reader[4];
+                                callResponse.ArriveTime = reader[2] as DateTime?;
+                                callResponse.FinishTime = reader[3] as DateTime?;
+                                callResponse.ReturnTime = reader[4] as DateTime?;
                                 callResponse.IncidentId = (int)reader[5];
                                 callResponse.BrigadeName = reader[6].ToString();
                             }
@@ -91,9 +91,9 @@ namespace EmercomDisp.Service.Services
                                 {
                                     Id = (int)reader[0],
                                     TransferTime = (DateTime)reader[3],
-                                    ArriveTime = (DateTime)reader[4],
-                                    FinishTime = (DateTime)reader[5],
-                                    ReturnTime = (DateTime)reader[6],
+                                    ArriveTime = reader[4] as DateTime?,
+                                    FinishTime = reader[5] as DateTime?,
+                                    ReturnTime = reader[6] as DateTime?,
                                     BrigadeName = reader[8].ToString()
                                 };
                                 callResponseList.Add(callResponse);
@@ -110,6 +110,34 @@ namespace EmercomDisp.Service.Services
 
             return callResponseList;
         }     
+
+        public void CreateCallResponse(CallResponseDto callResponse)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("CreateCallResponse", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@incidentId", callResponse.IncidentId);
+                    cmd.Parameters.AddWithValue("@transferTime", callResponse.TransferTime);
+                    cmd.Parameters.AddWithValue("@brigadeName", callResponse.BrigadeName);
+
+                    //try
+                    //{
+                        connection.Open();
+
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    //}
+                    //catch (SqlException e)
+                    //{
+                    //    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    //}
+                }
+            }
+        }
 
         public void UpdateCallResponse(CallResponseDto callResponse)
         {

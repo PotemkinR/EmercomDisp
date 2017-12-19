@@ -17,6 +17,9 @@
   <wsdl:message name="ICallService_GetCalls_ConnectionFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
   </wsdl:message>
+  <wsdl:message name="ICallService_GetCalls_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:SqlFault" />
+  </wsdl:message>
   <wsdl:message name="ICallService_GetCallsByCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCallsByCategory" />
   </wsdl:message>
@@ -24,7 +27,10 @@
     <wsdl:part name="parameters" element="tns:GetCallsByCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="ICallService_GetCallsByCategory_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_GetCallsByCategory_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:SqlFault" />
   </wsdl:message>
   <wsdl:message name="ICallService_GetCallById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCallById" />
@@ -33,7 +39,10 @@
     <wsdl:part name="parameters" element="tns:GetCallByIdResponse" />
   </wsdl:message>
   <wsdl:message name="ICallService_GetCallById_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_GetCallById_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:SqlFault" />
   </wsdl:message>
   <wsdl:message name="ICallService_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCategories" />
@@ -42,7 +51,22 @@
     <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
   </wsdl:message>
   <wsdl:message name="ICallService_GetCategories_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_GetCategories_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q8:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_CreateCall_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCall" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_CreateCall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_CreateCall_ConnectionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q9:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_CreateCall_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q10:SqlFault" />
   </wsdl:message>
   <wsdl:message name="ICallService_UpdateCall_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCall" />
@@ -51,7 +75,10 @@
     <wsdl:part name="parameters" element="tns:UpdateCallResponse" />
   </wsdl:message>
   <wsdl:message name="ICallService_UpdateCall_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q11:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_UpdateCall_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q12:SqlFault" />
   </wsdl:message>
   <wsdl:message name="ICallService_DeleteCall_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCall" />
@@ -60,38 +87,53 @@
     <wsdl:part name="parameters" element="tns:DeleteCallResponse" />
   </wsdl:message>
   <wsdl:message name="ICallService_DeleteCall_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:ConnectionFault" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q13:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="ICallService_DeleteCall_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q14:SqlFault" />
   </wsdl:message>
   <wsdl:portType name="ICallService">
     <wsdl:operation name="GetCalls">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/GetCalls" message="tns:ICallService_GetCalls_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/GetCallsResponse" message="tns:ICallService_GetCalls_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallsConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_GetCalls_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallsSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_GetCalls_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCallsByCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/GetCallsByCategory" message="tns:ICallService_GetCallsByCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/GetCallsByCategoryResponse" message="tns:ICallService_GetCallsByCategory_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallsByCategoryConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_GetCallsByCategory_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallsByCategorySqlFaultFault" name="SqlFaultFault" message="tns:ICallService_GetCallsByCategory_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCallById">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/GetCallById" message="tns:ICallService_GetCallById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/GetCallByIdResponse" message="tns:ICallService_GetCallById_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_GetCallById_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCallByIdSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_GetCallById_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/GetCategories" message="tns:ICallService_GetCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/GetCategoriesResponse" message="tns:ICallService_GetCategories_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCategoriesConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_GetCategories_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/GetCategoriesSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_GetCategories_SqlFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCall">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICallService/CreateCall" message="tns:ICallService_CreateCall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICallService/CreateCallResponse" message="tns:ICallService_CreateCall_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/CreateCallConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_CreateCall_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/CreateCallSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_CreateCall_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateCall">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/UpdateCall" message="tns:ICallService_UpdateCall_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/UpdateCallResponse" message="tns:ICallService_UpdateCall_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/UpdateCallConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_UpdateCall_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/UpdateCallSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_UpdateCall_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteCall">
       <wsdl:input wsaw:Action="http://tempuri.org/ICallService/DeleteCall" message="tns:ICallService_DeleteCall_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICallService/DeleteCallResponse" message="tns:ICallService_DeleteCall_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/DeleteCallConnectionFaultFault" name="ConnectionFaultFault" message="tns:ICallService_DeleteCall_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICallService/DeleteCallSqlFaultFault" name="SqlFaultFault" message="tns:ICallService_DeleteCall_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICallService" type="tns:ICallService">
@@ -107,6 +149,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCallsByCategory">
       <soap:operation soapAction="http://tempuri.org/ICallService/GetCallsByCategory" style="document" />
@@ -118,6 +163,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCallById">
@@ -131,6 +179,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCategories">
       <soap:operation soapAction="http://tempuri.org/ICallService/GetCategories" style="document" />
@@ -142,6 +193,24 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCall">
+      <soap:operation soapAction="http://tempuri.org/ICallService/CreateCall" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConnectionFaultFault">
+        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateCall">
@@ -155,6 +224,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteCall">
       <soap:operation soapAction="http://tempuri.org/ICallService/DeleteCall" style="document" />
@@ -166,6 +238,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

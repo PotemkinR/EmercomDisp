@@ -1,5 +1,7 @@
 ﻿@model EmercomDisp.Web.Models.Calls.CallItemViewModel
 <div class="panel">
-    <div class="col-md-5">@Html.ActionLink(Model.Address, "CallDetails", "Call", new { id = Model.CallId }, null)</div>
-    <div class="col-md-5">@Model.CallTime</div>
+    <div class="col-md-2">@Model.CallId</div>
+    <div class="col-md-3">@Html.ActionLink(Model.Address, "CallDetails", "Call", new { id = Model.CallId }, null)</div>
+    <div class="col-md-3">@Model.CallTime</div>
+    <div class="col-md-2">@Model.IsActive</div>
 </div>

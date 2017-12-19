@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize(Roles = "User")]
     public class VictimsController : Controller
     {
         private readonly IVictimsProvider _victimsProvider;
@@ -113,11 +114,12 @@ namespace EmercomDisp.Web.Controllers
             return RedirectToAction("VictimsList",new { callId = model.CallId });
         }
 
+        [HttpGet]
         public ActionResult DeleteVictim(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("VictimsList");
+                return HttpNotFound();
             }
 
             _victimsProvider.DeleteVictim((int)id);

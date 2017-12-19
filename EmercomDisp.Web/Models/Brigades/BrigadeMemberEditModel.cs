@@ -9,6 +9,7 @@ namespace EmercomDisp.Web.Models.Brigades
         public int Id { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Name { get; set; }
 
         public string BrigadeName { get; set; }

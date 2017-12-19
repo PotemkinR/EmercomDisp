@@ -4,7 +4,7 @@ namespace EmercomDisp.Web.Models.Equipment_
 {
     public class EditEquipmentListModel
     {
-        public int CallResponseId { get; set; }
+        public int CallId { get; set; }
         public IList<EquipmentSelectable> Equipment { get; set; }
     }
 }

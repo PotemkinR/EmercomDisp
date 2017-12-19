@@ -161,6 +161,41 @@ namespace EmercomDisp.Service.Services
             return categoriesList;
         }
 
+        public int CreateCall(CallDto call)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.ConnectionString = _connectionString;
+
+                using (var cmd = new SqlCommand("CreateCall", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@address", call.Address);
+                    cmd.Parameters.AddWithValue("@callTime", call.CallTime);
+                    cmd.Parameters.AddWithValue("@reason", call.Reason);
+                    cmd.Parameters.AddWithValue("@category", call.Category);
+
+                    var returnParameter = cmd.Parameters.Add("@id", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.Output;
+                    try
+                    {
+                        connection.Open();
+
+                        cmd.ExecuteNonQuery();
+                        var result = (int)returnParameter.Value;
+
+                        connection.Close();
+
+                        return result;
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    }
+                }
+            }
+        }
+
         public void UpdateCall(CallDto call)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -243,9 +278,10 @@ namespace EmercomDisp.Service.Services
                 Address = reader[1].ToString(),
                 Reason = reader[2].ToString(),
                 CallTime = (DateTime)reader[3],
-                Category = reader[6].ToString(),
-                IncidentDescription = reader[8].ToString(),
-                IncidentCause = reader[9].ToString()
+                IsActive = (bool)reader[5],
+                Category = reader[7].ToString(),
+                IncidentDescription = reader[9].ToString(),
+                IncidentCause = reader[10].ToString()
             };
             return call;
         }

@@ -9,11 +9,11 @@ namespace EmercomDisp.Model.Models
 
         public DateTime TransferTime { get; set; }
 
-        public DateTime ArriveTime { get; set; }
+        public DateTime? ArriveTime { get; set; }
 
-        public DateTime FinishTime { get; set; }
+        public DateTime? FinishTime { get; set; }
 
-        public DateTime ReturnTime { get; set; }
+        public DateTime? ReturnTime { get; set; }
 
         public string BrigadeName { get; set; }
 

@@ -86,7 +86,7 @@ namespace EmercomDisp.Service.Services
                         command.CommandType = CommandType.StoredProcedure;
                         command.Transaction = transaction;                   
 
-                        command.Parameters.AddWithValue("@name", user.Name);
+                        command.Parameters.AddWithValue("@name", null);//
                         command.ExecuteNonQuery();
                     }
 

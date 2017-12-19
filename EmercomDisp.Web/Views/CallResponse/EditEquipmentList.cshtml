@@ -8,7 +8,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.CallResponseId)
+    @Html.HiddenFor(model => model.CallId)
     for (int i = 0; i < Model.Equipment.Count; i++)
     {
         var item = Model.Equipment[i];

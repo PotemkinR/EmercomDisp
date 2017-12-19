@@ -9,10 +9,11 @@ namespace EmercomDisp.Web.Models.Victims
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Residence { get; set; }
 
         [Required]

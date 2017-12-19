@@ -24,6 +24,11 @@ namespace EmercomDisp.BLL.Providers
             return _callResponseRepository.GetCallResponsesForCall(callId);
         }
 
+        public void CreateCallResponse(CallResponse callResponse)
+        {
+            _callResponseRepository.CreateCallResponse(callResponse);
+        }
+
         public void UpdateCallResponse(CallResponse callResponse)
         {
             _callResponseRepository.UpdateCallResponse(callResponse);

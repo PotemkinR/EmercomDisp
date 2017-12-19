@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
+    [Authorize(Roles ="User")]
     public class CallResponseController : Controller
     {
         private readonly ICallResponseProvider _callResponseProvider;
@@ -26,6 +27,7 @@ namespace EmercomDisp.Web.Controllers
         {
             var model = new CallResponseListModel()
             {
+                CallId = id,
                 CallResponses = _callResponseProvider.GetCallResponsesForCall(id),
                 UsedEquipmentCount = _equipmentProvider.GetEquipmentByCallResponseId(id).Count()
             };
@@ -80,7 +82,7 @@ namespace EmercomDisp.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditEquipmentList(int? id)
+        public ActionResult EditEquipmentList(int? id, int? callId)
         {
             if(id == null)
             {
@@ -103,7 +105,7 @@ namespace EmercomDisp.Web.Controllers
                 modelList.Add(equipmentItem);
             }
             model.Equipment = modelList;
-            model.CallResponseId = (int)id;
+            model.CallId = (int)callId;
             return View(model);
         }
 
@@ -124,9 +126,9 @@ namespace EmercomDisp.Web.Controllers
                         });
                 }
             }
-            _equipmentProvider.UpdateEquipmentList(updatedEquipmentList, model.CallResponseId);
+            _equipmentProvider.UpdateEquipmentList(updatedEquipmentList, model.CallId);
 
-            return RedirectToAction("CallDetails", "Call",new { id = model.CallResponseId });
+            return RedirectToAction("CallDetails", "Call",new { id = model.CallId });
         }
 
         [HttpGet]
