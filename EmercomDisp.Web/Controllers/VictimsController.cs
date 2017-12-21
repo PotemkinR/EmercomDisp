@@ -115,15 +115,29 @@ namespace EmercomDisp.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteVictim(int? id)
+        public ActionResult DeleteVictim(int? id, int? callId)
         {
             if (id == null)
             {
                 return HttpNotFound();
             }
 
-            _victimsProvider.DeleteVictim((int)id);
-            return RedirectToAction("VictimsList");
+            var victim = _victimsProvider.GetVictimById((int)id);
+
+            if (victim != null)
+            {
+                var model = new VictimDeleteModel()
+                {
+                    Id = victim.Id,
+                    CallId = (int)callId,
+                    Name = victim.Name,
+                    Residence = victim.Residence,
+                    Age = victim.Age
+                };
+                return View(model);
+            }
+
+            return HttpNotFound();
         }
     }
 }

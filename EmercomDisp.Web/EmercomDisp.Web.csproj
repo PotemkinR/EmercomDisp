@@ -265,6 +265,7 @@
     <Compile Include="Models\Users\UserDeleteModel.cs" />
     <Compile Include="Models\Users\UserListModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
+    <Compile Include="Models\Victims\VictimDeleteModel.cs" />
     <Compile Include="Models\Victims\VictimModel.cs" />
     <Compile Include="Models\Victims\VictimsListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +318,7 @@
     <Content Include="Views\CallResponse\DeleteCallResponse.cshtml" />
     <Content Include="Views\Call\CloseCall.cshtml" />
     <Content Include="Views\CallResponse\CloseCallResponse.cshtml" />
+    <Content Include="Views\Victims\DeleteVictim.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

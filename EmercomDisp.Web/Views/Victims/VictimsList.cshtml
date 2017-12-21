@@ -33,7 +33,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditVictim", new { id = item.Id, callId = Model.CallId }) |
-                @Html.ActionLink("Delete", "DeleteVictim", new { id = item.Id })
+                @Html.ActionLink("Delete", "DeleteVictim", new { id = item.Id, callId = Model.CallId })
             </td>
         </tr>
     }
