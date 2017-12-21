@@ -19,6 +19,8 @@ namespace EmercomDisp.Model.Models
 
         public int IncidentId { get; set; }
 
+        public bool IsActive { get; set; }
+
         public IEnumerable<string> Equipment { get; set; }
     }
 }

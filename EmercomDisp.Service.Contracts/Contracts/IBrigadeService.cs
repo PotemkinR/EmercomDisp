@@ -10,11 +10,6 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
-        BrigadeDto GetBrigadeForCallResponse(int callResponseId);
-
-        [OperationContract]
-        [FaultContract(typeof(ConnectionFault))]
-        [FaultContract(typeof(SqlFault))]
         BrigadeDto GetBrigadeById(int id);
 
         [OperationContract]

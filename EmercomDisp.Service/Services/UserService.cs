@@ -35,6 +35,19 @@ namespace EmercomDisp.Service.Services
 
                 try
                 {
+
+
+                    using (var cmd = new SqlCommand("CreateUser", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Transaction = transaction;
+
+                        cmd.Parameters.AddWithValue("@name", user.Name);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                        cmd.ExecuteNonQuery();
+                    }
+
                     foreach (var item in user.Roles)
                     {
                         using (var cmd = new SqlCommand("AddUserRole", connection))
@@ -48,17 +61,6 @@ namespace EmercomDisp.Service.Services
                         }
                     }
 
-                    using (var cmd = new SqlCommand("CreateUser", connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Transaction = transaction;
-
-                        cmd.Parameters.AddWithValue("@name", user.Name);
-                        cmd.Parameters.AddWithValue("@email", user.Email);
-                        cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
-                        cmd.ExecuteNonQuery();
-                    }
-                    
                     transaction.Commit();
                     connection.Close();
                 }

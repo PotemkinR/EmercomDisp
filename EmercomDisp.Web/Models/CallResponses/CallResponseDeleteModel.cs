@@ -1,9 +1,15 @@
-﻿using EmercomDisp.Model.Models;
+﻿using System;
 
 namespace EmercomDisp.Web.Models.CallResponses
 {
     public class CallResponseDeleteModel
     {
-        public CallResponse CallResponse { get; set; }
+        public int Id { get; set; }
+
+        public int IncidentId { get; set; }
+
+        public DateTime TransferTime { get; set; }
+
+        public string Brigade { get; set; }
     }
 }

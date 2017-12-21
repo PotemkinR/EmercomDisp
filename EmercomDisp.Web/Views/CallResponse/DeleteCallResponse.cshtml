@@ -11,51 +11,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CallResponse.BrigadeName)
+            @Html.DisplayNameFor(model => model.TransferTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CallResponse.BrigadeName)
+            @Html.DisplayFor(model => model.TransferTime)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.CallResponse.TransferTime)
+            @Html.DisplayNameFor(model => model.Brigade)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CallResponse.TransferTime)
+            @Html.DisplayFor(model => model.Brigade)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CallResponse.ArriveTime)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CallResponse.ArriveTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CallResponse.FinishTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CallResponse.FinishTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CallResponse.ReturnTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CallResponse.ReturnTime)
-        </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-default" />         
-    </div>
+        @Html.HiddenFor(model => model.IncidentId)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
     }
 </div>
-<br />
 <p>
-    @Html.ActionLink("Back", "CallDetails", "Call", new { id = Model.CallResponse.IncidentId }, null)
+    @Html.ActionLink("Back", "CallDetails", "Call", new { id = Model.IncidentId }, null)
 </p>

@@ -3,6 +3,7 @@
   <xs:complexType name="BrigadeDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsOnCall" type="xs:boolean" />
       <xs:element minOccurs="0" name="MemberCount" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -14,6 +15,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConnectionFault" nillable="true" type="tns:ConnectionFault" />
+  <xs:complexType name="SqlFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SqlFault" nillable="true" type="tns:SqlFault" />
   <xs:complexType name="ArrayOfBrigadeDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BrigadeDto" nillable="true" type="tns:BrigadeDto" />

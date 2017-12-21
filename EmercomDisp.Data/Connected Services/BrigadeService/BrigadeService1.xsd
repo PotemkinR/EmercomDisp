@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1122/BrigadeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" />
-  <xs:element name="GetBrigadeForCallResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="callResponseId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetBrigadeForCallResponseResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeForCallResponseResult" nillable="true" type="q1:BrigadeDto" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetBrigadeById">
     <xs:complexType>
       <xs:sequence>
@@ -25,7 +11,7 @@
   <xs:element name="GetBrigadeByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeByIdResult" nillable="true" type="q2:BrigadeDto" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeByIdResult" nillable="true" type="q1:BrigadeDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -37,7 +23,7 @@
   <xs:element name="GetBrigadesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadesResult" nillable="true" type="q3:ArrayOfBrigadeDto" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadesResult" nillable="true" type="q2:ArrayOfBrigadeDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,7 +35,7 @@
   <xs:element name="GetBrigadeMembersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMembersResult" nillable="true" type="q4:ArrayOfBrigadeMemberDto" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMembersResult" nillable="true" type="q3:ArrayOfBrigadeMemberDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -63,14 +49,14 @@
   <xs:element name="GetBrigadeMembersByBrigadeIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMembersByBrigadeIdResult" nillable="true" type="q5:ArrayOfBrigadeMemberDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMembersByBrigadeIdResult" nillable="true" type="q4:ArrayOfBrigadeMemberDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateBrigade">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigade" nillable="true" type="q6:BrigadeDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigade" nillable="true" type="q5:BrigadeDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -82,7 +68,7 @@
   <xs:element name="CreateBrigade">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigade" nillable="true" type="q7:BrigadeDto" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigade" nillable="true" type="q6:BrigadeDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -113,14 +99,14 @@
   <xs:element name="GetBrigadeMemberByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMemberByIdResult" nillable="true" type="q8:BrigadeMemberDto" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="GetBrigadeMemberByIdResult" nillable="true" type="q7:BrigadeMemberDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateBrigadeMember">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigadeMember" nillable="true" type="q9:BrigadeMemberDto" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigadeMember" nillable="true" type="q8:BrigadeMemberDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -144,7 +130,7 @@
   <xs:element name="CreateBrigadeMember">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigadeMember" nillable="true" type="q10:BrigadeMemberDto" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" minOccurs="0" name="brigadeMember" nillable="true" type="q9:BrigadeMemberDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

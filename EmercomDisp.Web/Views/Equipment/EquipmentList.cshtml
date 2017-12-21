@@ -4,31 +4,30 @@
     ViewBag.Title = "EquipmentList";
 }
 
-<table class="table table-striped table-hover table-responsive table-condensed">
+<table class="table table-condensed">
     <tr>
         <th>
-            <h3 style="font-size:x-large"><span style="font-weight:bolder">Id</span></h3>
+            Id
         </th>
         <th>
-            <h3 style="font-size:x-large"><span style="font-weight:bolder">Name</span></h3>
+            Name
         </th>
         <th></th>
     </tr>
     @foreach (var equipmentItem in Model.EquipmentList)
     {
-        <tr>
-            <td class="col-lg-2">
-                <span style="font-size: 14px;">@Html.DisplayFor(model => equipmentItem.Id)</span>
-            </td>
-            <td class="col-lg-2">
-                <span style="font-size: 14px;">@Html.DisplayFor(model => equipmentItem.Name)</span>
-            </td>
-            <td class="col-lg-3">
-                <button type="button" class="btn btn-warning col-lg-3" onclick="location.href='@Url.Action("EditEquipment", "Equipment", new { id = equipmentItem.Id })';return false;"><span class="btn-span glyphicon glyphicon-pencil"></span></button>
-
-                <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("DeleteEquipment", "Equipment", new { id = equipmentItem.Id })' ;return false;"><span class="btn-span glyphicon glyphicon-trash"></span></button>
-            </td>
-        </tr>
+    <tr>
+        <td class="col-lg-2">
+            @Html.DisplayFor(model => equipmentItem.Id)
+        </td>
+        <td class="col-lg-2">
+            @Html.DisplayFor(model => equipmentItem.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Equipment", new { id = equipmentItem.Id }, null) |
+            @Html.ActionLink("Delete", "Equipment", new { id = equipmentItem.Id }, null)
+        </td>
+    </tr>
     }
 </table>
 <button type="button" class="btn btn-default col-lg-12" onclick="location.href='@Url.Action("CreateEquipment", "Equipment")';return false;"><span class="btn-span"></span>Create</button>

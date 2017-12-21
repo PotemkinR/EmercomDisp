@@ -25,11 +25,6 @@ namespace EmercomDisp.Service.Services
             }
         }
 
-        public BrigadeDto GetBrigadeForCallResponse(int callResponseId)
-        {
-            throw new NotImplementedException();
-        }
-
         public BrigadeDto GetBrigadeById(int id)
         {
             var brigade = new BrigadeDto();
@@ -53,6 +48,7 @@ namespace EmercomDisp.Service.Services
                             {
                                 brigade.Id = (int)reader[0];
                                 brigade.Name = reader[1].ToString();
+                                brigade.IsOnCall = (bool)reader[2];
                             }
                         };
                         connection.Close();
@@ -128,7 +124,8 @@ namespace EmercomDisp.Service.Services
                                 var brigade = new BrigadeDto()
                                 {
                                     Name = reader[1].ToString(),
-                                    MemberCount = (int)reader[2],
+                                    IsOnCall = (bool)reader[2],
+                                    MemberCount = (int)reader[3],
                                     Id = (int)reader[0]
                                 };
                                 brigadeList.Add(brigade);

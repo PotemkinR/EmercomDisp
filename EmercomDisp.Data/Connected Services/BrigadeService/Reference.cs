@@ -26,6 +26,9 @@ namespace EmercomDisp.Data.BrigadeService {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsOnCallField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MemberCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -50,6 +53,19 @@ namespace EmercomDisp.Data.BrigadeService {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsOnCall {
+            get {
+                return this.IsOnCallField;
+            }
+            set {
+                if ((this.IsOnCallField.Equals(value) != true)) {
+                    this.IsOnCallField = value;
+                    this.RaisePropertyChanged("IsOnCall");
                 }
             }
         }
@@ -95,6 +111,51 @@ namespace EmercomDisp.Data.BrigadeService {
     [System.Runtime.Serialization.DataContractAttribute(Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
     [System.SerializableAttribute()]
     public partial class ConnectionFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class SqlFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -216,15 +277,9 @@ namespace EmercomDisp.Data.BrigadeService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BrigadeService.IBrigadeService")]
     public interface IBrigadeService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponse", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponseResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponseConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
-        EmercomDisp.Data.BrigadeService.BrigadeDto GetBrigadeForCallResponse(int callResponseId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponse", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponseResponse")]
-        System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeDto> GetBrigadeForCallResponseAsync(int callResponseId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeById", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeByIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.BrigadeService.BrigadeDto GetBrigadeById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeById", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeByIdResponse")]
@@ -232,6 +287,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigades", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadesConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/GetBrigadesSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.BrigadeService.BrigadeDto[] GetBrigades();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigades", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadesResponse")]
@@ -239,6 +295,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembers", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.BrigadeService.BrigadeMemberDto[] GetBrigadeMembers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembers", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersResponse")]
@@ -247,6 +304,7 @@ namespace EmercomDisp.Data.BrigadeService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeId", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdConnectionFaultFau" +
             "lt", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.BrigadeService.BrigadeMemberDto[] GetBrigadeMembersByBrigadeId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeId", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdResponse")]
@@ -254,6 +312,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/UpdateBrigade", ReplyAction="http://tempuri.org/IBrigadeService/UpdateBrigadeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/UpdateBrigadeConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/UpdateBrigadeSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateBrigade(EmercomDisp.Data.BrigadeService.BrigadeDto brigade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/UpdateBrigade", ReplyAction="http://tempuri.org/IBrigadeService/UpdateBrigadeResponse")]
@@ -261,6 +320,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/CreateBrigade", ReplyAction="http://tempuri.org/IBrigadeService/CreateBrigadeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/CreateBrigadeConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/CreateBrigadeSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void CreateBrigade(EmercomDisp.Data.BrigadeService.BrigadeDto brigade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/CreateBrigade", ReplyAction="http://tempuri.org/IBrigadeService/CreateBrigadeResponse")]
@@ -268,6 +328,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/DeleteBrigade", ReplyAction="http://tempuri.org/IBrigadeService/DeleteBrigadeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/DeleteBrigadeConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/DeleteBrigadeSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void DeleteBrigade(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/DeleteBrigade", ReplyAction="http://tempuri.org/IBrigadeService/DeleteBrigadeResponse")]
@@ -275,6 +336,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberById", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.BrigadeService.BrigadeMemberDto GetBrigadeMemberById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberById", ReplyAction="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdResponse")]
@@ -282,6 +344,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateBrigadeMember(EmercomDisp.Data.BrigadeService.BrigadeMemberDto brigadeMember);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberResponse")]
@@ -289,6 +352,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void DeleteBrigadeMember(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberResponse")]
@@ -296,6 +360,7 @@ namespace EmercomDisp.Data.BrigadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/CreateBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/CreateBrigadeMemberResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.ConnectionFault), Action="http://tempuri.org/IBrigadeService/CreateBrigadeMemberConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.BrigadeService.SqlFault), Action="http://tempuri.org/IBrigadeService/CreateBrigadeMemberSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void CreateBrigadeMember(EmercomDisp.Data.BrigadeService.BrigadeMemberDto brigadeMember);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrigadeService/CreateBrigadeMember", ReplyAction="http://tempuri.org/IBrigadeService/CreateBrigadeMemberResponse")]
@@ -327,14 +392,6 @@ namespace EmercomDisp.Data.BrigadeService {
         
         public BrigadeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public EmercomDisp.Data.BrigadeService.BrigadeDto GetBrigadeForCallResponse(int callResponseId) {
-            return base.Channel.GetBrigadeForCallResponse(callResponseId);
-        }
-        
-        public System.Threading.Tasks.Task<EmercomDisp.Data.BrigadeService.BrigadeDto> GetBrigadeForCallResponseAsync(int callResponseId) {
-            return base.Channel.GetBrigadeForCallResponseAsync(callResponseId);
         }
         
         public EmercomDisp.Data.BrigadeService.BrigadeDto GetBrigadeById(int id) {

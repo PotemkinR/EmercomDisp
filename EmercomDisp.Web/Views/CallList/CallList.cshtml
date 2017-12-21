@@ -2,23 +2,33 @@
 
 <h2>CallList</h2>
 
+<div>
+    @Html.ActionLink("Search", "Search")
+</div>
 <div class="col-md-2">
     <h4>Categories</h4>
     @{Html.RenderAction("Category", "Category"); }
 </div>
 <div class="col-md-10">
-    <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("CreateCall", "Call")' ;return false;">New Call</button>
     <div>
-        @{Html.RenderAction("_SearchPanel");}
+        <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("CreateCall", "Call")' ;return false;">New Call</button>
     </div>
-    <div id="result">
-        @foreach (var call in Model.CallList)
-        {
-            Html.RenderAction("CallListItem", call);
-        }
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Reason</th>
+                <th>CallTime</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="result">
+            @foreach (var call in Model.CallList)
+            {
+                Html.RenderAction("CallListItem", call);
+            }
+        </tbody>
+    </table>
 </div>
-@section Scripts
-{
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-}

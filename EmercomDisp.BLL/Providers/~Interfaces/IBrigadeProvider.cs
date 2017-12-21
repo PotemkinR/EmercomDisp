@@ -6,7 +6,6 @@ namespace EmercomDisp.BLL.Providers
 {
     public interface IBrigadeProvider
     {
-        Brigade GetBrigadeForCallResponse(int callResponseId);
         Brigade GetBrigadeById(int id);
         IQueryable<Brigade> GetBrigades();
         void UpdateBrigade(Brigade brigade);

@@ -5,6 +5,9 @@
 }
 
 <div>
+    <p>
+        @Html.ActionLink("Back to list", "CallList", "CallList")
+    </p>
     <h4>Call Details</h4>
     <hr />
     <table class="table-condensed table-bordered" style="width:100%">
@@ -37,7 +40,7 @@
         </tr>
         <tr>
             <td>
-               @Html.DisplayFor(Model => Model.Call.Id)
+                @Html.DisplayFor(Model => Model.Call.Id)
             </td>
             <td>
                 @Html.DisplayFor(Model => Model.Call.Address)
@@ -60,17 +63,32 @@
             <td>
                 @Html.ActionLink(Model.VictimsCount.ToString(), "VictimsList", "Victims", new { callId = Model.Call.Id }, null)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "EditCall", new { id = Model.Call.Id }) |
-                @Html.ActionLink("Delete", "DeleteCall", new { id = Model.Call.Id })
-            </td>
+            @if (Model.Call.IsActive)
+            {
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("CloseCall", "Call", new { id = Model.Call.Id })' ;return false;">Close</button>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Edit", "EditCall", new { id = Model.Call.Id }) |
+                    @Html.ActionLink("Delete", "DeleteCall", new { id = Model.Call.Id })
+                </td>
+            }
         </tr>
     </table>
 </div>
-<h4>Call Responses:</h4>
+
+@if (Model.Call.IsActive)
+{
+    <p>
+        <div>
+            <button type="button" class="btn btn-danger col-lg-3 col-lg-offset-1" onclick="location.href='@Url.Action("CreateCallResponse", "CallResponse", new { callId = Model.Call.Id })' ;return false;">Send brigade</button>
+        </div>
+    </p>
+}
 <div class="col-md-offset-1">
     @{Html.RenderAction("CallResponseList", "CallResponse"); }
 </div>
-<p>
-    @Html.ActionLink("Back to list", "CallList", "CallList")
-</p>
+

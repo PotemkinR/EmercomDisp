@@ -7,15 +7,6 @@
       <xsd:import schemaLocation="http://localhost:1122/BrigadeService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IBrigadeService_GetBrigadeForCallResponse_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetBrigadeForCallResponse" />
-  </wsdl:message>
-  <wsdl:message name="IBrigadeService_GetBrigadeForCallResponse_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetBrigadeForCallResponseResponse" />
-  </wsdl:message>
-  <wsdl:message name="IBrigadeService_GetBrigadeForCallResponse_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
-  </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBrigadeById" />
   </wsdl:message>
@@ -23,7 +14,10 @@
     <wsdl:part name="parameters" element="tns:GetBrigadeByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeById_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_GetBrigadeById_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigades_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBrigades" />
@@ -34,6 +28,9 @@
   <wsdl:message name="IBrigadeService_GetBrigades_ConnectionFaultFault_FaultMessage">
     <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
   </wsdl:message>
+  <wsdl:message name="IBrigadeService_GetBrigades_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:SqlFault" />
+  </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMembers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBrigadeMembers" />
   </wsdl:message>
@@ -41,7 +38,10 @@
     <wsdl:part name="parameters" element="tns:GetBrigadeMembersResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMembers_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_GetBrigadeMembers_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMembersByBrigadeId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBrigadeMembersByBrigadeId" />
@@ -50,7 +50,10 @@
     <wsdl:part name="parameters" element="tns:GetBrigadeMembersByBrigadeIdResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMembersByBrigadeId_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_GetBrigadeMembersByBrigadeId_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q8:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_UpdateBrigade_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateBrigade" />
@@ -59,7 +62,10 @@
     <wsdl:part name="parameters" element="tns:UpdateBrigadeResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_UpdateBrigade_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:ConnectionFault" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q9:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_UpdateBrigade_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q10:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_CreateBrigade_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateBrigade" />
@@ -68,7 +74,10 @@
     <wsdl:part name="parameters" element="tns:CreateBrigadeResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_CreateBrigade_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:ConnectionFault" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q11:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_CreateBrigade_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q12:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_DeleteBrigade_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBrigade" />
@@ -77,7 +86,10 @@
     <wsdl:part name="parameters" element="tns:DeleteBrigadeResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_DeleteBrigade_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q8:ConnectionFault" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q13:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_DeleteBrigade_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q14:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMemberById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBrigadeMemberById" />
@@ -86,7 +98,10 @@
     <wsdl:part name="parameters" element="tns:GetBrigadeMemberByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_GetBrigadeMemberById_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q9:ConnectionFault" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q15:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_GetBrigadeMemberById_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q16:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_UpdateBrigadeMember_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateBrigadeMember" />
@@ -95,7 +110,10 @@
     <wsdl:part name="parameters" element="tns:UpdateBrigadeMemberResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_UpdateBrigadeMember_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q10:ConnectionFault" />
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q17:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_UpdateBrigadeMember_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q18:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_DeleteBrigadeMember_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBrigadeMember" />
@@ -104,7 +122,10 @@
     <wsdl:part name="parameters" element="tns:DeleteBrigadeMemberResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_DeleteBrigadeMember_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q11:ConnectionFault" />
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q19:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_DeleteBrigadeMember_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q20:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_CreateBrigadeMember_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateBrigadeMember" />
@@ -113,84 +134,81 @@
     <wsdl:part name="parameters" element="tns:CreateBrigadeMemberResponse" />
   </wsdl:message>
   <wsdl:message name="IBrigadeService_CreateBrigadeMember_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q12:ConnectionFault" />
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q21:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBrigadeService_CreateBrigadeMember_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q22:SqlFault" />
   </wsdl:message>
   <wsdl:portType name="IBrigadeService">
-    <wsdl:operation name="GetBrigadeForCallResponse">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponse" message="tns:IBrigadeService_GetBrigadeForCallResponse_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponseResponse" message="tns:IBrigadeService_GetBrigadeForCallResponse_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponseConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigadeForCallResponse_ConnectionFaultFault_FaultMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetBrigadeById">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeById" message="tns:IBrigadeService_GetBrigadeById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeByIdResponse" message="tns:IBrigadeService_GetBrigadeById_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigadeById_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeByIdSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_GetBrigadeById_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBrigades">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigades" message="tns:IBrigadeService_GetBrigades_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadesResponse" message="tns:IBrigadeService_GetBrigades_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadesConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigades_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadesSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_GetBrigades_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMembers">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembers" message="tns:IBrigadeService_GetBrigadeMembers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersResponse" message="tns:IBrigadeService_GetBrigadeMembers_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigadeMembers_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_GetBrigadeMembers_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMembersByBrigadeId">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeId" message="tns:IBrigadeService_GetBrigadeMembersByBrigadeId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdResponse" message="tns:IBrigadeService_GetBrigadeMembersByBrigadeId_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigadeMembersByBrigadeId_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMembersByBrigadeIdSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_GetBrigadeMembersByBrigadeId_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateBrigade">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigade" message="tns:IBrigadeService_UpdateBrigade_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeResponse" message="tns:IBrigadeService_UpdateBrigade_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_UpdateBrigade_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_UpdateBrigade_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateBrigade">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigade" message="tns:IBrigadeService_CreateBrigade_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeResponse" message="tns:IBrigadeService_CreateBrigade_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_CreateBrigade_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_CreateBrigade_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteBrigade">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigade" message="tns:IBrigadeService_DeleteBrigade_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeResponse" message="tns:IBrigadeService_DeleteBrigade_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_DeleteBrigade_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_DeleteBrigade_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMemberById">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberById" message="tns:IBrigadeService_GetBrigadeMemberById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdResponse" message="tns:IBrigadeService_GetBrigadeMemberById_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_GetBrigadeMemberById_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/GetBrigadeMemberByIdSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_GetBrigadeMemberById_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateBrigadeMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMember" message="tns:IBrigadeService_UpdateBrigadeMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberResponse" message="tns:IBrigadeService_UpdateBrigadeMember_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_UpdateBrigadeMember_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/UpdateBrigadeMemberSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_UpdateBrigadeMember_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteBrigadeMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMember" message="tns:IBrigadeService_DeleteBrigadeMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberResponse" message="tns:IBrigadeService_DeleteBrigadeMember_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_DeleteBrigadeMember_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/DeleteBrigadeMemberSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_DeleteBrigadeMember_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateBrigadeMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeMember" message="tns:IBrigadeService_CreateBrigadeMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeMemberResponse" message="tns:IBrigadeService_CreateBrigadeMember_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeMemberConnectionFaultFault" name="ConnectionFaultFault" message="tns:IBrigadeService_CreateBrigadeMember_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBrigadeService/CreateBrigadeMemberSqlFaultFault" name="SqlFaultFault" message="tns:IBrigadeService_CreateBrigadeMember_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBrigadeService" type="tns:IBrigadeService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetBrigadeForCallResponse">
-      <soap:operation soapAction="http://tempuri.org/IBrigadeService/GetBrigadeForCallResponse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ConnectionFaultFault">
-        <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="GetBrigadeById">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/GetBrigadeById" style="document" />
       <wsdl:input>
@@ -201,6 +219,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBrigades">
@@ -214,6 +235,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMembers">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/GetBrigadeMembers" style="document" />
@@ -225,6 +249,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMembersByBrigadeId">
@@ -238,6 +265,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateBrigade">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/UpdateBrigade" style="document" />
@@ -249,6 +279,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateBrigade">
@@ -262,6 +295,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteBrigade">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/DeleteBrigade" style="document" />
@@ -273,6 +309,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBrigadeMemberById">
@@ -286,6 +325,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateBrigadeMember">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/UpdateBrigadeMember" style="document" />
@@ -297,6 +339,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteBrigadeMember">
@@ -310,6 +355,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateBrigadeMember">
       <soap:operation soapAction="http://tempuri.org/IBrigadeService/CreateBrigadeMember" style="document" />
@@ -321,6 +369,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

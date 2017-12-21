@@ -26,5 +26,8 @@ namespace EmercomDisp.Service.Dto.Models
 
         [DataMember]
         public int IncidentId { get; set; }
+
+        [DataMember]
+        public bool IsActive { get; set; }
     }
 }

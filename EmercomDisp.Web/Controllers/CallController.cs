@@ -60,13 +60,7 @@ namespace EmercomDisp.Web.Controllers
                     Text = category,
                     Value = category
                 }),
-                SelectedCategory = categories.First(),
-                Brigades = brigades.Select(brigade => new SelectListItem()
-                {
-                    Text = brigade.Name,
-                    Value = brigade.Name
-                }),
-                SelectedBrigade = brigades.First().Name
+                SelectedCategory = categories.FirstOrDefault()
             };
             return View(model);
         }
@@ -84,15 +78,6 @@ namespace EmercomDisp.Web.Controllers
                     Reason = model.Reason
                 };
                 int callId = _callProvider.CreateCall(newCall);
-
-                var newCallResponse = new CallResponse()
-                {
-                    TransferTime = DateTime.Now,
-                    BrigadeName = model.SelectedBrigade,
-                    IncidentId = callId
-                };
-
-                _callResponseProvider.CreateCallResponse(newCallResponse);
 
                 return RedirectToAction("CallDetails", new{ id = callId});
             }
@@ -135,6 +120,7 @@ namespace EmercomDisp.Web.Controllers
         [HttpPost]
         public ActionResult EditCall(CallEditModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var updatedCall = new Call()
@@ -151,7 +137,14 @@ namespace EmercomDisp.Web.Controllers
                 _callProvider.UpdateCall(updatedCall);
                 return RedirectToAction("CallDetails", new { id = model.Id });
             }
-            return View();
+
+            var categories = _callProvider.GetCategories();
+            model.Categories = categories.Select(category => new SelectListItem()
+            {
+                Value = category,
+                Text = category
+            });
+            return View(model);
         }
 
         [HttpGet]
@@ -179,6 +172,53 @@ namespace EmercomDisp.Web.Controllers
         {
             _callProvider.DeleteCall(id);
             return RedirectToAction("CallList", "CallList");
+        }
+
+        [HttpGet]
+        public ActionResult CloseCall(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var call = _callProvider.GetCallById((int)id);
+            var callResponses = _callResponseProvider.GetCallResponsesForCall((int)id)
+                .Where(callResponse => callResponse.IsActive == true);
+            if (!callResponses.Any())
+            {
+                var model = new CallEditModel()
+                {
+                    Id = call.Id,
+                    Address = call.Address,
+                    CallTime = call.CallTime,
+                    Reason = call.Reason,
+                    SelectedCategory = call.Category
+                };
+                return View(model);
+            }
+            return RedirectToAction("CallDetails", "Call", new { id });
+        }
+
+        [HttpPost]
+        public ActionResult CloseCall(CallEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var updatedCall = new Call()
+                {
+                    Id = model.Id,
+                    Address = model.Address,
+                    Reason = model.Reason,
+                    CallTime = model.CallTime,
+                    Category = model.SelectedCategory,
+                    IncidentDescription = model.IncidentDescription,
+                    IncidentCause = model.IncidentCause
+                };
+
+                _callProvider.UpdateCall(updatedCall);
+                return RedirectToAction("CallDetails", new { id = model.Id });
+            }
+            return View(model);
         }
     }
 }

@@ -18,9 +18,5 @@ namespace EmercomDisp.Web.Models.Calls
         public string SelectedCategory { get; set; }
 
         public IEnumerable<SelectListItem> Categories { get; set; }
-
-        public string SelectedBrigade { get; set; }
-        
-        public IEnumerable<SelectListItem> Brigades { get; set; }
     }
 }

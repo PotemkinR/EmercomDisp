@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public int MemberCount { get; set; }
+
+        public bool IsOnCall { get; set; }
     }
 }

@@ -4,7 +4,6 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 
 namespace EmercomDisp.Data.Repositories
 {
@@ -27,6 +26,7 @@ namespace EmercomDisp.Data.Repositories
                     {
                         brigade.Id = brigadeDto.Id;
                         brigade.Name = brigadeDto.Name;
+                        brigade.IsOnCall = brigadeDto.IsOnCall;
                     }
                     client.Close();
                 }
@@ -36,11 +36,6 @@ namespace EmercomDisp.Data.Repositories
                 }
             }
             return brigade;
-        }
-
-        public Brigade GetBrigadeForCallResponse(int callResponseId)
-        {
-            throw new NotImplementedException();
         }
 
         public IQueryable<Brigade> GetBrigades()
@@ -60,6 +55,7 @@ namespace EmercomDisp.Data.Repositories
                             {
                                 Id = brigadeDto.Id,
                                 Name = brigadeDto.Name,
+                                IsOnCall = brigadeDto.IsOnCall,
                                 MemberCount = brigadeDto.MemberCount
                             };
                             brigades.Add(brigade);

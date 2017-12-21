@@ -15,11 +15,6 @@ namespace EmercomDisp.BLL.Providers
             _brigadeRepository = brigadeRepository ?? throw new ArgumentNullException("Brigade Repository");
         }
 
-        public Brigade GetBrigadeForCallResponse(int callResponseId)
-        {
-            return _brigadeRepository.GetBrigadeForCallResponse(callResponseId);
-        }
-
         public Brigade GetBrigadeById(int id)
         {
             return _brigadeRepository.GetBrigadeById(id);

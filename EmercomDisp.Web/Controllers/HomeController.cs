@@ -18,6 +18,10 @@ namespace EmercomDisp.Web.Controllers
 
         public ActionResult Index()
         {
+            if(!(HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Editor")))
+            {
+                return RedirectToAction("CallList", "CallList");
+            }
             return View();
         }
     }

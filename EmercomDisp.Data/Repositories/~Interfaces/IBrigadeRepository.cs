@@ -6,7 +6,6 @@ namespace EmercomDisp.Data.Repositories
 {
     public interface IBrigadeRepository
     {
-        Brigade GetBrigadeForCallResponse(int callResponseId);
         Brigade GetBrigadeById(int id);
         IQueryable<Brigade> GetBrigades();
         void UpdateBrigade(Brigade brigade);

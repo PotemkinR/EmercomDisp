@@ -53,6 +53,7 @@ namespace EmercomDisp.Service.Services
                                 callResponse.ReturnTime = reader[4] as DateTime?;
                                 callResponse.IncidentId = (int)reader[5];
                                 callResponse.BrigadeName = reader[6].ToString();
+                                callResponse.IsActive = (bool)reader[7];
                             }
                         };
                         connection.Close();
@@ -94,7 +95,8 @@ namespace EmercomDisp.Service.Services
                                     ArriveTime = reader[4] as DateTime?,
                                     FinishTime = reader[5] as DateTime?,
                                     ReturnTime = reader[6] as DateTime?,
-                                    BrigadeName = reader[8].ToString()
+                                    IsActive = (bool)reader[7],
+                                    BrigadeName = reader[9].ToString()
                                 };
                                 callResponseList.Add(callResponse);
                             }
@@ -153,6 +155,7 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@arriveTime", callResponse.ArriveTime);
                     cmd.Parameters.AddWithValue("@finishTime", callResponse.FinishTime);
                     cmd.Parameters.AddWithValue("@returnTime", callResponse.ReturnTime);
+                    cmd.Parameters.AddWithValue("@brigadeName", callResponse.BrigadeName);
 
                     try
                     {

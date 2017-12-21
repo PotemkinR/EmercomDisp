@@ -4,6 +4,7 @@ using EmercomDisp.Web.Models.Calls;
 using System;
 using System.Web.Mvc;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EmercomDisp.Web.Controllers
 {
@@ -22,11 +23,15 @@ namespace EmercomDisp.Web.Controllers
             var model = new CallListViewModel();
             if (string.IsNullOrEmpty(category))
             {
-                model.CallList = _callProvider.GetCalls();
+                var callList = _callProvider.GetCalls()
+                    .Where(c => c.CallTime.Date == DateTime.Today);
+                model.CallList = callList.OrderByDescending(c => c.IsActive);
             }
             else
             {
-                model.CallList = _callProvider.GetCallsByCategory(category);
+                var callList = _callProvider.GetCallsByCategory(category)
+                    .Where(c => c.CallTime.Date == DateTime.Today);
+                model.CallList = callList.OrderByDescending(c => c.IsActive);
             }
 
             return View(model);
@@ -40,7 +45,9 @@ namespace EmercomDisp.Web.Controllers
                 CallId = call.Id,
                 CallTime = call.CallTime,
                 Address = call.Address,
-                IsActive = call.IsActive
+                Reason = call.Reason,
+                Category = call.Category,
+                Status = call.IsActive ? "Active" : "Closed"
             };
             return PartialView(model);
         }
@@ -48,16 +55,35 @@ namespace EmercomDisp.Web.Controllers
         [ChildActionOnly]
         public PartialViewResult _SearchPanel()
         {
-            var model = new CallSearchModel();
+            var categories = _callProvider.GetCategories();
+            var model = new CallSearchModel()
+            {
+                Categories = categories.Select(category => new SelectListItem()
+                {
+                    Text = category,
+                    Value = category
+                })
+            };
             return PartialView(model);
         }
 
+        public ActionResult Search()
+        {          
+            var calls = _callProvider.GetCalls();
+            var model = new CallListViewModel()
+            {
+                CallList = calls              
+            };
+            return View(model);
+        }
+
         [HttpPost]
-        public PartialViewResult Search(int? id, string address)
+        public PartialViewResult Search(int? id, string address, string category)
         {
             var calls = _callProvider.GetCalls()
+                .Where(c => c.Category.Contains(category))
                 .Where(c => c.Address.Contains(address));
-
+            
             if(id != null)
             {
                 calls = calls.Where(c => c.Id == (int)id);

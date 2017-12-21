@@ -21,8 +21,12 @@ namespace EmercomDisp.Web.Models.Calls
         [DataType(DataType.DateTime)]
         public DateTime CallTime { get; set; }
 
+        [Required]
+        [StringLength(200)]
         public string IncidentDescription { get; set; }
 
+        [Required]
+        [StringLength(100)]
         public string IncidentCause { get; set; }
 
         public string SelectedCategory { get; set; }

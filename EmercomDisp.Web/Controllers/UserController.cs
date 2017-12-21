@@ -45,6 +45,7 @@ namespace EmercomDisp.Web.Controllers
                     Roles = GetRolesForUser(user)
                 };
                 _userProvider.CreateUser(newUser);
+                return RedirectToAction("UserList");
             }
             return View();
         }

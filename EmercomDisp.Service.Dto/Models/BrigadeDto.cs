@@ -13,5 +13,8 @@ namespace EmercomDisp.Service.Dto.Models
 
         [DataMember]
         public int MemberCount { get; set; }
+
+        [DataMember]
+        public bool IsOnCall { get; set; }
     }
 }

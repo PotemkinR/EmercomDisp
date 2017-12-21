@@ -9,17 +9,20 @@ using System.Web.Mvc;
 
 namespace EmercomDisp.Web.Controllers
 {
-    [Authorize(Roles ="User")]
+    [Authorize(Roles = "User")]
     public class CallResponseController : Controller
     {
         private readonly ICallResponseProvider _callResponseProvider;
         private readonly IEquipmentProvider _equipmentProvider;
+        private readonly IBrigadeProvider _brigadeProvider;
 
         public CallResponseController(ICallResponseProvider callResponseProvider,
-            IEquipmentProvider equipmentProvider)
+            IEquipmentProvider equipmentProvider,
+            IBrigadeProvider brigadeProvider)
         {
             _callResponseProvider = callResponseProvider ?? throw new ArgumentNullException("Call Response Provider");
             _equipmentProvider = equipmentProvider ?? throw new ArgumentNullException("Equipment Provider");
+            _brigadeProvider = brigadeProvider ?? throw new ArgumentNullException("Brigade Provider");
         }
 
         [ChildActionOnly]
@@ -34,15 +37,58 @@ namespace EmercomDisp.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult CreateCallResponse(int? callId)
+        {
+            if (callId == null)
+            {
+                return HttpNotFound();
+            }
+            var brigades = _brigadeProvider.GetBrigades().Where(brigade => !brigade.IsOnCall);
+            if (brigades.Any())
+            {
+                var model = new CallResponseCreateModel()
+                {
+                    CallId = (int)callId,
+                    Brigades = brigades.Select(brigade => new SelectListItem()
+                    {
+                        Text = brigade.Name,
+                        Value = brigade.Name
+                    }),
+                    SelectedBrigade = brigades.FirstOrDefault().Name
+                };
+
+                return View(model);
+            }
+            return RedirectToAction("CallDetails", "Call", new { id = callId });
+        }
+
+        [HttpPost]
+        public ActionResult CreateCallResponse(CallResponseCreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var newCallResponse = new CallResponse()
+                {
+                    IncidentId = model.CallId,
+                    BrigadeName = model.SelectedBrigade,
+                    TransferTime = DateTime.Now
+                };
+                _callResponseProvider.CreateCallResponse(newCallResponse);
+                return RedirectToAction("CallDetails", "Call", new { id = model.CallId });
+            }
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult EditCallResponse(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
 
             var callResponse = _callResponseProvider.GetCallResponseById((int)id);
-            if(callResponse.Id != 0)
+            if (callResponse.Id != 0)
             {
                 var model = new CallResponseEditModel()
                 {
@@ -72,18 +118,19 @@ namespace EmercomDisp.Web.Controllers
                     TransferTime = model.TransferTime,
                     ArriveTime = model.ArriveTime,
                     FinishTime = model.FinishTime,
-                    ReturnTime = model.ReturnTime,                   
+                    ReturnTime = model.ReturnTime,
+                    BrigadeName = model.BrigadeName
                 };
                 _callResponseProvider.UpdateCallResponse(callResponse);
                 return RedirectToAction("CallDetails", "Call", new { id = model.IncidentId });
             }
-            return View();
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult EditEquipmentList(int? id, int? callId)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
@@ -113,7 +160,7 @@ namespace EmercomDisp.Web.Controllers
         {
             var equipmentList = model.Equipment;
             var updatedEquipmentList = new List<Equipment>();
-            foreach(var item in equipmentList)
+            foreach (var item in equipmentList)
             {
                 if (item.IsSelected)
                 {
@@ -127,13 +174,13 @@ namespace EmercomDisp.Web.Controllers
             }
             _equipmentProvider.UpdateEquipmentList(updatedEquipmentList, model.CallId);
 
-            return RedirectToAction("CallDetails", "Call",new { id = model.CallId });
+            return RedirectToAction("CallDetails", "Call", new { id = model.CallId });
         }
 
         [HttpGet]
         public ActionResult DeleteCallResponse(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
@@ -142,7 +189,10 @@ namespace EmercomDisp.Web.Controllers
             {
                 var model = new CallResponseDeleteModel()
                 {
-                    CallResponse = callResponse
+                    Id = callResponse.Id,
+                    IncidentId = callResponse.IncidentId,
+                    TransferTime = callResponse.TransferTime,
+                    Brigade = callResponse.BrigadeName
                 };
 
                 return View(model);
@@ -152,10 +202,48 @@ namespace EmercomDisp.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCallResponse(int id)
+        public ActionResult DeleteCallResponse(CallResponseDeleteModel model)
         {
-            _callResponseProvider.DeleteCallResponse(id);
-            return RedirectToAction("CallList", "CallList");
+            _callResponseProvider.DeleteCallResponse(model.Id);
+            return RedirectToAction("CallDetails", "Call", new { id = model.IncidentId });
+        }
+
+        [HttpGet]
+        public ActionResult CloseCallResponse(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var callResponse = _callResponseProvider.GetCallResponseById((int)id);
+            var model = new CallResponseEditModel()
+            {
+                Id = callResponse.Id,
+                BrigadeName = callResponse.BrigadeName,
+                TransferTime = callResponse.TransferTime,
+                IncidentId = callResponse.IncidentId
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CloseCallResponse(CallResponseEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var callResponse = new CallResponse()
+                {
+                    Id = model.Id,
+                    TransferTime = model.TransferTime,
+                    ArriveTime = model.ArriveTime,
+                    FinishTime = model.FinishTime,
+                    ReturnTime = model.ReturnTime,
+                    BrigadeName = model.BrigadeName
+                };
+                _callResponseProvider.UpdateCallResponse(callResponse);
+                return RedirectToAction("CallDetails", "Call", new { id = model.IncidentId });
+            }
+            return View(model);
         }
     }
 }

@@ -1,55 +1,67 @@
 ﻿@model EmercomDisp.Web.Models.CallResponses.CallResponseListModel
 
-<div class="panel" style="width:100%">
-    <table class="table table-condensed">
-        <tr>
-            <th>
-                Brigade Name
-            </th>
-            <th>
-                Transfer Time
-            </th>
-            <th>
-                Arrive Time
-            </th>
-            <th>
-                Finish Time
-            </th>
-            <th>
-                Return Time
-            </th>
-            <th>
-                Equipment
-            </th>
-            <th></th>
-        </tr>
+@if (Model.CallResponses.Count() != 0)
+{
+    <div class="panel" style="width:100%">
+        <table class="table table-condensed">
+            <tr>
+                <th>
+                    Brigade Name
+                </th>
+                <th>
+                    Transfer Time
+                </th>
+                <th>
+                    Arrive Time
+                </th>
+                <th>
+                    Finish Time
+                </th>
+                <th>
+                    Return Time
+                </th>
+                <th>
+                    Equipment
+                </th>
+                <th></th>
+            </tr>
 
-        @foreach (var callResponse in Model.CallResponses)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => callResponse.BrigadeName)
-            </td>
-            <td>
-                @Html.DisplayFor(model => callResponse.TransferTime)
-            </td>
-            <td>
-                @Html.DisplayFor(model => callResponse.ArriveTime)
-            </td>
-            <td>
-                @Html.DisplayFor(model => callResponse.FinishTime)
-            </td>
-            <td>
-                @Html.DisplayFor(model => callResponse.ReturnTime)
-            </td>
-            <td>
-                @Html.ActionLink(callResponse.Equipment.Count().ToString(), "EditEquipmentList", new { id = callResponse.Id, callId = Model.CallId })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditCallResponse", new { id = callResponse.Id }) |
-                @Html.ActionLink("Delete", "DeleteCallResponse", new { id = callResponse.Id })
-            </td>
-        </tr>
-        }
-    </table>
-</div>
+            @foreach (var callResponse in Model.CallResponses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => callResponse.BrigadeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => callResponse.TransferTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => callResponse.ArriveTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => callResponse.FinishTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => callResponse.ReturnTime)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Used Equipment", "EditEquipmentList", new { id = callResponse.Id })
+                    </td>
+                    @if (callResponse.IsActive)
+                    {
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("CloseCallResponse", "CallResponse", new { id = callResponse.Id, callId = callResponse.IncidentId })' ;return false;">Close</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "EditCallResponse", new { id = callResponse.Id }) |
+                            @Html.ActionLink("Delete", "DeleteCallResponse", new { id = callResponse.Id })
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+}

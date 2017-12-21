@@ -3,7 +3,6 @@ using EmercomDisp.Model.Models;
 using log4net;
 using System;
 using System.Collections.Generic;
-using System.ServiceModel;
 
 namespace EmercomDisp.Data.Repositories
 {
@@ -31,6 +30,7 @@ namespace EmercomDisp.Data.Repositories
                         callResponse.ReturnTime = callResponseDto.ReturnTime;
                         callResponse.BrigadeName = callResponseDto.BrigadeName;
                         callResponse.IncidentId = callResponseDto.IncidentId;
+                        callResponse.IsActive = callResponseDto.IsActive;
                     }
                     client.Close();
                 }
@@ -64,7 +64,8 @@ namespace EmercomDisp.Data.Repositories
                                 ArriveTime = callResponseDto.ArriveTime,
                                 FinishTime = callResponseDto.FinishTime,
                                 ReturnTime = callResponseDto.ReturnTime,
-                                BrigadeName = callResponseDto.BrigadeName
+                                BrigadeName = callResponseDto.BrigadeName,
+                                IsActive = callResponseDto.IsActive
                             };
                             callResponses.Add(callResponse);
                         }
@@ -120,7 +121,8 @@ namespace EmercomDisp.Data.Repositories
                         TransferTime = callResponse.TransferTime,
                         ArriveTime = callResponse.ArriveTime,
                         FinishTime = callResponse.FinishTime,
-                        ReturnTime = callResponse.ReturnTime
+                        ReturnTime = callResponse.ReturnTime,
+                        BrigadeName = callResponse.BrigadeName
                     };
 
                     client.UpdateCallResponse(updatedCallResponse);

@@ -1,0 +1,34 @@
+﻿@model EmercomDisp.Web.Models.Calls.CallListViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div>
+    @{Html.RenderAction("_SearchPanel");}
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Address</th>
+            <th>Reason</th>
+            <th>CallTime</th>
+            <th>Category</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="result">
+        @foreach(var call in Model.CallList)
+        {
+            Html.RenderAction("CallListItem", call);
+        }
+    </tbody>
+</table>
+<div ></div>
+@section Scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

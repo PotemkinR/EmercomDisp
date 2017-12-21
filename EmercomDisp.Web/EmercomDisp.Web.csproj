@@ -243,9 +243,11 @@
     <Compile Include="Models\Brigades\BrigadeMemberCreateModel.cs" />
     <Compile Include="Models\Brigades\BrigadeMembersListModel.cs" />
     <Compile Include="Models\Brigades\BrigadeModel.cs" />
+    <Compile Include="Models\CallResponses\CallResponseCreateModel.cs" />
     <Compile Include="Models\CallResponses\CallResponseDeleteModel.cs" />
     <Compile Include="Models\CallResponses\CallResponseEditModel.cs" />
     <Compile Include="Models\CallResponses\CallResponseListModel.cs" />
+    <Compile Include="Models\Calls\CallCloseModel.cs" />
     <Compile Include="Models\Calls\CallCreateModel.cs" />
     <Compile Include="Models\Calls\CallDetailsViewModel.cs" />
     <Compile Include="Models\Calls\CallEditModel.cs" />
@@ -303,7 +305,6 @@
     <Content Include="Views\Call\EditCall.cshtml" />
     <Content Include="Views\Call\DeleteCall.cshtml" />
     <Content Include="Views\CallResponse\EditCallResponse.cshtml" />
-    <Content Include="Views\CallResponse\DeleteCallResponse.cshtml" />
     <Content Include="Views\CallList\_SearchPanel.cshtml" />
     <Content Include="Views\CallList\_SearchResult.cshtml" />
     <Content Include="Views\Brigade\DeleteBrigade.cshtml" />
@@ -311,6 +312,11 @@
     <Content Include="Views\Equipment\DeleteEquipment.cshtml" />
     <Content Include="Views\User\DeleteUser.cshtml" />
     <Content Include="Views\Call\CreateCall.cshtml" />
+    <Content Include="Views\CallList\Search.cshtml" />
+    <Content Include="Views\CallResponse\CreateCallResponse.cshtml" />
+    <Content Include="Views\CallResponse\DeleteCallResponse.cshtml" />
+    <Content Include="Views\Call\CloseCall.cshtml" />
+    <Content Include="Views\CallResponse\CloseCallResponse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

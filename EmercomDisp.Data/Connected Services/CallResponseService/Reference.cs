@@ -38,6 +38,9 @@ namespace EmercomDisp.Data.CallResponseService {
         private int IncidentIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ReturnTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -114,6 +117,19 @@ namespace EmercomDisp.Data.CallResponseService {
                 if ((this.IncidentIdField.Equals(value) != true)) {
                     this.IncidentIdField = value;
                     this.RaisePropertyChanged("IncidentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
