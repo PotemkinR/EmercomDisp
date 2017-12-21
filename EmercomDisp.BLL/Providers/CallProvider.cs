@@ -1,4 +1,5 @@
-﻿using EmercomDisp.Data.Repositories;
+﻿using EmercomDisp.BLL.Services;
+using EmercomDisp.Data.Repositories;
 using EmercomDisp.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,13 @@ namespace EmercomDisp.BLL.Providers
     public class CallProvider:ICallProvider
     {
         private readonly ICallRepository _callRepository;
+        private readonly ICacheService _cacheService;
 
-        public CallProvider(ICallRepository callRepository)
+        public CallProvider(ICallRepository callRepository,
+            ICacheService cacheService)
         {
             _callRepository = callRepository ?? throw new ArgumentNullException("Call Repository");
+            _cacheService = cacheService ?? throw new ArgumentNullException("Cache Service");
         }
 
         public IEnumerable<Call> GetCalls()
@@ -32,7 +36,7 @@ namespace EmercomDisp.BLL.Providers
 
         public IEnumerable<string> GetCategories()
         {
-            return _callRepository.GetCategories();
+            return _cacheService.GetObjectFromCache("categories", 10, () => _callRepository.GetCategories());
         }
 
         public int CreateCall(Call call)
