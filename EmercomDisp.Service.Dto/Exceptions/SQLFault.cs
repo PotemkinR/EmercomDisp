@@ -6,14 +6,14 @@ namespace EmercomDisp.Service.Dto.Models
     public class SqlFault
     {
         [DataMember]
-        public string Message { get; }
+        public string Message { get; set; }
 
         public SqlFault()
         { }
 
         public SqlFault(string message)
         {
-            message = Message;
+            Message = message;
         }
     }
 }

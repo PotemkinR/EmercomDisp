@@ -20,11 +20,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void AddVictim(VictimDto victim, int callId);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateVictim(VictimDto victim);
 
         [OperationContract]

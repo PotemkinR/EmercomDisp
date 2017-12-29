@@ -9,6 +9,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.CallId)
+    @Html.HiddenFor(model => model.CallResponseId)
     for (int i = 0; i < Model.Equipment.Count; i++)
     {
         var item = Model.Equipment[i];

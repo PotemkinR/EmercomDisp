@@ -20,12 +20,29 @@ namespace EmercomDisp.Service.Services
             }
             catch (ConfigurationErrorsException e)
             {
-                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
+                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message), "Unable to connect to the database");
             }
         }
 
         public void CreateUser(UserDto user)
         {
+            if (user.Name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Name"), "Name cannot be null");
+            }
+            if (user.Email== null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Email"), "Email cannot be null");
+            }
+            if (user.PasswordHash == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User PasswordHash"), "Password Hash cannot be null");
+            }
+            if (user.Roles == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Roles"), "Roles cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -67,13 +84,30 @@ namespace EmercomDisp.Service.Services
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                 }
             }
         }
 
         public void UpdateUser(UserDto user)
         {
+            if (user.Name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Name"), "Name cannot be null");
+            }
+            if (user.Email == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Email"), "Email cannot be null");
+            }
+            if (user.PasswordHash == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User PasswordHash"), "Password Hash cannot be null");
+            }
+            if (user.Roles == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Roles"), "Roles cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -88,7 +122,7 @@ namespace EmercomDisp.Service.Services
                         command.CommandType = CommandType.StoredProcedure;
                         command.Transaction = transaction;                   
 
-                        command.Parameters.AddWithValue("@name", null);//
+                        command.Parameters.AddWithValue("@name", null);
                         command.ExecuteNonQuery();
                     }
 
@@ -122,13 +156,18 @@ namespace EmercomDisp.Service.Services
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                 }
             }
         }
 
         public void DeleteUser(string name)
         {
+            if (name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Name"), "Name cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -147,7 +186,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -180,7 +219,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -189,6 +228,11 @@ namespace EmercomDisp.Service.Services
 
         public UserDto GetUserByName(string name)
         {
+            if (name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("User Name"), "Name cannot be null");
+            }
+
             var user = new UserDto
             {
                 Roles = new List<string>()
@@ -240,7 +284,7 @@ namespace EmercomDisp.Service.Services
                 catch(SqlException e)
                 {
                     transaction.Rollback();
-                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                 }
             }
             return user;
@@ -276,7 +320,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }

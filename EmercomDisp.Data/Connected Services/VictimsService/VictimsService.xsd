@@ -15,10 +15,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConnectionFault" nillable="true" type="tns:ConnectionFault" />
+  <xs:complexType name="SqlFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SqlFault" nillable="true" type="tns:SqlFault" />
   <xs:complexType name="ArrayOfVictimDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VictimDto" nillable="true" type="tns:VictimDto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVictimDto" nillable="true" type="tns:ArrayOfVictimDto" />
+  <xs:complexType name="ArgumentFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArgumentFault" nillable="true" type="tns:ArgumentFault" />
 </xs:schema>

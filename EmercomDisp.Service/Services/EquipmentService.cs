@@ -20,7 +20,7 @@ namespace EmercomDisp.Service.Services
             }
             catch (ConfigurationErrorsException e)
             {
-                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
+                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message), "Unable to connect to the database");
             }
         }
 
@@ -54,7 +54,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -92,7 +92,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -136,7 +136,7 @@ namespace EmercomDisp.Service.Services
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                 }
             }
         }
@@ -170,7 +170,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -179,6 +179,11 @@ namespace EmercomDisp.Service.Services
 
         public void CreateEquipment(EquipmentDto equipment)
         {
+            if (equipment.Name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Equipment Name"), "Name cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -197,7 +202,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -205,6 +210,11 @@ namespace EmercomDisp.Service.Services
 
         public void UpdateEquipment(EquipmentDto equipment)
         {
+            if (equipment.Name == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Equipment Name"), "Name cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -224,7 +234,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -250,7 +260,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }

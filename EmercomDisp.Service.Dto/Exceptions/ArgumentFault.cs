@@ -3,15 +3,15 @@
 namespace EmercomDisp.Service.Dto.Models
 {
     [DataContract]
-    public class ConnectionFault
+    public class ArgumentFault
     {
         [DataMember]
         public string Message { get; set; }
 
-        public ConnectionFault()
+        public ArgumentFault()
         { }
 
-        public ConnectionFault(string message)
+        public ArgumentFault(string message)
         {
             Message = message;
         }

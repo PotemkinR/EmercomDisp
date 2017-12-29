@@ -21,7 +21,7 @@ namespace EmercomDisp.Service.Services
             }
             catch(ConfigurationErrorsException e)
             {
-                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
+                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message), "Unable to connect to the database");
             }
         }
 
@@ -53,7 +53,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -86,7 +86,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -95,6 +95,11 @@ namespace EmercomDisp.Service.Services
 
         public IEnumerable<CallDto> GetCallsByCategory(string category)
         {
+            if (category == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Category"), "Category cannot be null");
+            }
+
             var callList = new List<CallDto>();
 
             using (var connection = new SqlConnection(_connectionString))
@@ -120,7 +125,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -154,7 +159,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -163,6 +168,19 @@ namespace EmercomDisp.Service.Services
 
         public int CreateCall(CallDto call)
         {
+            if (call.Category == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Category"), "Category cannot be null");
+            }
+            if (call.Address == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Address"), "Address cannot be null");
+            }
+            if (call.Reason == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Reason"), "Reason cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -190,7 +208,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -198,6 +216,27 @@ namespace EmercomDisp.Service.Services
 
         public void UpdateCall(CallDto call)
         {
+            if (call.Category == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Category"), "Category cannot be null");
+            }
+            if (call.Address == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Address"), "Address cannot be null");
+            }
+            if (call.Reason == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Reason"), "Reason cannot be null");
+            }
+            if (call.IncidentDescription == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Incident Description"), "Incident Description cannot be null");
+            }
+            if (call.IncidentCause == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Incident Cause"), "Incident Cause");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -239,7 +278,7 @@ namespace EmercomDisp.Service.Services
                 catch (SqlException e)
                 {
                     transaction.Rollback();
-                    throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                    throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                 }
             }
         }
@@ -264,7 +303,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }

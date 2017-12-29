@@ -30,11 +30,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateBrigade(BrigadeDto brigade);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void CreateBrigade(BrigadeDto brigade);
 
         [OperationContract]
@@ -50,6 +52,7 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateBrigadeMember(BrigadeMemberDto brigadeMember);
 
         [OperationContract]
@@ -60,6 +63,7 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void CreateBrigadeMember(BrigadeMemberDto brigadeMember);
     }
 }

@@ -16,6 +16,7 @@ namespace EmercomDisp.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         public void Application_PostAuthenticateRequest(Object sender, EventArgs e)

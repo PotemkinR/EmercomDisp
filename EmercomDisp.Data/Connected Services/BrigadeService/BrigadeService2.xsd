@@ -41,4 +41,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BrigadeMemberDto" nillable="true" type="tns:BrigadeMemberDto" />
+  <xs:complexType name="ArgumentFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArgumentFault" nillable="true" type="tns:ArgumentFault" />
 </xs:schema>

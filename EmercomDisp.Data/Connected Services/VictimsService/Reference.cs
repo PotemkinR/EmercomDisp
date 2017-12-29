@@ -151,12 +151,103 @@ namespace EmercomDisp.Data.VictimsService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class SqlFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class ArgumentFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="VictimsService.IVictimsService")]
     public interface IVictimsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimById", ReplyAction="http://tempuri.org/IVictimsService/GetVictimByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/GetVictimByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.SqlFault), Action="http://tempuri.org/IVictimsService/GetVictimByIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.VictimsService.VictimDto GetVictimById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimById", ReplyAction="http://tempuri.org/IVictimsService/GetVictimByIdResponse")]
@@ -164,6 +255,7 @@ namespace EmercomDisp.Data.VictimsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentId", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.SqlFault), Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.VictimsService.VictimDto[] GetVictimsByIncidentId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/GetVictimsByIncidentId", ReplyAction="http://tempuri.org/IVictimsService/GetVictimsByIncidentIdResponse")]
@@ -171,6 +263,8 @@ namespace EmercomDisp.Data.VictimsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/AddVictim", ReplyAction="http://tempuri.org/IVictimsService/AddVictimResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/AddVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.SqlFault), Action="http://tempuri.org/IVictimsService/AddVictimSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ArgumentFault), Action="http://tempuri.org/IVictimsService/AddVictimArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void AddVictim(EmercomDisp.Data.VictimsService.VictimDto victim, int callId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/AddVictim", ReplyAction="http://tempuri.org/IVictimsService/AddVictimResponse")]
@@ -178,6 +272,8 @@ namespace EmercomDisp.Data.VictimsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/UpdateVictim", ReplyAction="http://tempuri.org/IVictimsService/UpdateVictimResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/UpdateVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.SqlFault), Action="http://tempuri.org/IVictimsService/UpdateVictimSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ArgumentFault), Action="http://tempuri.org/IVictimsService/UpdateVictimArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateVictim(EmercomDisp.Data.VictimsService.VictimDto victim);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/UpdateVictim", ReplyAction="http://tempuri.org/IVictimsService/UpdateVictimResponse")]
@@ -185,6 +281,7 @@ namespace EmercomDisp.Data.VictimsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/DeleteVictim", ReplyAction="http://tempuri.org/IVictimsService/DeleteVictimResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.ConnectionFault), Action="http://tempuri.org/IVictimsService/DeleteVictimConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.VictimsService.SqlFault), Action="http://tempuri.org/IVictimsService/DeleteVictimSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void DeleteVictim(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVictimsService/DeleteVictim", ReplyAction="http://tempuri.org/IVictimsService/DeleteVictimResponse")]

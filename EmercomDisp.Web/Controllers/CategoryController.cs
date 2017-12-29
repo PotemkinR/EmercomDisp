@@ -17,7 +17,7 @@ namespace EmercomDisp.Web.Controllers
 
         public PartialViewResult Category()
         {
-            CategoryViewModel model = new CategoryViewModel
+            var model = new CategoryViewModel
             {
                 Categories = _callProvider.GetCategories()
             };

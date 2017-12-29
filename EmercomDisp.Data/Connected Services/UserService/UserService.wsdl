@@ -17,6 +17,9 @@
   <wsdl:message name="IUserService_GetUsers_ConnectionFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUsers_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:SqlFault" />
+  </wsdl:message>
   <wsdl:message name="IUserService_GetUserByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserByName" />
   </wsdl:message>
@@ -24,7 +27,13 @@
     <wsdl:part name="parameters" element="tns:GetUserByNameResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetUserByName_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserByName_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserByName_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IUserService_CreateUser_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateUser" />
@@ -33,7 +42,13 @@
     <wsdl:part name="parameters" element="tns:CreateUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_CreateUser_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CreateUser_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CreateUser_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q8:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IUserService_DeleteUser_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUser" />
@@ -42,7 +57,13 @@
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_DeleteUser_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q9:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_DeleteUser_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q10:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_DeleteUser_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q11:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateUser_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUser" />
@@ -51,7 +72,13 @@
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateUser_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q12:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UpdateUser_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q13:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UpdateUser_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q14:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetRoles_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRoles" />
@@ -60,38 +87,51 @@
     <wsdl:part name="parameters" element="tns:GetRolesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetRoles_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:ConnectionFault" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q15:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoles_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q16:SqlFault" />
   </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUsers" message="tns:IUserService_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUsersResponse" message="tns:IUserService_GetUsers_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetUsersConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_GetUsers_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetUsersSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_GetUsers_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserByName">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserByName" message="tns:IUserService_GetUserByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserByNameResponse" message="tns:IUserService_GetUserByName_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetUserByNameConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_GetUserByName_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetUserByNameSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_GetUserByName_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetUserByNameArgumentFaultFault" name="ArgumentFaultFault" message="tns:IUserService_GetUserByName_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CreateUser" message="tns:IUserService_CreateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/CreateUserResponse" message="tns:IUserService_CreateUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/CreateUserConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_CreateUser_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/CreateUserSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_CreateUser_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/CreateUserArgumentFaultFault" name="ArgumentFaultFault" message="tns:IUserService_CreateUser_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/DeleteUser" message="tns:IUserService_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/DeleteUserResponse" message="tns:IUserService_DeleteUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/DeleteUserConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_DeleteUser_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/DeleteUserSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_DeleteUser_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/DeleteUserArgumentFaultFault" name="ArgumentFaultFault" message="tns:IUserService_DeleteUser_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/UpdateUser" message="tns:IUserService_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/UpdateUserResponse" message="tns:IUserService_UpdateUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/UpdateUserConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_UpdateUser_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/UpdateUserSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_UpdateUser_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/UpdateUserArgumentFaultFault" name="ArgumentFaultFault" message="tns:IUserService_UpdateUser_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRoles">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetRoles" message="tns:IUserService_GetRoles_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetRolesResponse" message="tns:IUserService_GetRoles_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetRolesConnectionFaultFault" name="ConnectionFaultFault" message="tns:IUserService_GetRoles_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/GetRolesSqlFaultFault" name="SqlFaultFault" message="tns:IUserService_GetRoles_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -107,6 +147,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserByName">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUserByName" style="document" />
@@ -118,6 +161,12 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateUser">
@@ -131,6 +180,12 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/DeleteUser" style="document" />
@@ -142,6 +197,12 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
@@ -155,6 +216,12 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetRoles">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetRoles" style="document" />
@@ -166,6 +233,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

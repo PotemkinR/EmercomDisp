@@ -3,7 +3,6 @@ using EmercomDisp.Model.Models;
 using log4net;
 using System;
 using System.Collections.Generic;
-using System.ServiceModel;
 
 namespace EmercomDisp.Data.Repositories
 {
@@ -12,7 +11,7 @@ namespace EmercomDisp.Data.Repositories
         private readonly ILog _log = LogManager.GetLogger("LOGGER");
 
         public Call GetCallById(int id)
-        {    
+        {
             var call = new Call();
             using (var client = new CallServiceClient())
             {
@@ -28,7 +27,7 @@ namespace EmercomDisp.Data.Repositories
                     }
                     client.Close();
                 }
-                catch (FaultException<ConnectionFault> e)
+                catch (Exception e)
                 {
                     _log.Error(e.Message);
                 }
@@ -138,9 +137,7 @@ namespace EmercomDisp.Data.Repositories
 
                     id = client.CreateCall(newCall);
 
-                    client.Close();
-
-                    
+                    client.Close();                   
                 }
                 catch (Exception e)
                 {

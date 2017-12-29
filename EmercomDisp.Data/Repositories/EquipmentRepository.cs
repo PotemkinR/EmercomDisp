@@ -3,7 +3,6 @@ using EmercomDisp.Model.Models;
 using log4net;
 using System;
 using System.Collections.Generic;
-using System.ServiceModel;
 
 namespace EmercomDisp.Data.Repositories
 {

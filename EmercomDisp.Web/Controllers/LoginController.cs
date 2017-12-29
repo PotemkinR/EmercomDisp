@@ -20,6 +20,7 @@ namespace EmercomDisp.Web.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            _log.Info("lul");
             return View();
         }
 

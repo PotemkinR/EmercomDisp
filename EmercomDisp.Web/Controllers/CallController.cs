@@ -34,13 +34,16 @@ namespace EmercomDisp.Web.Controllers
             }
             var call = _callProvider.GetCallById((int)id);
             var victims = _victimsProvider.GetVictimsByIncidentId((int)id);
+            var callResponses = _callResponseProvider.GetCallResponsesForCall((int)id)
+                .Where(callResponse => callResponse.IsActive == true);
 
             if (call.Id != 0)
             {
                 var model = new CallDetailsViewModel
                 {
                     Call = call,
-                    VictimsCount = victims.Count()
+                    VictimsCount = victims.Count(),
+                    HasActiveCallResponses = callResponses.Any()
                 };
 
                 return View(model);
