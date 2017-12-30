@@ -1,5 +1,6 @@
 ﻿using EmercomDisp.Service.Contracts.Contracts;
 using EmercomDisp.Service.Dto.Models;
+using log4net;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -10,6 +11,7 @@ namespace EmercomDisp.Service.Services
 {
     public class VictimsService : IVictimsService
     {
+        private readonly ILog _log = LogManager.GetLogger("LOGGER");
         private readonly string _connectionString;
 
         public VictimsService()
@@ -20,6 +22,7 @@ namespace EmercomDisp.Service.Services
             }
             catch (ConfigurationErrorsException e)
             {
+                _log.Error(e.Message);
                 throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message), "Unable to connect to the database");
             }
         }
@@ -54,6 +57,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
+                        _log.Error(e.Message);
                         throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
@@ -94,6 +98,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
+                        _log.Error(e.Message);
                         throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
@@ -133,6 +138,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
+                        _log.Error(e.Message);
                         throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
@@ -171,6 +177,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
+                        _log.Error(e.Message);
                         throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
@@ -197,6 +204,7 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
+                        _log.Error(e.Message);
                         throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
