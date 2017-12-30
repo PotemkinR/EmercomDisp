@@ -15,6 +15,7 @@ namespace EmercomDisp.BLL.Services
             _userProvider = userProvider ?? throw new ArgumentNullException("User Provider");
             _passwordEncryptService = passwordEncryptService ?? throw new ArgumentNullException("Password Encrypt Service");
         }
+
         public bool IsValidUser(string name, string password)
         {
             var passwordHash = _passwordEncryptService.EncryptPassword(password);
