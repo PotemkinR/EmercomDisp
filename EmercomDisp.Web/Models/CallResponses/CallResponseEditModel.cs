@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Foolproof;
 
 namespace EmercomDisp.Web.Models.CallResponses
 {
@@ -15,14 +16,17 @@ namespace EmercomDisp.Web.Models.CallResponses
 
         [Required]
         [DataType(DataType.DateTime)]
+        [GreaterThan("TransferTime")]
         public DateTime? ArriveTime { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
+        [GreaterThan("ArriveTime")]
         public DateTime? FinishTime { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
+        [GreaterThan("FinishTime")]
         public DateTime? ReturnTime { get; set; }
 
         public string BrigadeName { get; set; }

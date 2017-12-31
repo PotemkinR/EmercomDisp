@@ -119,12 +119,103 @@ namespace EmercomDisp.Data.EquipmentService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class SqlFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class ArgumentFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EquipmentService.IEquipmentService")]
     public interface IEquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipment", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.EquipmentService.EquipmentDto[] GetEquipment();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipment", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentResponse")]
@@ -133,6 +224,7 @@ namespace EmercomDisp.Data.EquipmentService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdConnectionFaultF" +
             "ault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.EquipmentService.EquipmentDto[] GetEquipmentByCallResponseId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdResponse")]
@@ -140,6 +232,7 @@ namespace EmercomDisp.Data.EquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentById", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.EquipmentService.EquipmentDto GetEquipmentById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/GetEquipmentById", ReplyAction="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse")]
@@ -147,6 +240,7 @@ namespace EmercomDisp.Data.EquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipmentList", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateEquipmentList(EmercomDisp.Data.EquipmentService.EquipmentDto[] equipment, int callResponseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipmentList", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentListResponse")]
@@ -154,6 +248,8 @@ namespace EmercomDisp.Data.EquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/CreateEquipment", ReplyAction="http://tempuri.org/IEquipmentService/CreateEquipmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/CreateEquipmentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/CreateEquipmentSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ArgumentFault), Action="http://tempuri.org/IEquipmentService/CreateEquipmentArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void CreateEquipment(EmercomDisp.Data.EquipmentService.EquipmentDto equipment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/CreateEquipment", ReplyAction="http://tempuri.org/IEquipmentService/CreateEquipmentResponse")]
@@ -161,6 +257,8 @@ namespace EmercomDisp.Data.EquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipment", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ArgumentFault), Action="http://tempuri.org/IEquipmentService/UpdateEquipmentArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateEquipment(EmercomDisp.Data.EquipmentService.EquipmentDto equipment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/UpdateEquipment", ReplyAction="http://tempuri.org/IEquipmentService/UpdateEquipmentResponse")]
@@ -168,6 +266,7 @@ namespace EmercomDisp.Data.EquipmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/DeleteEquipment", ReplyAction="http://tempuri.org/IEquipmentService/DeleteEquipmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.ConnectionFault), Action="http://tempuri.org/IEquipmentService/DeleteEquipmentConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.EquipmentService.SqlFault), Action="http://tempuri.org/IEquipmentService/DeleteEquipmentSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void DeleteEquipment(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEquipmentService/DeleteEquipment", ReplyAction="http://tempuri.org/IEquipmentService/DeleteEquipmentResponse")]

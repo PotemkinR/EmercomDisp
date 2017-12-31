@@ -260,6 +260,51 @@ namespace EmercomDisp.Data.CallResponseService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class ArgumentFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CallResponseService.ICallResponseService")]
     public interface ICallResponseService {
@@ -284,6 +329,7 @@ namespace EmercomDisp.Data.CallResponseService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/CreateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/CreateCallResponseResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ConnectionFault), Action="http://tempuri.org/ICallResponseService/CreateCallResponseConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.SqlFault), Action="http://tempuri.org/ICallResponseService/CreateCallResponseSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ArgumentFault), Action="http://tempuri.org/ICallResponseService/CreateCallResponseArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void CreateCallResponse(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/CreateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/CreateCallResponseResponse")]
@@ -292,6 +338,7 @@ namespace EmercomDisp.Data.CallResponseService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/UpdateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/UpdateCallResponseResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ConnectionFault), Action="http://tempuri.org/ICallResponseService/UpdateCallResponseConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.SqlFault), Action="http://tempuri.org/ICallResponseService/UpdateCallResponseSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.CallResponseService.ArgumentFault), Action="http://tempuri.org/ICallResponseService/UpdateCallResponseArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateCallResponse(EmercomDisp.Data.CallResponseService.CallResponseDto callResponse);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICallResponseService/UpdateCallResponse", ReplyAction="http://tempuri.org/ICallResponseService/UpdateCallResponseResponse")]

@@ -15,7 +15,8 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
-        IEnumerable<CallDto> GetCallsByCategory(string urgency);
+        [FaultContract(typeof(ArgumentFault))]
+        IEnumerable<CallDto> GetCallsByCategory(string category);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
@@ -30,11 +31,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         int CreateCall(CallDto call);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateCall(CallDto call);
 
         [OperationContract]

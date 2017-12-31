@@ -33,10 +33,13 @@
             <th>
                 Incident Cause
             </th>
-            <th>
-                Victims
-            </th>
-            <th></th>
+            @if (!Model.Call.IsActive)
+            {
+                <th>
+                    Victims
+                </th>
+                <th></th>
+            }
         </tr>
         <tr>
             <td>
@@ -60,20 +63,20 @@
             <td>
                 @Html.DisplayFor(Model => Model.Call.IncidentCause)
             </td>
-            <td>
-                @Html.ActionLink(Model.VictimsCount.ToString(), "VictimsList", "Victims", new { callId = Model.Call.Id }, null)
-            </td>
-            @if (Model.Call.IsActive)
+            @if (!Model.Call.IsActive)
             {
                 <td>
-                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("CloseCall", "Call", new { id = Model.Call.Id })' ;return false;">Close</button>
+                    @Html.ActionLink(Model.VictimsCount.ToString(), "VictimsList", "Victims", new { callId = Model.Call.Id }, null)
                 </td>
-            }
-            else
-            {
                 <td>
                     @Html.ActionLink("Edit", "EditCall", new { id = Model.Call.Id }) |
                     @Html.ActionLink("Delete", "DeleteCall", new { id = Model.Call.Id })
+                </td>
+            }
+            @if (Model.Call.IsActive && !Model.HasActiveCallResponses)
+            {
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("CloseCall", "Call", new { id = Model.Call.Id })' ;return false;">Close</button>
                 </td>
             }
         </tr>

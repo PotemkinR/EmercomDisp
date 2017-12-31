@@ -16,6 +16,9 @@
   <wsdl:message name="IEquipmentService_GetEquipment_ConnectionFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q1:ConnectionFault" />
   </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipment_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:SqlFault" />
+  </wsdl:message>
   <wsdl:message name="IEquipmentService_GetEquipmentByCallResponseId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEquipmentByCallResponseId" />
   </wsdl:message>
@@ -23,7 +26,10 @@
     <wsdl:part name="parameters" element="tns:GetEquipmentByCallResponseIdResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_GetEquipmentByCallResponseId_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q2:ConnectionFault" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipmentByCallResponseId_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_GetEquipmentById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEquipmentById" />
@@ -32,7 +38,10 @@
     <wsdl:part name="parameters" element="tns:GetEquipmentByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_GetEquipmentById_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q3:ConnectionFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_GetEquipmentById_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_UpdateEquipmentList_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEquipmentList" />
@@ -41,7 +50,10 @@
     <wsdl:part name="parameters" element="tns:UpdateEquipmentListResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_UpdateEquipmentList_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q4:ConnectionFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipmentList_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q8:SqlFault" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_CreateEquipment_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateEquipment" />
@@ -50,7 +62,13 @@
     <wsdl:part name="parameters" element="tns:CreateEquipmentResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_CreateEquipment_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q5:ConnectionFault" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q9:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_CreateEquipment_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q10:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_CreateEquipment_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q11:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_UpdateEquipment_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEquipment" />
@@ -59,7 +77,13 @@
     <wsdl:part name="parameters" element="tns:UpdateEquipmentResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_UpdateEquipment_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q6:ConnectionFault" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q12:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipment_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q13:SqlFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_UpdateEquipment_ArgumentFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q14:ArgumentFault" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_DeleteEquipment_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEquipment" />
@@ -68,43 +92,55 @@
     <wsdl:part name="parameters" element="tns:DeleteEquipmentResponse" />
   </wsdl:message>
   <wsdl:message name="IEquipmentService_DeleteEquipment_ConnectionFaultFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q7:ConnectionFault" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q15:ConnectionFault" />
+  </wsdl:message>
+  <wsdl:message name="IEquipmentService_DeleteEquipment_SqlFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models" name="detail" element="q16:SqlFault" />
   </wsdl:message>
   <wsdl:portType name="IEquipmentService">
     <wsdl:operation name="GetEquipment">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipment" message="tns:IEquipmentService_GetEquipment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentResponse" message="tns:IEquipmentService_GetEquipment_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_GetEquipment_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_GetEquipment_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEquipmentByCallResponseId">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId" message="tns:IEquipmentService_GetEquipmentByCallResponseId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdResponse" message="tns:IEquipmentService_GetEquipmentByCallResponseId_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_GetEquipmentByCallResponseId_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseIdSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_GetEquipmentByCallResponseId_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEquipmentById">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentById" message="tns:IEquipmentService_GetEquipmentById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdResponse" message="tns:IEquipmentService_GetEquipmentById_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_GetEquipmentById_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/GetEquipmentByIdSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_GetEquipmentById_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateEquipmentList">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentList" message="tns:IEquipmentService_UpdateEquipmentList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListResponse" message="tns:IEquipmentService_UpdateEquipmentList_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_UpdateEquipmentList_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentListSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_UpdateEquipmentList_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateEquipment">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipment" message="tns:IEquipmentService_CreateEquipment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentResponse" message="tns:IEquipmentService_CreateEquipment_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_CreateEquipment_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_CreateEquipment_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/CreateEquipmentArgumentFaultFault" name="ArgumentFaultFault" message="tns:IEquipmentService_CreateEquipment_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateEquipment">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipment" message="tns:IEquipmentService_UpdateEquipment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentResponse" message="tns:IEquipmentService_UpdateEquipment_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_UpdateEquipment_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_UpdateEquipment_SqlFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/UpdateEquipmentArgumentFaultFault" name="ArgumentFaultFault" message="tns:IEquipmentService_UpdateEquipment_ArgumentFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteEquipment">
       <wsdl:input wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipment" message="tns:IEquipmentService_DeleteEquipment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipmentResponse" message="tns:IEquipmentService_DeleteEquipment_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipmentConnectionFaultFault" name="ConnectionFaultFault" message="tns:IEquipmentService_DeleteEquipment_ConnectionFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipmentService/DeleteEquipmentSqlFaultFault" name="SqlFaultFault" message="tns:IEquipmentService_DeleteEquipment_SqlFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEquipmentService" type="tns:IEquipmentService">
@@ -120,6 +156,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetEquipmentByCallResponseId">
       <soap:operation soapAction="http://tempuri.org/IEquipmentService/GetEquipmentByCallResponseId" style="document" />
@@ -131,6 +170,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetEquipmentById">
@@ -144,6 +186,9 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateEquipmentList">
       <soap:operation soapAction="http://tempuri.org/IEquipmentService/UpdateEquipmentList" style="document" />
@@ -155,6 +200,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreateEquipment">
@@ -168,6 +216,12 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateEquipment">
       <soap:operation soapAction="http://tempuri.org/IEquipmentService/UpdateEquipment" style="document" />
@@ -180,6 +234,12 @@
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentFaultFault">
+        <soap:fault use="literal" name="ArgumentFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteEquipment">
       <soap:operation soapAction="http://tempuri.org/IEquipmentService/DeleteEquipment" style="document" />
@@ -191,6 +251,9 @@
       </wsdl:output>
       <wsdl:fault name="ConnectionFaultFault">
         <soap:fault use="literal" name="ConnectionFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SqlFaultFault">
+        <soap:fault use="literal" name="SqlFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

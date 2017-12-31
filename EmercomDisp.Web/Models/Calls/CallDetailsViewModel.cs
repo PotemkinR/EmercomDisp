@@ -7,5 +7,7 @@ namespace EmercomDisp.Web.Models.Calls
         public Call Call { get; set; }
 
         public int VictimsCount { get; set; }
+
+        public bool HasActiveCallResponses { get; set; }
     }
 }

@@ -114,7 +114,6 @@ namespace EmercomDisp.Data.Repositories
                 try
                 {
                     client.Open();
-
                     var updatedCallResponse = new CallResponseDto()
                     {
                         Id = callResponse.Id,

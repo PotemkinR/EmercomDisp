@@ -1,0 +1,9 @@
+ERROR 26 LOGGER - Ошибка при получении ответа HTTP на http://localhost:1122/CallService.svc. Возможно, это вызвано тем, что привязка конечной точки службы не использует протокол HTTP. Это может быть также вызвано тем, что контекст запроса HTTP прерван сервером (возможно, из-за отключения службы). Подробнее см. в журналах сервера.
+ERROR 10 LOGGER - Процедура или функция "GetCallById" ожидает параметр "@Id", который не был указан.
+ERROR 3 LOGGER - lul
+ERROR 3 LOGGER - lul
+ERROR 7 LOGGER - lul
+ERROR 13 LOGGER - Database error
+ERROR 3 LOGGER - Database error
+ERROR 9 LOGGER - Database error
+ERROR 14 LOGGER - Database error

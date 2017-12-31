@@ -1,5 +1,6 @@
 ﻿using EmercomDisp.Service.Contracts.Contracts;
 using EmercomDisp.Service.Dto.Models;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,6 +12,7 @@ namespace EmercomDisp.Service.Services
 {
     public class CallResponseService : ICallResponseService
     {
+        private readonly ILog _log = LogManager.GetLogger("LOGGER");
         private readonly string _connectionString;
 
         public CallResponseService()
@@ -21,7 +23,8 @@ namespace EmercomDisp.Service.Services
             }
             catch (ConfigurationErrorsException e)
             {
-                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message));
+                _log.Error(e.Message);
+                throw new FaultException<ConnectionFault>(new ConnectionFault(e.Message), "Unable to connect to the database");
             }
         }
 
@@ -60,7 +63,8 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        _log.Error(e.Message);
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -105,7 +109,8 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        _log.Error(e.Message);
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }           
             }
@@ -115,6 +120,11 @@ namespace EmercomDisp.Service.Services
 
         public void CreateCallResponse(CallResponseDto callResponse)
         {
+            if (callResponse.BrigadeName == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Brigade Name"), "Brigade Name cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -126,23 +136,29 @@ namespace EmercomDisp.Service.Services
                     cmd.Parameters.AddWithValue("@transferTime", callResponse.TransferTime);
                     cmd.Parameters.AddWithValue("@brigadeName", callResponse.BrigadeName);
 
-                    //try
-                    //{
+                    try
+                    {
                         connection.Open();
 
                         cmd.ExecuteNonQuery();
                         connection.Close();
-                    //}
-                    //catch (SqlException e)
-                    //{
-                    //    throw new FaultException<SqlFault>(new SqlFault(e.Message));
-                    //}
+                    }
+                    catch (SqlException e)
+                    {
+                        _log.Error(e.Message);
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
+                    }
                 }
             }
         }
 
         public void UpdateCallResponse(CallResponseDto callResponse)
         {
+            if (callResponse.BrigadeName == null)
+            {
+                throw new FaultException<ArgumentFault>(new ArgumentFault("Brigade Name"), "Brigade Name cannot be null");
+            }
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.ConnectionString = _connectionString;
@@ -166,7 +182,8 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        _log.Error(e.Message);
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }
@@ -192,7 +209,8 @@ namespace EmercomDisp.Service.Services
                     }
                     catch (SqlException e)
                     {
-                        throw new FaultException<SqlFault>(new SqlFault(e.Message));
+                        _log.Error(e.Message);
+                        throw new FaultException<SqlFault>(new SqlFault(e.Message), "Database error");
                     }
                 }
             }

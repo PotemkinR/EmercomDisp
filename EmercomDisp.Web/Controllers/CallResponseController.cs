@@ -130,7 +130,7 @@ namespace EmercomDisp.Web.Controllers
         [HttpGet]
         public ActionResult EditEquipmentList(int? id, int? callId)
         {
-            if (id == null)
+            if (id == null || callId == null)
             {
                 return HttpNotFound();
             }
@@ -152,6 +152,7 @@ namespace EmercomDisp.Web.Controllers
             }
             model.Equipment = modelList;
             model.CallId = (int)callId;
+            model.CallResponseId = (int)id;
             return View(model);
         }
 
@@ -172,7 +173,7 @@ namespace EmercomDisp.Web.Controllers
                         });
                 }
             }
-            _equipmentProvider.UpdateEquipmentList(updatedEquipmentList, model.CallId);
+            _equipmentProvider.UpdateEquipmentList(updatedEquipmentList, model.CallResponseId);
 
             return RedirectToAction("CallDetails", "Call", new { id = model.CallId });
         }

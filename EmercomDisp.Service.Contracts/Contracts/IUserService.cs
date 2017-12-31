@@ -15,21 +15,25 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         UserDto GetUserByName(string name);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void CreateUser(UserDto user);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void DeleteUser(string name);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateUser(UserDto user);
 
         [OperationContract]

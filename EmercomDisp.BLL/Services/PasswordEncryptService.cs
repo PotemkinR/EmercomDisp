@@ -1,12 +1,9 @@
-﻿using EmercomDisp.BLL.Providers;
-using System;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace EmercomDisp.BLL.Services
 {
-    public class PasswordEncryptService : IPasswordEncryptService
+    public  class PasswordEncryptService : IPasswordEncryptService
     {
         public byte[] EncryptPassword(string password)
         {

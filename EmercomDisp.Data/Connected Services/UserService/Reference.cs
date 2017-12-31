@@ -151,12 +151,103 @@ namespace EmercomDisp.Data.UserService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class SqlFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+    [System.SerializableAttribute()]
+    public partial class ArgumentFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/GetUsersConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/GetUsersSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.UserService.UserDto[] GetUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
@@ -164,6 +255,8 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByName", ReplyAction="http://tempuri.org/IUserService/GetUserByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/GetUserByNameConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/GetUserByNameSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ArgumentFault), Action="http://tempuri.org/IUserService/GetUserByNameArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         EmercomDisp.Data.UserService.UserDto GetUserByName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByName", ReplyAction="http://tempuri.org/IUserService/GetUserByNameResponse")]
@@ -171,6 +264,8 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/CreateUserConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/CreateUserSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ArgumentFault), Action="http://tempuri.org/IUserService/CreateUserArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void CreateUser(EmercomDisp.Data.UserService.UserDto user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
@@ -178,6 +273,8 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/DeleteUserConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/DeleteUserSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ArgumentFault), Action="http://tempuri.org/IUserService/DeleteUserArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void DeleteUser(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
@@ -185,6 +282,8 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/UpdateUserConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/UpdateUserSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ArgumentFault), Action="http://tempuri.org/IUserService/UpdateUserArgumentFaultFault", Name="ArgumentFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         void UpdateUser(EmercomDisp.Data.UserService.UserDto user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
@@ -192,6 +291,7 @@ namespace EmercomDisp.Data.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.ConnectionFault), Action="http://tempuri.org/IUserService/GetRolesConnectionFaultFault", Name="ConnectionFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmercomDisp.Data.UserService.SqlFault), Action="http://tempuri.org/IUserService/GetRolesSqlFaultFault", Name="SqlFault", Namespace="http://schemas.datacontract.org/2004/07/EmercomDisp.Service.Dto.Models")]
         string[] GetRoles();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]

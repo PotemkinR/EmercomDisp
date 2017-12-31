@@ -30,11 +30,13 @@ namespace EmercomDisp.Service.Contracts.Contracts
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void CreateEquipment(EquipmentDto equipment);
 
         [OperationContract]
         [FaultContract(typeof(ConnectionFault))]
         [FaultContract(typeof(SqlFault))]
+        [FaultContract(typeof(ArgumentFault))]
         void UpdateEquipment(EquipmentDto equipment);
 
         [OperationContract]

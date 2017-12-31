@@ -86,7 +86,7 @@ namespace EmercomDisp.Web.Controllers
             
             if(id != null)
             {
-                calls = calls.Where(c => c.Id == (int)id);
+                calls = calls.Where(c => c.Id == id);
             }
 
             var model = new CallListViewModel()

@@ -111,7 +111,7 @@ namespace EmercomDisp.Web.Controllers
 
                 _victimsProvider.UpdateVictim(updatedVictim);
             }
-            return RedirectToAction("VictimsList",new { callId = model.CallId });
+            return RedirectToAction("VictimsList", new { callId = model.CallId });
         }
 
         [HttpGet]
@@ -138,6 +138,13 @@ namespace EmercomDisp.Web.Controllers
             }
 
             return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteVictim(VictimDeleteModel model)
+        {
+            _victimsProvider.DeleteVictim(model.Id);
+            return RedirectToAction("VictimsList", new { callId = model.CallId });
         }
     }
 }
