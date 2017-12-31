@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /Logs
+/EmercomDisp.Service/Logs
+/EmercomDisp.Web/Logs
